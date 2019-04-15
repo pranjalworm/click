@@ -1,3 +1,7 @@
+# Custom ignore
+www
+ 
+
 # Logs
 logs
 *.log
