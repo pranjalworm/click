@@ -1,0 +1,56 @@
+.content {
+  max-width: 100vw !important;
+  min-width: 100vw !important;
+
+  max-height: 100vh !important;
+  min-height: 100vh !important;
+  
+  overflow: hidden !important;
+}
+
+header {
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+  margin-top: 4vh;
+}
+
+.banner-image-container {
+  margin: 4vh auto;
+  height: 80vh;
+  text-align: center;
+}
+
+.banner-image {
+  height: 75%;
+}
+
+.banner-caption {
+  margin: 0 20vw;
+  margin-top: 4vh;
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+}
+
+footer {
+  background: #efefef;
+  text-align: center;
+  font-family: 'Quicksand', sans-serif;
+  padding: 4vh;
+
+  .note {
+    font-size: 18px;
+  }
+
+  .sub-note {
+    margin-top: 2vh;
+    font-size: 12px;
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}
+
+

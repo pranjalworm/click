@@ -1,28 +1,46 @@
 import { Component } from '@stencil/core';
 
-
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.css',
+  styleUrl: 'app-root.scss',
   shadow: true
 })
 export class AppRoot {
 
   render() {
     return (
-      <div>
-        <header>
-          <h1>Stencil App Starter</h1>
-        </header>
+      <div class="app-root">
 
-        <main>
-          <stencil-router>
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route url='/' component='app-home' exact={true} />
-              <stencil-route url='/profile/:name' component='app-profile' />
-            </stencil-route-switch>
-          </stencil-router>
-        </main>
+        <div class="content">
+          <header>
+            Pranjal Dubey
+          </header>
+          
+          <div class="content">
+            <div class="banner-image-container">
+              <img src="/assets/images/banner.jpg" alt="St. Philomena's Church" class="banner-image"/>
+              <div class="banner-caption">
+                We are all made up of pieces from people who have built and broken us.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <footer>
+          <div class="note">
+            Under Construction
+          </div>
+          <div class="sub-note">
+            I am currently working on this website, will launch soon.
+          </div>
+
+          <div class="sub-note">
+            <a href="https://www.instagram.com/pranjalworm/">@pranjalworm</a>
+          </div>
+          
+        </footer>
+        
       </div>
     );
   }
