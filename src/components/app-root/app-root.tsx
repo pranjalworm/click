@@ -32,7 +32,7 @@ export class AppRoot {
             Under Construction
           </div>
           <div class="sub-note">
-            I am currently working on this website, will it launch soon.
+            I am currently working on this website, will launch it soon.
           </div>
 
           <div class="sub-note">
