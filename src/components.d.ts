@@ -14,20 +14,15 @@ export namespace Components {
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
-
-  interface ClickHeader {}
-  interface ClickHeaderAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'AppRoot': Components.AppRoot;
-    'ClickHeader': Components.ClickHeader;
   }
 
   interface StencilIntrinsicElements {
     'app-root': Components.AppRootAttributes;
-    'click-header': Components.ClickHeaderAttributes;
   }
 
 
@@ -37,20 +32,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
-  interface HTMLClickHeaderElement extends Components.ClickHeader, HTMLStencilElement {}
-  var HTMLClickHeaderElement: {
-    prototype: HTMLClickHeaderElement;
-    new (): HTMLClickHeaderElement;
-  };
-
   interface HTMLElementTagNameMap {
     'app-root': HTMLAppRootElement
-    'click-header': HTMLClickHeaderElement
   }
 
   interface ElementTagNameMap {
     'app-root': HTMLAppRootElement;
-    'click-header': HTMLClickHeaderElement;
   }
 
 
