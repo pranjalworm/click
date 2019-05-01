@@ -1,0 +1,92 @@
+@import '../../global/styles/constants';
+
+.page-root {
+  font-family: $font-family;
+}
+
+.section {
+  height: 90vh;
+}
+
+.section-1 {
+  background: #000;
+  color: #fff;
+  text-align: center;
+
+  .banner-container {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8vw;
+
+    div {
+      height: 60vh;
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .banner-caption {
+    width: 80vw;
+    margin: 0% auto;
+    margin-top: 8vw;
+  }
+
+  .down-arrow {
+    margin-top: 8vw;
+    
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+}
+
+.section-2, .section-3 {
+  background: #fff;
+  color: #555;
+
+  header {
+    height: 10vh;
+    font-size: $subheading-font-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .galleries-list, .updates-list {
+    margin-top: 10vh;
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      text-align: center;
+      margin: 4vw auto;
+    }
+    
+    .see-all {
+      font-size: $note-font-size;
+      text-decoration: underline;
+    }
+  }
+
+}
+
+.section-3 {
+  background: #f9f9f9;
+
+  .updates-list {
+    margin-top: 0;
+
+    li {
+      margin: 0 8vw;
+      margin-bottom: 16vw;
+      margin-top: 9vw;
+    }
+  }
+}

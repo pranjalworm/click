@@ -7,22 +7,45 @@
 
 import '@stencil/core';
 
-
+import '@stencil/router';
+import '@stencil/state-tunnel';
+import {
+  Card,
+} from './interfaces/Card';
 
 
 export namespace Components {
 
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface CardLink {
+    'card': Card;
+  }
+  interface CardLinkAttributes extends StencilHTMLAttributes {
+    'card'?: Card;
+  }
+
+  interface LandingPage {}
+  interface LandingPageAttributes extends StencilHTMLAttributes {}
+
+  interface ViewImage {}
+  interface ViewImageAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'AppRoot': Components.AppRoot;
+    'CardLink': Components.CardLink;
+    'LandingPage': Components.LandingPage;
+    'ViewImage': Components.ViewImage;
   }
 
   interface StencilIntrinsicElements {
     'app-root': Components.AppRootAttributes;
+    'card-link': Components.CardLinkAttributes;
+    'landing-page': Components.LandingPageAttributes;
+    'view-image': Components.ViewImageAttributes;
   }
 
 
@@ -32,12 +55,36 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLCardLinkElement extends Components.CardLink, HTMLStencilElement {}
+  var HTMLCardLinkElement: {
+    prototype: HTMLCardLinkElement;
+    new (): HTMLCardLinkElement;
+  };
+
+  interface HTMLLandingPageElement extends Components.LandingPage, HTMLStencilElement {}
+  var HTMLLandingPageElement: {
+    prototype: HTMLLandingPageElement;
+    new (): HTMLLandingPageElement;
+  };
+
+  interface HTMLViewImageElement extends Components.ViewImage, HTMLStencilElement {}
+  var HTMLViewImageElement: {
+    prototype: HTMLViewImageElement;
+    new (): HTMLViewImageElement;
+  };
+
   interface HTMLElementTagNameMap {
     'app-root': HTMLAppRootElement
+    'card-link': HTMLCardLinkElement
+    'landing-page': HTMLLandingPageElement
+    'view-image': HTMLViewImageElement
   }
 
   interface ElementTagNameMap {
     'app-root': HTMLAppRootElement;
+    'card-link': HTMLCardLinkElement;
+    'landing-page': HTMLLandingPageElement;
+    'view-image': HTMLViewImageElement;
   }
 
 

@@ -3,11 +3,13 @@
   "short_name": "Pranjal",
   "start_url": "/",
   "display": "standalone",
-  "icons": [{
-    "src": "assets/icon/icon.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }],
-  "background_color": "#2f2f3f",
-  "theme_color": "#2f2f3f"
+  "icons": [
+    {
+      "src": "assets/icon/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#000",
+  "theme_color": "#000"
 }
