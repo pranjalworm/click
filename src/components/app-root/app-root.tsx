@@ -1,4 +1,4 @@
-import { Component } from '@stencil/core';
+import { Component, EventEmitter, Event } from '@stencil/core';
 import '@stencil/router';
 
 @Component({
@@ -8,6 +8,11 @@ import '@stencil/router';
 })
 export class AppRoot {
 
+  @Event() loaded: EventEmitter;
+
+  componentDidLoad() {
+    this.loaded.emit(true);
+  }
 
   render() {
     return (

@@ -17,7 +17,9 @@ import {
 export namespace Components {
 
   interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
+  interface AppRootAttributes extends StencilHTMLAttributes {
+    'onLoaded'?: (event: CustomEvent) => void;
+  }
 
   interface CardLink {
     'card': Card;

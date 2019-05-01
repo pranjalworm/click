@@ -20,11 +20,58 @@
   <link rel="apple-touch-icon" href="/assets/icon/icon.png">
   <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
   <link rel="manifest" href="/manifest.json">
+  <style>
+    #loader {
+      background: #000;
+      display: flex;
+      justify-content: center;
+      color: #fff;
+      font-size: 36px;
+      width: 100vw;
+      height: 100vh;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #loader div {
+      margin-top: 40vh;
+    }
+
+    .hidden {
+      opacity: 0.2;
+      transition: opacity 0.3s ease-out;
+    }
+  </style>
 </head>
 
 <body>
-  <app-root></app-root>
+  <div id="app-root-container">
+    <div id="loader">
+      <div>Pranjal Dubey</div>
+    </div>
+    <div id="content">
+      <app-root id="app-root"></app-root>
+    </div>
 
+  </div>
+
+
+  <script>
+    const appRootElem = document.getElementById('app-root');
+    const loaderElem = document.getElementById('loader');
+
+    appRootElem.addEventListener('loaded', () => {
+
+      setTimeout(() => {
+        console.log('applying hidden class')
+        loaderElem.className = 'hidden';
+      }, 500);
+
+      setTimeout(() => {
+        console.log('removing element')
+        loaderElem.style.display = 'none'
+      }, 800);
+    })
+  </script>
 </body>
 
 </html>
