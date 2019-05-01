@@ -13,12 +13,28 @@ import '@stencil/router';
 export class LandingPage {
 
   private banner: Image = null;
-  private updates: Card[] = []
+  private updates: Card[] = [];
+  private sections: Element[] = [];
 
   componentWillLoad() {
 
     this.getBannerImage();
     this.getRecentUpdates();
+  }
+
+  componentDidLoad() {
+    this.getSections();
+  }
+
+  private getSections() {
+
+    const galleries = document.getElementById('galleries');
+    this.sections.push(galleries);
+
+    const recentUpdates = document.getElementById('recent-updates');
+    this.sections.push(recentUpdates);
+
+    window['sections'] = this.sections;
   }
 
   getBannerImage() {
@@ -29,6 +45,14 @@ export class LandingPage {
   getRecentUpdates() {
 
     this.updates = UpdatesService.getRecentUpdates();
+  }
+
+  scrollToSection(index: number) {
+
+    this.sections[index].scrollIntoView({
+      behavior: "smooth",
+      block: "end"
+    });
   }
 
   render() {
@@ -47,13 +71,15 @@ export class LandingPage {
           <div class="banner-caption">
             {this.banner.caption}
           </div>
-          <div class="down-arrow">
-            <a href="#section-galleries"><i class="fas fa-chevron-down"></i></a>
-          </div>
+
+          <footer class="down-arrow">
+            {/* <a href="#section-galleries"><i class="fas fa-chevron-down"></i></a> */}
+            <span onClick={() => { this.scrollToSection(0) }}><i class="fas fa-chevron-down"></i></span>
+          </footer>
         </div>
 
         {/* section 2 */}
-        <div class="section section-2" id="section-galleries">
+        <div class="section section-2" id="galleries">
           <header>
             Galleries
           </header>
@@ -67,10 +93,15 @@ export class LandingPage {
               <li class="see-all">All Galleries...</li>
             </ul>
           </div>
+
+          <footer class="down-arrow">
+            {/* <a href="#recent-updates"><i class="fas fa-chevron-down"></i></a> */}
+            <span onClick={() => { this.scrollToSection(1) }}><i class="fas fa-chevron-down"></i></span>
+          </footer>
         </div>
 
         {/* section 3 */}
-        <div class="section-3">
+        <div class="section-3" id="recent-updates">
           <header>
             Recent Updates
           </header>

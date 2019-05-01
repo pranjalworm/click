@@ -6,6 +6,16 @@
 
 .section {
   height: 90vh;
+  position: relative;
+
+  .down-arrow {
+    margin-top: 8vw;
+    text-align: center;
+    
+    a {
+      text-decoration: none;
+    }
+  }
 }
 
 .section-1 {
@@ -36,13 +46,11 @@
   }
 
   .down-arrow {
-    margin-top: 8vw;
-    
     a {
-      text-decoration: none;
       color: #fff;
     }
   }
+  
 }
 
 .section-2, .section-3 {
@@ -75,6 +83,13 @@
     }
   }
 
+  
+  .down-arrow {
+    a {
+      color: #555;
+    }
+  }
+
 }
 
 .section-3 {
@@ -89,4 +104,11 @@
       margin-top: 9vw;
     }
   }
+}
+
+footer {
+  position: absolute;
+  bottom: 8vw;
+  left: 0;
+  right: 0;
 }
