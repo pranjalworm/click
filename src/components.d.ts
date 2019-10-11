@@ -5,51 +5,39 @@
  */
 
 
-import '@stencil/core';
-
-import '@stencil/router';
-import '@stencil/state-tunnel';
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   Card,
 } from './interfaces/Card';
-
+import {
+  RouterHistory,
+} from '@stencil/router';
 
 export namespace Components {
-
+  interface AppHeader {}
+  interface AppLanding {}
   interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {
-    'onLoaded'?: (event: CustomEvent) => void;
-  }
-
   interface CardLink {
     'card': Card;
+    'history': RouterHistory;
   }
-  interface CardLinkAttributes extends StencilHTMLAttributes {
-    'card'?: Card;
-  }
-
-  interface LandingPage {}
-  interface LandingPageAttributes extends StencilHTMLAttributes {}
-
   interface ViewImage {}
-  interface ViewImageAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'AppRoot': Components.AppRoot;
-    'CardLink': Components.CardLink;
-    'LandingPage': Components.LandingPage;
-    'ViewImage': Components.ViewImage;
-  }
 
-  interface StencilIntrinsicElements {
-    'app-root': Components.AppRootAttributes;
-    'card-link': Components.CardLinkAttributes;
-    'landing-page': Components.LandingPageAttributes;
-    'view-image': Components.ViewImageAttributes;
-  }
 
+  interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {}
+  var HTMLAppHeaderElement: {
+    prototype: HTMLAppHeaderElement;
+    new (): HTMLAppHeaderElement;
+  };
+
+  interface HTMLAppLandingElement extends Components.AppLanding, HTMLStencilElement {}
+  var HTMLAppLandingElement: {
+    prototype: HTMLAppLandingElement;
+    new (): HTMLAppLandingElement;
+  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
@@ -63,39 +51,52 @@ declare global {
     new (): HTMLCardLinkElement;
   };
 
-  interface HTMLLandingPageElement extends Components.LandingPage, HTMLStencilElement {}
-  var HTMLLandingPageElement: {
-    prototype: HTMLLandingPageElement;
-    new (): HTMLLandingPageElement;
-  };
-
   interface HTMLViewImageElement extends Components.ViewImage, HTMLStencilElement {}
   var HTMLViewImageElement: {
     prototype: HTMLViewImageElement;
     new (): HTMLViewImageElement;
   };
-
   interface HTMLElementTagNameMap {
-    'app-root': HTMLAppRootElement
-    'card-link': HTMLCardLinkElement
-    'landing-page': HTMLLandingPageElement
-    'view-image': HTMLViewImageElement
-  }
-
-  interface ElementTagNameMap {
+    'app-header': HTMLAppHeaderElement;
+    'app-landing': HTMLAppLandingElement;
     'app-root': HTMLAppRootElement;
     'card-link': HTMLCardLinkElement;
-    'landing-page': HTMLLandingPageElement;
     'view-image': HTMLViewImageElement;
   }
+}
+
+declare namespace LocalJSX {
+  interface AppHeader {}
+  interface AppLanding {}
+  interface AppRoot {}
+  interface CardLink {
+    'card'?: Card;
+    'history'?: RouterHistory;
+  }
+  interface ViewImage {}
+
+  interface IntrinsicElements {
+    'app-header': AppHeader;
+    'app-landing': AppLanding;
+    'app-root': AppRoot;
+    'card-link': CardLink;
+    'view-image': ViewImage;
+  }
+}
+
+export { LocalJSX as JSX };
 
 
+declare module "@stencil/core" {
   export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
+    interface IntrinsicElements {
+      'app-header': LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
+      'app-landing': LocalJSX.AppLanding & JSXBase.HTMLAttributes<HTMLAppLandingElement>;
+      'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'card-link': LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
+      'view-image': LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
     }
   }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+

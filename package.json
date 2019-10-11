@@ -1,22 +1,22 @@
 {
-  "name": "stencil-starter-project-name",
+  "name": "click",
   "private": true,
   "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "description": "Pranjal Dubey Photography Website",
   "scripts": {
     "build": "stencil build",
     "serve": "http-server ./www -p 3333",
-    "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "start": "stencil build --dev --watch --serve"
   },
   "dependencies": {
     "@stencil/core": "latest",
     "@stencil/router": "latest",
-    "@stencil/sass": "latest"
+    "@stencil/sass": "latest",
+    "chokidar": "^3.2.1"
   },
   "license": "MIT",
   "devDependencies": {
+    "http-server": "^0.11.1",
     "workbox-build": "3.4.1"
   }
 }

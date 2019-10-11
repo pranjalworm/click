@@ -1,42 +1,56 @@
-import { Component, EventEmitter, Event } from '@stencil/core';
+import { h, Component, ComponentInterface } from '@stencil/core';
 import '@stencil/router';
+import { Route, RouteService } from '../../services/routes.service';
 
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.scss',
-  shadow: false
+  shadow: true
 })
-export class AppRoot {
+export class AppRoot implements ComponentInterface {
 
-  @Event() loaded: EventEmitter;
+  private routes: Route[] = [];
 
-  componentDidLoad() {
-    this.loaded.emit(true);
+  constructor() {
+    this.routes = RouteService.getRoutes();
   }
+
 
   render() {
     return (
+      <div class="app-root">
 
-      <div id="app-root">
-
-        <header>
-          Pranjal Dubey
-        </header>
+        <app-header></app-header>
 
         <main>
-          {/* <stencil-router>
-            <stencil-route-switch>
-              <stencil-route url="/" component="landing-page"></stencil-route>
-              <stencil-route url="/galleries" component="project-page"></stencil-route>
-              <stencil-route url="/blog" component="blog-page"></stencil-route>
+          <stencil-router titleSuffix=" - Pranjal Dubey Photography">
+            <stencil-route-switch scrollTopOffset={0}>
+              <stencil-route component="catch-all" />
             </stencil-route-switch>
-          </stencil-router> */}
 
-          {/* <view-image></view-image> */}
-          <landing-page></landing-page>
+            <stencil-route-switch scrollTopOffset={0}>
+              {
+                this.routes.map((route: Route) => {
+                  if (route.exact === true) {
+                    return (
+                      <stencil-route
+                        url={route.url}
+                        component={route.component}
+                        exact={true} />)
+                  }
+
+                  return (
+                    <stencil-route
+                      url={route.url}
+                      component={route.component}>
+                    </stencil-route>
+                  )
+                })
+              }
+            </stencil-route-switch>
+          </stencil-router>
         </main>
-
       </div>
-    );
+    )
   }
 }

@@ -1,20 +1,21 @@
-@import '../../global/styles/constants';
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 .page-root {
   padding: 8vw;
   padding-top: 4vw;
-  font-family: $font-family;
 }
 
 .image-meta {
-  font-size: $body-font-size;
   margin-bottom: 4vw;
 }
 
 .image-container {
-
   width: 100%;
-  
+
   img {
     width: 100%;
   }
@@ -35,4 +36,9 @@
 
 .image-description {
   margin-top: 4vw;
+}
+
+.download-href {
+  text-decoration: none;
+  color: #999999;
 }

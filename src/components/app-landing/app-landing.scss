@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#landing-root {
+  .landing-section {
+    padding-top: 200px;
+    height: 100vh;
+    max-height: 100vh;
+    min-height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .landing-image {
+      text-align: center;
+      height: 60vh;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    .landing-caption {
+      margin-top: 40px;
+      font-size: var(--font-size-small);
+      color: #555;
+    }
+  }
+
+  .card-container {
+    list-style: none;
+    width: 100%;
+    padding: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

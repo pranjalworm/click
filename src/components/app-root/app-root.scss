@@ -1,22 +1,12 @@
-@import '../../global/styles/constants';
-
-
-#app-root >  main {
-  padding-top: 10vh;
-  height: 90vh;
-  width: 100vw;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-#app-root > header {
-  z-index: 1000;
-  background: #fff;
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: $heading-font-size;
-  box-shadow: 0 0px 8px -8px black;
-  position: fixed;
-  width: 100vw;
-  font-family: $font-family;
+#app-root {
+  max-width: 1280px !important;
+  min-width: 960px !important;
+  margin: 0% auto;
+  position: relative;
 }

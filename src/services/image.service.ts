@@ -1,3 +1,4 @@
+// import { StorageService } from '../services/storage.service';
 import { Image } from '../interfaces/Image';
 
 const dummyData: Image[] = [
@@ -45,27 +46,57 @@ const dummyData: Image[] = [
     alt: 'Alt text',
     description: 'Some description text'
   }
+];
 
-]
+// const bannerImages = [
+//   {
+//     url: '../assets/images/unnati.jpg',
+//     caption: 'Unnati image caption',
+//     location: null,
+//     date: null,
+//     alt: 'Alt text',
+//     description: null
+//   },
+//   {
+//     url: '../assets/images/couple.jpg',
+//     caption: 'Couple image caption',
+//     location: null,
+//     date: null,
+//     alt: 'Alt text',
+//     description: null
+//   },
+//   {
+//     url: '../assets/images/frisbee.jpg',
+//     caption: 'Frisbee image caption',
+//     location: null,
+//     date: null,
+//     alt: 'Alt text',
+//     description: null
+//   },
+//   {
+//     url: '../assets/images/church.jpg',
+//     caption: 'We are all made up of pieces from people who have built and broken us.',
+//     location: null,
+//     date: null,
+//     alt: 'Alt text',
+//     description: null
+//   }
+
+// ]
 
 export default class ImageService {
+
+  // private banners = []
 
   static getImage(index: number): Image {
 
     return dummyData[index];
   }
 
-  static getBannerImage() {
+  // static getBannerImage() {
 
-    const banner: Image = {
-      url: '../../assets/images/banner.jpg',
-      caption: 'We are all made up of pieces from people who have built and broken us.',
-      alt: 'St. Philomena\'s Church',
-      location: null,
-      date: null,
-      description: null
-    }
 
-    return banner;
-  }
+
+  //   return banner;
+  // } 
 }

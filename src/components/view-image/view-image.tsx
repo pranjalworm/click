@@ -1,4 +1,4 @@
-import { Component, State } from '@stencil/core';
+import { h, Component, State } from '@stencil/core';
 import ImageService from '../../services/image.service';
 import { Image } from '../../interfaces/Image';
 import '@stencil/router';
@@ -6,7 +6,7 @@ import '@stencil/router';
 @Component({
   tag: 'view-image',
   styleUrl: 'view-image.scss',
-  shadow: false
+  shadow: true
 })
 export class ViewImage {
 
