@@ -14,9 +14,12 @@ import {
 } from '@stencil/router';
 
 export namespace Components {
+  interface AboutMe {}
+  interface AppFooter {}
   interface AppHeader {}
   interface AppLanding {}
   interface AppRoot {}
+  interface BookShoot {}
   interface CardLink {
     'card': Card;
     'history': RouterHistory;
@@ -26,6 +29,18 @@ export namespace Components {
 
 declare global {
 
+
+  interface HTMLAboutMeElement extends Components.AboutMe, HTMLStencilElement {}
+  var HTMLAboutMeElement: {
+    prototype: HTMLAboutMeElement;
+    new (): HTMLAboutMeElement;
+  };
+
+  interface HTMLAppFooterElement extends Components.AppFooter, HTMLStencilElement {}
+  var HTMLAppFooterElement: {
+    prototype: HTMLAppFooterElement;
+    new (): HTMLAppFooterElement;
+  };
 
   interface HTMLAppHeaderElement extends Components.AppHeader, HTMLStencilElement {}
   var HTMLAppHeaderElement: {
@@ -45,6 +60,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLBookShootElement extends Components.BookShoot, HTMLStencilElement {}
+  var HTMLBookShootElement: {
+    prototype: HTMLBookShootElement;
+    new (): HTMLBookShootElement;
+  };
+
   interface HTMLCardLinkElement extends Components.CardLink, HTMLStencilElement {}
   var HTMLCardLinkElement: {
     prototype: HTMLCardLinkElement;
@@ -57,18 +78,24 @@ declare global {
     new (): HTMLViewImageElement;
   };
   interface HTMLElementTagNameMap {
+    'about-me': HTMLAboutMeElement;
+    'app-footer': HTMLAppFooterElement;
     'app-header': HTMLAppHeaderElement;
     'app-landing': HTMLAppLandingElement;
     'app-root': HTMLAppRootElement;
+    'book-shoot': HTMLBookShootElement;
     'card-link': HTMLCardLinkElement;
     'view-image': HTMLViewImageElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface AboutMe {}
+  interface AppFooter {}
   interface AppHeader {}
   interface AppLanding {}
   interface AppRoot {}
+  interface BookShoot {}
   interface CardLink {
     'card'?: Card;
     'history'?: RouterHistory;
@@ -76,9 +103,12 @@ declare namespace LocalJSX {
   interface ViewImage {}
 
   interface IntrinsicElements {
+    'about-me': AboutMe;
+    'app-footer': AppFooter;
     'app-header': AppHeader;
     'app-landing': AppLanding;
     'app-root': AppRoot;
+    'book-shoot': BookShoot;
     'card-link': CardLink;
     'view-image': ViewImage;
   }
@@ -90,9 +120,12 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'about-me': LocalJSX.AboutMe & JSXBase.HTMLAttributes<HTMLAboutMeElement>;
+      'app-footer': LocalJSX.AppFooter & JSXBase.HTMLAttributes<HTMLAppFooterElement>;
       'app-header': LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
       'app-landing': LocalJSX.AppLanding & JSXBase.HTMLAttributes<HTMLAppLandingElement>;
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+      'book-shoot': LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
       'card-link': LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
       'view-image': LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
     }

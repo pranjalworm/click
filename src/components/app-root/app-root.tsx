@@ -12,13 +12,13 @@ export class AppRoot implements ComponentInterface {
   private routes: Route[] = [];
 
   constructor() {
-    this.routes = RouteService.getRoutes();
+    this.routes = RouteService.getAllRoutes();
   }
 
 
   render() {
     return (
-      <div class="app-root">
+      <div id="app-root">
 
         <app-header></app-header>
 
@@ -50,6 +50,8 @@ export class AppRoot implements ComponentInterface {
             </stencil-route-switch>
           </stencil-router>
         </main>
+
+        <app-footer></app-footer>
       </div>
     )
   }

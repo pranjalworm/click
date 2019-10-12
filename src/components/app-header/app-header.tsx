@@ -1,5 +1,5 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
-import { RouteService, Route } from '../../services/routes.service';
+import { RouteService, Route, ROUTE_NAMES } from '../../services/routes.service';
 
 @Component({
   tag: 'app-header',
@@ -16,12 +16,21 @@ export class AppHeader implements ComponentInterface {
   }
 
   render() {
-    return (
-      <header id="site-header">
 
-        <div id="site-heading">
-          {this.siteHeading}
-        </div>
+    const landingPageRoute = RouteService.getRoute(ROUTE_NAMES.home);
+
+    return (
+      <header id="app-header-root">
+
+        <stencil-route-link
+          url={landingPageRoute.url}
+          exact={true}>
+          <div id="app-heading">
+            {this.siteHeading}
+          </div>
+        </stencil-route-link>
+
+
 
         <div id="menu">
           {

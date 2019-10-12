@@ -14,7 +14,8 @@ export class CardLink {
   @Prop() history: RouterHistory;
 
   openLink() {
-    this.history.push(ROUTE_NAMES[''], {});
+    // TODO: finish this
+    this.history.push(ROUTE_NAMES.galleries, {});
   }
 
   render() {
