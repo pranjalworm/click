@@ -10,8 +10,12 @@ import {
   Card,
 } from './interfaces/Card';
 import {
+  MatchResults,
   RouterHistory,
 } from '@stencil/router';
+import {
+  ListItemProps,
+} from './interfaces/ListItemProps';
 
 export namespace Components {
   interface AboutMe {}
@@ -23,6 +27,11 @@ export namespace Components {
   interface CardLink {
     'card': Card;
     'history': RouterHistory;
+  }
+  interface ListItems {
+    'history': RouterHistory;
+    'listItemProps': ListItemProps;
+    'match': MatchResults;
   }
   interface ViewImage {}
 }
@@ -72,6 +81,12 @@ declare global {
     new (): HTMLCardLinkElement;
   };
 
+  interface HTMLListItemsElement extends Components.ListItems, HTMLStencilElement {}
+  var HTMLListItemsElement: {
+    prototype: HTMLListItemsElement;
+    new (): HTMLListItemsElement;
+  };
+
   interface HTMLViewImageElement extends Components.ViewImage, HTMLStencilElement {}
   var HTMLViewImageElement: {
     prototype: HTMLViewImageElement;
@@ -85,6 +100,7 @@ declare global {
     'app-root': HTMLAppRootElement;
     'book-shoot': HTMLBookShootElement;
     'card-link': HTMLCardLinkElement;
+    'list-items': HTMLListItemsElement;
     'view-image': HTMLViewImageElement;
   }
 }
@@ -100,6 +116,11 @@ declare namespace LocalJSX {
     'card'?: Card;
     'history'?: RouterHistory;
   }
+  interface ListItems {
+    'history'?: RouterHistory;
+    'listItemProps'?: ListItemProps;
+    'match'?: MatchResults;
+  }
   interface ViewImage {}
 
   interface IntrinsicElements {
@@ -110,6 +131,7 @@ declare namespace LocalJSX {
     'app-root': AppRoot;
     'book-shoot': BookShoot;
     'card-link': CardLink;
+    'list-items': ListItems;
     'view-image': ViewImage;
   }
 }
@@ -127,6 +149,7 @@ declare module "@stencil/core" {
       'app-root': LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
       'book-shoot': LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
       'card-link': LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
+      'list-items': LocalJSX.ListItems & JSXBase.HTMLAttributes<HTMLListItemsElement>;
       'view-image': LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
     }
   }

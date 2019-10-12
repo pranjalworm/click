@@ -4,6 +4,29 @@
   box-sizing: border-box;
 }
 
-.about-me-root {
+#about-me-root {
   padding-top: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0% 80px;
+  color: #8e8e8e;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .description {
+    width: 50%;
+  }
+
+  .image-container {
+    height: 50vh;
+
+    img {
+      height: 100%;
+    }
+  }
 }

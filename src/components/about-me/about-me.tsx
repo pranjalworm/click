@@ -9,8 +9,16 @@ export class AboutMe implements ComponentInterface {
 
   render() {
     return (
-      <div class="about-me-root">
-        this is the about me page
+      <div id="about-me-root">
+
+        <div class="description">
+          The quick brown fox jumps right over the lazy dog. The quick brown fox jumps right over the lazy dog. The quick brown fox jumps right over the lazy dog.
+        </div>
+
+        <div class="image-container">
+          <img src="./assets/images/pranjal-dubey.jpg" alt="Pranjal Dubey self portrait" />
+        </div>
+
       </div>
     )
   }

@@ -9,7 +9,6 @@ import { Image } from '../../interfaces/Image';
 })
 export class CardLink implements ComponentInterface {
 
-
   private landingImage: Image = null;
 
   // TODO: fetch this value from a service
