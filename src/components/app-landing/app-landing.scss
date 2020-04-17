@@ -1,5 +1,10 @@
 @import "../../global/styles/resets";
 
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
 #landing-root {
   #landing-section {
     padding-top: 150px;
@@ -21,7 +26,6 @@
 
     #banner-caption {
       margin-top: 40px;
-      font-size: var(--font-size-small);
       color: #8e8e8e;
     }
   }
@@ -31,6 +35,7 @@
     column-count: 3;
     column-gap: 8px;
 
+    /* TODO: fix this */
     // img:hover {
     //   cursor: pointer;
     //   filter: brightness(0.6);

@@ -247,7 +247,6 @@ export default class ImageService {
     return dummyData.length;
   }
 
-
   // method to fetch the main banner image on landing page
   static getBannerImage() {
 
@@ -260,6 +259,16 @@ export default class ImageService {
     return image;
   }
 
+  // method to fetch image for about-me page
+  static getSelfPortrait() {
+
+    const image: Image = {
+      url: '../assets/images/10.jpg',
+      alt: 'Pranjal Dubey'
+    };
+
+    return image;
+  }
 
   // method to fetch images to be displayed on landing page
   static getLandingImages() {

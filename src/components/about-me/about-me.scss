@@ -1,12 +1,12 @@
 @import "../../global/styles/resets";
 
 #about-me-root {
-  padding-top: 200px;
+  padding-top: 150px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0% 80px;
-  color: #8e8e8e;
+  margin: 0% 50px;
+  color: #575757;
 
   div {
     display: flex;
@@ -14,12 +14,15 @@
     align-items: flex-start;
   }
 
-  .description {
+  #description {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
     width: 50%;
   }
 
-  .image-div {
-    height: 50vh;
+  #image-div {
+    height: 70vh;
 
     img {
       height: 100%;

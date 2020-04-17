@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 50px;
-  position: fixed;
+  position: absolute;
   min-width: 480px !important;
   margin: 0% auto;
   top: 0px;
@@ -40,8 +40,8 @@ a {
 }
 
 .menu-option {
-  padding: 4px;
-  margin: 0px 20px;
+  padding: 10px;
+  margin-left: 40px;
   color: var(--app-header-menu-options-color, #8e8e8e);
   font-size: var(--font-size-normal);
   transition-duration: 0.2s;

@@ -5,7 +5,6 @@
   "description": "Pranjal Dubey Photography Website",
   "scripts": {
     "build": "stencil build",
-    "serve": "http-server ./www -p 3333",
     "start": "stencil build --dev --watch --serve"
   },
   "dependencies": {
@@ -16,7 +15,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "http-server": "^0.12.1",
     "workbox-build": "3.4.1"
   }
 }

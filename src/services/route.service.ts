@@ -86,6 +86,6 @@ export class RouteService {
 
 
   static getRoute(routeName: ROUTE_NAME): Route {
-    return ROUTES[routeName]
+    return ROUTES[routeName];
   }
 }

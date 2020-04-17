@@ -1,4 +1,9 @@
-import { h, Component, ComponentInterface } from '@stencil/core';
+import {
+  h,
+  Component,
+  ComponentInterface,
+  Element
+} from '@stencil/core';
 import ImageService from '../../services/image.service';
 import { Image } from '../../global/interfaces';
 
@@ -8,6 +13,28 @@ import { Image } from '../../global/interfaces';
   shadow: true
 })
 export class AppLanding implements ComponentInterface {
+
+  @Element() host: HTMLElement;
+
+  // TODO: fix this
+  // private timerRef: number;
+  // @Listen('scroll', {
+  //   target: 'body',
+  //   passive: true
+  // })
+  // handleScroll(_event: any) {
+
+  //   clearTimeout(this.timerRef);
+  //   this.timerRef = null;
+
+  //   if (!this.host.classList.contains('disable-hover')) {
+  //     this.host.classList.add('disable-hover')
+  //   }
+
+  //   this.timerRef = setTimeout(() => {
+  //     this.host.classList.remove('disable-hover')
+  //   }, 1000);
+  // }
 
   private bannerImage: Image = null;
   private landingImages: Image[] = [];
