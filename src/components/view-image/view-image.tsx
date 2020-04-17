@@ -1,7 +1,8 @@
-import { h, Component, State } from '@stencil/core';
+import { h, Component, State, Prop } from '@stencil/core';
 import ImageService from '../../services/image.service';
-import { Image } from '../../interfaces/Image';
+import { Image } from '../../global/interfaces';
 import '@stencil/router';
+import { RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'view-image',
@@ -10,23 +11,29 @@ import '@stencil/router';
 })
 export class ViewImage {
 
+  @Prop() history: RouterHistory;
+
   @State() currentImage: Image = null;
 
   private currentIndex = 0;
-  private imageElem: Element;
+  private totalImagesCount = ImageService.getTotalImagesCount();
+
 
   componentWillLoad() {
-    this.fetchImage(0);
-  }
 
-  componentDidLoad() {
-    this.imageElem = document.getElementById('image-elem');
+    this.fetchImage(this.currentIndex);
   }
 
 
   fetchImage(index: number) {
+
+    if (index < 0) {
+      this.currentIndex = index = this.totalImagesCount - 1;
+    } else if (index === this.totalImagesCount) {
+      this.currentIndex = index = 0;
+    }
+
     this.currentImage = ImageService.getImage(index);
-    console.log(`arya > currentImage: ${JSON.stringify(this.currentImage)}`);
   }
 
 
@@ -41,51 +48,41 @@ export class ViewImage {
     this.fetchImage(--this.currentIndex);
   }
 
+  exit() {
 
-  viewInFullScreen() {
-    if (this.imageElem.requestFullscreen) {
-      this.imageElem.requestFullscreen();
-    }
-
+    this.history.goBack();
   }
 
 
   render() {
 
     return (
-      <div class="page-root">
-        <div class="image-meta">
-          {this.currentImage.location.city}, {this.currentImage.date}
+      <div id="view-image-root">
+
+        <div id="exit-view-image" onClick={() => { this.exit() }}>
+          <img src="../assets/icon/close.svg" alt="close" />
         </div>
 
-        <div class="image-container">
-          <img src={this.currentImage.url} alt={this.currentImage.alt} id="image-elem" />
+        <div id="image-div">
+          <img src={this.currentImage.url} alt={this.currentImage.alt} id="image" />
         </div>
 
-        <div class="image-controls">
-          <div class="control" onClick={() => this.viewInFullScreen()}>
-            <i class="fas fa-expand"></i>
+        <div id="image-controls">
+          <span class="control" onClick={() => this.getPreviousImage()}>prev</span>
+            /
+          <span class="control" onClick={() => this.getNextImage()}>next</span>
+        </div>
+
+        <div id="image-text">
+          <div id="image-caption">
+            {this.currentImage.caption}
           </div>
-          <div class="control" onClick={() => this.getPreviousImage()}>
-            <i class="fas fa-chevron-left"></i>
-          </div>
-          <div class="control" onClick={() => this.getNextImage()}>
-            <i class="fas fa-chevron-right"></i>
-          </div>
-          <div class="control">
-            <a href={this.currentImage.url} download class="download-href">
-              <i class="fas fa-file-download"></i>
-            </a>
+
+          <div id="image-description">
+            {this.currentImage.description}
           </div>
         </div>
 
-        <div class="image-caption">
-          {this.currentImage.caption}
-        </div>
-
-        <div class="image-description">
-          {this.currentImage.description}
-        </div>
       </div>
     );
   }

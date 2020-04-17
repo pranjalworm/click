@@ -1,8 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+@import "../../global/styles/resets";
 
 #app-footer-root {
   display: flex;
@@ -59,6 +55,6 @@ a:hover {
   color: #c91c1c;
 }
 
-.copyright-container {
+.copyright-div {
   font-size: var(--font-size-small);
 }

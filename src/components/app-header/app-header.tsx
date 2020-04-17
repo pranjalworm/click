@@ -1,5 +1,5 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
-import { RouteService, Route, ROUTE_NAMES } from '../../services/routes.service';
+import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
 
 @Component({
   tag: 'app-header',
@@ -11,25 +11,26 @@ export class AppHeader implements ComponentInterface {
   private siteHeading = 'pranjal dubey';
   private menuOptions = null;
 
+
   constructor() {
     this.menuOptions = RouteService.getHeaderRoutes();
   }
 
+
   render() {
 
-    const landingPageRoute = RouteService.getRoute(ROUTE_NAMES.home);
+    const landingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
 
     return (
       <header id="app-header-root">
 
         <stencil-route-link
-          url={landingPageRoute.url}
+          url={landingPageRoute.url[0]}
           exact={true}>
           <div id="app-heading">
             {this.siteHeading}
           </div>
         </stencil-route-link>
-
 
 
         <div id="menu">
@@ -39,7 +40,7 @@ export class AppHeader implements ComponentInterface {
               if (menuOption.exact === true) {
                 return (
                   <stencil-route-link
-                    url={menuOption.url}
+                    url={(menuOption.url.length ? menuOption.url[0] : menuOption.url) as string}
                     exact={true}>
                     <span class="menu-option">{menuOption.title}</span>
                   </stencil-route-link>
@@ -48,7 +49,7 @@ export class AppHeader implements ComponentInterface {
 
               return (
                 <stencil-route-link
-                  url={menuOption.url}
+                  url={(menuOption.url.length ? menuOption.url[0] : menuOption.url) as string}
                   urlMatch={menuOption.urlMatch}>
                   <span class="menu-option">{menuOption.title}</span>
                 </stencil-route-link>

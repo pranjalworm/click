@@ -1,5 +1,5 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
-import { ROUTE_NAMES, RouteService } from '../../services/routes.service';
+import { ROUTE_NAME, RouteService } from '../../services/route.service';
 
 @Component({
   tag: 'app-footer',
@@ -10,13 +10,13 @@ export class AppFooter implements ComponentInterface {
 
   render() {
 
-    const bookAShootRoute = RouteService.getRoute(ROUTE_NAMES.bookAShoot);
-    const aboutMeRoute = RouteService.getRoute(ROUTE_NAMES.aboutMe);
+    // const bookAShootRoute = RouteService.getRoute(ROUTE_NAME.BOOK_A_SHOOT);
+    const aboutMeRoute = RouteService.getRoute(ROUTE_NAME.ABOUT_ME);
 
     return (
       <div id="app-footer-root">
 
-        <div class="section copyright-container">
+        <div class="section copyright-div">
           © Pranjal Dubey Photography
         </div>
 
@@ -27,20 +27,20 @@ export class AppFooter implements ComponentInterface {
           </a>
 
           <stencil-route-link
-            url={aboutMeRoute.url}
+            url={aboutMeRoute.url as string}
             exact={true}>
             <span class="link">
               about me
             </span>
           </stencil-route-link>
 
-          <stencil-route-link
+          {/* <stencil-route-link
             url={bookAShootRoute.url}
             exact={true}>
             <span id="book-a-shoot-button" class="link">
               book a shoot
             </span>
-          </stencil-route-link>
+          </stencil-route-link> */}
 
 
         </div>

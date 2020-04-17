@@ -9,3 +9,10 @@ export type Image = {
   alt?: string;
   description?: string;
 }
+
+export type Blog = {
+  imageUrl: string;
+  title: string;
+  description?: string;
+  blogImages: Image[]
+}

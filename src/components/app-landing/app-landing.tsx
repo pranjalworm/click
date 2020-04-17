@@ -1,79 +1,82 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
-import { Card } from '../../interfaces/Card';
-import { Image } from '../../interfaces/Image';
+import ImageService from '../../services/image.service';
+import { Image } from '../../global/interfaces';
 
 @Component({
   tag: 'app-landing',
   styleUrl: 'app-landing.scss',
   shadow: true
 })
-export class CardLink implements ComponentInterface {
+export class AppLanding implements ComponentInterface {
 
-  private landingImage: Image = null;
+  private bannerImage: Image = null;
+  private landingImages: Image[] = [];
 
-  // TODO: fetch this value from a service
-  private images: Image[] = [
-    {
-      url: './assets/images/church.jpg',
-      alt: '',
-      caption: 'We are all made up of pieces from people who have built and broken us.'
-    }
-  ];
-
-  // TODO: fetch this value from a service
-  private cards: Card[] = [
-    {
-      imageUrl: './assets/images/brothers-card.jpg',
-      imageAlt: 'Brothers running on beach',
-      title: 'portraits',
-      link: ''
-    },
-    {
-      imageUrl: './assets/images/gudiya.jpg',
-      imageAlt: 'Brothers running on beach',
-      title: 'weddings',
-      link: ''
-    },
-    {
-      imageUrl: './assets/images/sisters.jpg',
-      imageAlt: 'Brothers running on beach',
-      title: 'kids',
-      link: ''
-    },
-    {
-      imageUrl: './assets/images/gudiya.jpg',
-      imageAlt: 'Brothers running on beach',
-      title: 'weddings',
-      link: ''
-    }
-  ];
 
   componentWillLoad() {
-    this.landingImage = this.images[0];
+
+    this.bannerImage = ImageService.getBannerImage();
+    this.landingImages = ImageService.getLandingImages();
   }
 
+  handleImageClick(image: Image, index: number) {
+    console.log(`arya > index: ${index}`)
+    console.log(image);
+  }
+
+  assembleImages() {
+
+    let containersArr: HTMLElement[] = [];
+    let tempContainer: HTMLElement[] = [];
+
+    this.landingImages.forEach((image: Image, index: number) => {
+
+      const imageElement = <img onClick={() => this.handleImageClick(image, index)}
+        src={image.url}
+        alt={image.alt} />
+
+      if (index % 2 === 0) {
+
+        if (tempContainer.length == 2) {
+          const container = (
+            <div class="column">
+              {tempContainer}
+            </div>
+          );
+
+          containersArr.push(container);
+        }
+
+        tempContainer = []
+      }
+
+      tempContainer.push(imageElement);
+
+      console.log(`arya > tempContainer > index: ${index}`);
+      console.log(tempContainer);
+    });
+
+    return containersArr;
+  }
+
+
   render() {
+
     return (
       <div id="landing-root">
 
-        <div class="landing-section">
-          <div class="landing-image">
-            <img src={this.landingImage.url} alt={this.landingImage.alt} />
+        <div id="landing-section">
+          <div id="banner-image">
+            <img src={this.bannerImage.url} alt={this.bannerImage.alt} />
           </div>
-          <div class="landing-caption">
-            <span>{this.landingImage.caption}</span>
+          <div id="banner-caption">
+            <span>{this.bannerImage.caption}</span>
           </div>
         </div>
 
-        <div class="card-container">
+        <div id="landing-images-parent">
           {
-            this.cards.map((card: Card) => {
-              return (
-                <card-link
-                  card={card}>
-                </card-link>
-              )
-            })
+            this.assembleImages()
           }
         </div>
 

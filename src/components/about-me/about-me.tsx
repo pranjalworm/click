@@ -15,7 +15,7 @@ export class AboutMe implements ComponentInterface {
           The quick brown fox jumps right over the lazy dog. The quick brown fox jumps right over the lazy dog. The quick brown fox jumps right over the lazy dog.
         </div>
 
-        <div class="image-container">
+        <div class="image-div">
           <img src="./assets/images/pranjal-dubey.jpg" alt="Pranjal Dubey self portrait" />
         </div>
 

@@ -1,8 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+@import "../../global/styles/resets";
 
 #about-me-root {
   padding-top: 200px;
@@ -22,11 +18,7 @@
     width: 50%;
   }
 
-  .image-container {
-    width: 50%;
-  }
-
-  .image-container {
+  .image-div {
     height: 50vh;
 
     img {

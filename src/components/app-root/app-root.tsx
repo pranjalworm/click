@@ -1,6 +1,6 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
 import '@stencil/router';
-import { Route, RouteService } from '../../services/routes.service';
+import { Route, RouteService, ROUTE_NAME } from '../../services/route.service';
 
 @Component({
   tag: 'app-root',
@@ -17,16 +17,24 @@ export class AppRoot implements ComponentInterface {
 
 
   render() {
+
+    const currentPathname = window.location.pathname;
+
+    let appHeader = null;
+    let appFooter = null;
+
+    if (currentPathname !== '/' + ROUTE_NAME.VIEW_IMAGE) {
+      appHeader = <app-header></app-header>;
+      appFooter = <app-footer></app-footer>;
+    }
+
     return (
       <div id="app-root">
 
-        <app-header></app-header>
+        {appHeader}
 
         <main>
           <stencil-router titleSuffix=" - Pranjal Dubey Photography">
-            <stencil-route-switch scrollTopOffset={0}>
-              <stencil-route component="catch-all" />
-            </stencil-route-switch>
 
             <stencil-route-switch scrollTopOffset={0}>
               {
@@ -47,11 +55,13 @@ export class AppRoot implements ComponentInterface {
                   )
                 })
               }
+
+              <stencil-route component="catch-all" />
             </stencil-route-switch>
           </stencil-router>
         </main>
 
-        <app-footer></app-footer>
+        {appFooter}
       </div>
     )
   }

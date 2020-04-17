@@ -1,15 +1,11 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+@import "../../global/styles/resets";
 
 #app-header-root {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 80px;
+  padding: 50px;
   position: fixed;
   max-width: 1280px !important;
   min-width: 960px !important;
@@ -22,7 +18,7 @@
 }
 
 #app-heading {
-  font-size: var(--font-size-xx-large);
+  font-size: var(--font-size-x-large);
   color: #8e8e8e;
 }
 
@@ -40,6 +36,10 @@ a {
   text-decoration: none;
 }
 
+.link-active {
+  color: #c91c1c;
+}
+
 .menu-option {
   padding: 4px;
   margin: 0px 20px;
@@ -51,8 +51,4 @@ a {
 .menu-option:hover {
   cursor: pointer;
   color: var(--app-header-menu-options-color-hover, #c91c1c);
-}
-
-.link-active {
-  color: #c91c1c;
 }
