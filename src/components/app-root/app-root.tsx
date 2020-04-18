@@ -1,6 +1,6 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
 import '@stencil/router';
-import { Route, RouteService, ROUTE_NAME } from '../../services/route.service';
+import { Route, RouteService } from '../../services/route.service';
 
 @Component({
   tag: 'app-root',
@@ -18,20 +18,10 @@ export class AppRoot implements ComponentInterface {
 
   render() {
 
-    const currentPathname = window.location.pathname;
-
-    let appHeader = null;
-    let appFooter = null;
-
-    if (currentPathname !== '/' + ROUTE_NAME.VIEW_IMAGE) {
-      appHeader = <app-header></app-header>;
-      appFooter = <app-footer></app-footer>;
-    }
-
     return (
       <div id="app-root">
 
-        {appHeader}
+        <app-header></app-header>
 
         <main>
           <stencil-router titleSuffix=" - Pranjal Dubey Photography">
@@ -56,12 +46,13 @@ export class AppRoot implements ComponentInterface {
                 })
               }
 
-              <stencil-route component="catch-all" />
+              <stencil-route component="page-not-found" />
             </stencil-route-switch>
           </stencil-router>
         </main>
 
-        {appFooter}
+        <app-footer></app-footer>
+
       </div>
     )
   }

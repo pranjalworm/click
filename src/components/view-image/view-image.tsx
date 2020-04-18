@@ -1,8 +1,8 @@
-import { h, Component, State, Prop } from '@stencil/core';
+import { h, Component, State, Prop, Listen } from '@stencil/core';
 import ImageService from '../../services/image.service';
 import { Image } from '../../global/interfaces';
 import '@stencil/router';
-import { RouterHistory } from '@stencil/router';
+import { RouterHistory, MatchResults } from '@stencil/router';
 
 @Component({
   tag: 'view-image',
@@ -12,14 +12,28 @@ import { RouterHistory } from '@stencil/router';
 export class ViewImage {
 
   @Prop() history: RouterHistory;
+  @Prop() match: MatchResults;
 
   @State() currentImage: Image = null;
 
   private currentIndex = 0;
   private totalImagesCount = ImageService.getTotalImagesCount();
 
+  @Listen('keydown', {
+    target: 'body',
+    passive: true
+  })
+  handleKeyDown(event: KeyboardEvent) {
+
+    if (event.key === 'Escape') {
+      this.exit();
+    }
+  }
+
 
   componentWillLoad() {
+
+    this.currentIndex = Number(this.match.params.index) || 0;
 
     this.fetchImage(this.currentIndex);
   }

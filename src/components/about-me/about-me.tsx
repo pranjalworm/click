@@ -20,22 +20,29 @@ export class AboutMe implements ComponentInterface {
       <div id="about-me-root">
 
         <div id="description">
-          <p>
-            I am Pranjal Dubey, full-time programmer, part-time photographer, die hard reader.
-            The quick brown fox jumps right over the lazy dog.
-            The quick brown fox jumps right over the lazy dog.
-          </p>
-          <br />
-          <p>
-            The quick brown fox jumps right over the lazy dog.
-            The quick brown fox jumps right over the lazy dog.
-          </p>
-          <br />
-          <p>
-            The quick brown fox jumps right over the lazy dog.
-            The quick brown fox jumps right over the lazy dog.
-          </p>
+          <div>
+            <p>
+              I am Pranjal Dubey, full-time programmer, part-time photographer, die hard reader.
+              The quick brown fox jumps right over the lazy dog.
+              The quick brown fox jumps right over the lazy dog.
+            </p>
+            <br />
+            <p>
+              The quick brown fox jumps right over the lazy dog.
+              The quick brown fox jumps right over the lazy dog.
+            </p>
+            <br />
+            <p>
+              The quick brown fox jumps right over the lazy dog.
+              The quick brown fox jumps right over the lazy dog.
+            </p>
+          </div>
+
+          <div>
+            I built this website myself, checkout the source code <a target="_blank" id="source-link" href="https://github.com/pranjalworm/click">here</a>.
+          </div>
         </div>
+
 
         <div id="image-div">
           <img src={this.image.url} alt={this.image.alt} />

@@ -1,0 +1,35 @@
+@import "../../global/styles/resets";
+
+#page-not-found-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0% 50px;
+  color: #575757;
+  height: calc(100vh - 140px - 136px);
+
+  #banner404 {
+    height: 30vh;
+    color: #8e8e8e;
+
+    #oops {
+      font-size: var(--font-size-x-large);
+      font-weight: bold;
+    }
+
+    #page-not-found {
+      font-size: var(--font-size-large);
+    }
+
+    #home-link {
+      margin-top: 40px;
+      font-size: var(--font-size-large);
+
+      a {
+        color: #c91c1c;
+        text-decoration: none !important;
+      }
+    }
+  }
+}

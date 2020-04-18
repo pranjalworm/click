@@ -2,10 +2,11 @@ import {
   h,
   Component,
   ComponentInterface,
-  Element
+  Prop
 } from '@stencil/core';
 import ImageService from '../../services/image.service';
 import { Image } from '../../global/interfaces';
+import { RouterHistory } from '@stencil/router';
 
 @Component({
   tag: 'app-landing',
@@ -14,9 +15,10 @@ import { Image } from '../../global/interfaces';
 })
 export class AppLanding implements ComponentInterface {
 
-  @Element() host: HTMLElement;
+  @Prop() history: RouterHistory;
 
   // TODO: fix this
+  // @Element() host: HTMLElement;
   // private timerRef: number;
   // @Listen('scroll', {
   //   target: 'body',
@@ -46,9 +48,9 @@ export class AppLanding implements ComponentInterface {
     this.landingImages = ImageService.getLandingImages();
   }
 
-  handleImageClick(image: Image, index: number) {
-    console.log(`arya > index: ${index}`)
-    console.log(image);
+  handleImageClick(index: number) {
+
+    this.history.push(`/view-image/${index}`);
   }
 
 
@@ -70,7 +72,7 @@ export class AppLanding implements ComponentInterface {
           {
             this.landingImages.map((image: Image, index: number) => {
               return (
-                <img onClick={() => this.handleImageClick(image, index)}
+                <img onClick={() => this.handleImageClick(index)}
                   src={image.url}
                   alt={image.alt} />
               )

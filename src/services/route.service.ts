@@ -1,6 +1,6 @@
 export interface Route {
-  title: string;
-  url: string | string[];
+  title?: string;
+  url?: string | string[];
   exact?: boolean;
   urlMatch?: string | string[];
   component: string;
@@ -13,7 +13,8 @@ export const enum ROUTE_NAME {
   // BLOG = 'blog',
   // BOOK_A_SHOOT = 'book-a-shoot',
   ABOUT_ME = 'about-me',
-  VIEW_IMAGE = 'view-image'
+  VIEW_IMAGE = 'view-image',
+  PAGE_NOT_FOUND = 'page-not-found'
 }
 
 
@@ -21,14 +22,13 @@ const ROUTES: { [key: string]: Route } = {
   [ROUTE_NAME.HOME]: {
     title: '',
     url: '/',
-    urlMatch: ['/portfolio'],
     exact: true,
     component: 'app-landing'
   },
   [ROUTE_NAME.PORTFOLIO]: {
     title: 'portfolio',
     url: '/portfolio',
-    urlMatch: ['/'],
+    urlMatch: ['/', '/portfolio'],
     exact: true,
     component: 'app-landing'
   },
@@ -52,9 +52,12 @@ const ROUTES: { [key: string]: Route } = {
   },
   [ROUTE_NAME.VIEW_IMAGE]: {
     title: 'view image',
-    url: '/view-image',
+    url: '/view-image/:index',
     exact: true,
     component: 'view-image'
+  },
+  [ROUTE_NAME.PAGE_NOT_FOUND]: {
+    component: 'page-not-found'
   }
 };
 

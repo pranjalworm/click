@@ -1,24 +1,24 @@
 @import "../../global/styles/resets";
 
 #about-me-root {
-  padding-top: 150px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin: 0% 50px;
   color: #575757;
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
+  height: 90vh;
 
   #description {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    height: 70vh;
+    justify-content: space-between;
     width: 50%;
+
+    #source-link {
+      text-decoration: none;
+      color: #c43131;
+    }
   }
 
   #image-div {

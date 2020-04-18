@@ -5,22 +5,30 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { RouterHistory, } from "@stencil/router";
+import { LocationSegments, MatchResults, RouterHistory, } from "@stencil/router";
 export namespace Components {
     interface AboutMe {
     }
     interface AppFooter {
+        "history": RouterHistory;
+        "location": LocationSegments;
     }
     interface AppHeader {
+        "history": RouterHistory;
+        "location": LocationSegments;
     }
     interface AppLanding {
+        "history": RouterHistory;
     }
     interface AppRoot {
     }
     interface BookShoot {
     }
+    interface PageNotFound {
+    }
     interface ViewImage {
         "history": RouterHistory;
+        "match": MatchResults;
     }
 }
 declare global {
@@ -60,6 +68,12 @@ declare global {
         prototype: HTMLBookShootElement;
         new (): HTMLBookShootElement;
     };
+    interface HTMLPageNotFoundElement extends Components.PageNotFound, HTMLStencilElement {
+    }
+    var HTMLPageNotFoundElement: {
+        prototype: HTMLPageNotFoundElement;
+        new (): HTMLPageNotFoundElement;
+    };
     interface HTMLViewImageElement extends Components.ViewImage, HTMLStencilElement {
     }
     var HTMLViewImageElement: {
@@ -73,6 +87,7 @@ declare global {
         "app-landing": HTMLAppLandingElement;
         "app-root": HTMLAppRootElement;
         "book-shoot": HTMLBookShootElement;
+        "page-not-found": HTMLPageNotFoundElement;
         "view-image": HTMLViewImageElement;
     }
 }
@@ -80,17 +95,25 @@ declare namespace LocalJSX {
     interface AboutMe {
     }
     interface AppFooter {
+        "history"?: RouterHistory;
+        "location"?: LocationSegments;
     }
     interface AppHeader {
+        "history"?: RouterHistory;
+        "location"?: LocationSegments;
     }
     interface AppLanding {
+        "history"?: RouterHistory;
     }
     interface AppRoot {
     }
     interface BookShoot {
     }
+    interface PageNotFound {
+    }
     interface ViewImage {
         "history"?: RouterHistory;
+        "match"?: MatchResults;
     }
     interface IntrinsicElements {
         "about-me": AboutMe;
@@ -99,6 +122,7 @@ declare namespace LocalJSX {
         "app-landing": AppLanding;
         "app-root": AppRoot;
         "book-shoot": BookShoot;
+        "page-not-found": PageNotFound;
         "view-image": ViewImage;
     }
 }
@@ -112,6 +136,7 @@ declare module "@stencil/core" {
             "app-landing": LocalJSX.AppLanding & JSXBase.HTMLAttributes<HTMLAppLandingElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
+            "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "view-image": LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
         }
     }
