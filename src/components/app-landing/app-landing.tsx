@@ -2,11 +2,12 @@ import {
   h,
   Component,
   ComponentInterface,
-  Prop
+  Listen,
+  Element,
+  Prop,
 } from '@stencil/core';
-import ImageService from '../../services/image.service';
-import { Image } from '../../global/interfaces';
 import { RouterHistory } from '@stencil/router';
+
 
 @Component({
   tag: 'app-landing',
@@ -16,41 +17,34 @@ import { RouterHistory } from '@stencil/router';
 export class AppLanding implements ComponentInterface {
 
   @Prop() history: RouterHistory;
+  @Element() host: HTMLElement;
+  private landingRootRef: HTMLElement = null;
 
-  // TODO: fix this
-  // @Element() host: HTMLElement;
-  // private timerRef: number;
-  // @Listen('scroll', {
-  //   target: 'body',
-  //   passive: true
-  // })
-  // handleScroll(_event: any) {
+  /**
+   * waiting for the banner-loaded event, only after that the rest of the 
+   * content will be loaded
+   */
+  @Listen('banner-loaded')
+  loadContent() {
 
-  //   clearTimeout(this.timerRef);
-  //   this.timerRef = null;
-
-  //   if (!this.host.classList.contains('disable-hover')) {
-  //     this.host.classList.add('disable-hover')
-  //   }
-
-  //   this.timerRef = setTimeout(() => {
-  //     this.host.classList.remove('disable-hover')
-  //   }, 1000);
-  // }
-
-  private bannerImage: Image = null;
-  private landingImages: Image[] = [];
-
-
-  componentWillLoad() {
-
-    this.bannerImage = ImageService.getBannerImage();
-    this.landingImages = ImageService.getLandingImages();
+    const landingContentRef = document.createElement('landing-content');
+    this.landingRootRef.appendChild(landingContentRef);
   }
 
-  handleImageClick(index: number) {
+  @Listen('image-clicked')
+  imageClickHandler(event: CustomEvent) {
+
+    const index = event.detail;
 
     this.history.push(`/view-image/${index}`);
+  }
+
+
+  componentDidLoad() {
+
+    this.landingRootRef = this.host.shadowRoot.getElementById('landing-root');
+    const landingBannerRef = document.createElement('landing-banner');
+    this.landingRootRef.appendChild(landingBannerRef);
   }
 
 
@@ -58,28 +52,9 @@ export class AppLanding implements ComponentInterface {
 
     return (
       <div id="landing-root">
+        {/* landing-banner will be loaded first */}
 
-        <div id="landing-section">
-          <div id="banner-image">
-            <img src={this.bannerImage.url} alt={this.bannerImage.alt} />
-          </div>
-          <div id="banner-caption">
-            <span>{this.bannerImage.caption}</span>
-          </div>
-        </div>
-
-        <div id="landing-images-parent">
-          {
-            this.landingImages.map((image: Image, index: number) => {
-              return (
-                <img onClick={() => this.handleImageClick(index)}
-                  src={image.url}
-                  alt={image.alt} />
-              )
-            })
-          }
-        </div>
-
+        {/* landing-content will be loaded after landing-banner has been loaded */}
       </div>
     );
   }

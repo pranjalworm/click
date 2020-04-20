@@ -22,7 +22,13 @@ export namespace Components {
     }
     interface AppRoot {
     }
+    interface AppSpinner {
+    }
     interface BookShoot {
+    }
+    interface LandingBanner {
+    }
+    interface LandingContent {
     }
     interface PageNotFound {
     }
@@ -62,11 +68,29 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLAppSpinnerElement extends Components.AppSpinner, HTMLStencilElement {
+    }
+    var HTMLAppSpinnerElement: {
+        prototype: HTMLAppSpinnerElement;
+        new (): HTMLAppSpinnerElement;
+    };
     interface HTMLBookShootElement extends Components.BookShoot, HTMLStencilElement {
     }
     var HTMLBookShootElement: {
         prototype: HTMLBookShootElement;
         new (): HTMLBookShootElement;
+    };
+    interface HTMLLandingBannerElement extends Components.LandingBanner, HTMLStencilElement {
+    }
+    var HTMLLandingBannerElement: {
+        prototype: HTMLLandingBannerElement;
+        new (): HTMLLandingBannerElement;
+    };
+    interface HTMLLandingContentElement extends Components.LandingContent, HTMLStencilElement {
+    }
+    var HTMLLandingContentElement: {
+        prototype: HTMLLandingContentElement;
+        new (): HTMLLandingContentElement;
     };
     interface HTMLPageNotFoundElement extends Components.PageNotFound, HTMLStencilElement {
     }
@@ -86,7 +110,10 @@ declare global {
         "app-header": HTMLAppHeaderElement;
         "app-landing": HTMLAppLandingElement;
         "app-root": HTMLAppRootElement;
+        "app-spinner": HTMLAppSpinnerElement;
         "book-shoot": HTMLBookShootElement;
+        "landing-banner": HTMLLandingBannerElement;
+        "landing-content": HTMLLandingContentElement;
         "page-not-found": HTMLPageNotFoundElement;
         "view-image": HTMLViewImageElement;
     }
@@ -107,7 +134,15 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface AppSpinner {
+    }
     interface BookShoot {
+    }
+    interface LandingBanner {
+        "onBanner-loaded"?: (event: CustomEvent<any>) => void;
+    }
+    interface LandingContent {
+        "onImage-clicked"?: (event: CustomEvent<any>) => void;
     }
     interface PageNotFound {
     }
@@ -121,7 +156,10 @@ declare namespace LocalJSX {
         "app-header": AppHeader;
         "app-landing": AppLanding;
         "app-root": AppRoot;
+        "app-spinner": AppSpinner;
         "book-shoot": BookShoot;
+        "landing-banner": LandingBanner;
+        "landing-content": LandingContent;
         "page-not-found": PageNotFound;
         "view-image": ViewImage;
     }
@@ -135,7 +173,10 @@ declare module "@stencil/core" {
             "app-header": LocalJSX.AppHeader & JSXBase.HTMLAttributes<HTMLAppHeaderElement>;
             "app-landing": LocalJSX.AppLanding & JSXBase.HTMLAttributes<HTMLAppLandingElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "app-spinner": LocalJSX.AppSpinner & JSXBase.HTMLAttributes<HTMLAppSpinnerElement>;
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
+            "landing-banner": LocalJSX.LandingBanner & JSXBase.HTMLAttributes<HTMLLandingBannerElement>;
+            "landing-content": LocalJSX.LandingContent & JSXBase.HTMLAttributes<HTMLLandingContentElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "view-image": LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
         }

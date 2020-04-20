@@ -1,0 +1,24 @@
+@import "../../../global/styles/resets";
+
+#landing-section {
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  #banner-image {
+    text-align: center;
+    height: 65vh;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  #banner-caption {
+    margin-top: 40px;
+    color: #8e8e8e;
+  }
+}

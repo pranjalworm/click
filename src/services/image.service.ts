@@ -271,8 +271,9 @@ export default class ImageService {
   }
 
   // method to fetch images to be displayed on landing page
-  static getLandingImages() {
+  static getLandingImages(): Promise<Image[]> {
 
-    return dummyData;
+    return new Promise(resolve => setTimeout(resolve, 2000, dummyData));
   }
+
 }
