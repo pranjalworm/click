@@ -16,6 +16,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@stencil/store": "^1.0.1",
     "workbox-build": "4.3.1"
   }
 }

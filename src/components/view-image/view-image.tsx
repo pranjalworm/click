@@ -3,6 +3,7 @@ import ImageService from '../../services/image.service';
 import { Image } from '../../global/interfaces';
 import '@stencil/router';
 import { RouterHistory, MatchResults } from '@stencil/router';
+import { StoreService, StoreProps } from '../../services/store.service';
 
 @Component({
   tag: 'view-image',
@@ -33,9 +34,16 @@ export class ViewImage {
 
   componentWillLoad() {
 
+    StoreService.store.set(StoreProps.ViewingImage, true);
+
     this.currentIndex = Number(this.match.params.index) || 0;
 
     this.fetchImage(this.currentIndex);
+  }
+
+  componentDidUnload() {
+
+    StoreService.store.set(StoreProps.ViewingImage, false);
   }
 
 

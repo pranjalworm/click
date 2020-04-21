@@ -2,18 +2,10 @@ import {
   h,
   Component,
   ComponentInterface,
-  Element,
-  Prop,
-  Watch,
   State,
 } from '@stencil/core';
 import { RouteService, ROUTE_NAME } from '../../services/route.service';
-import {
-  RouterHistory,
-  LocationSegments,
-  injectHistory,
-} from '@stencil/router';
-import { HTMLStencilElement } from '@stencil/core/internal';
+import { StoreService, StoreProps } from '../../services/store.service';
 
 @Component({
   tag: 'app-footer',
@@ -22,23 +14,20 @@ import { HTMLStencilElement } from '@stencil/core/internal';
 })
 export class AppFooter implements ComponentInterface {
 
-  @Element() el: HTMLStencilElement;
-  @Prop() history: RouterHistory;
-  @Prop() location: LocationSegments;
-
   @State() displayFooter: boolean = true;
 
-  @Watch('location')
-  locationChanged(newValue: LocationSegments, _oldValue: LocationSegments) {
 
-    const showingImages = newValue.pathname.includes(ROUTE_NAME.VIEW_IMAGE);
+  componentWillLoad() {
+    this.registerListener();
+  }
 
-    if (showingImages && this.displayFooter) {
-      this.displayFooter = false;
 
-    } else if (!this.displayFooter) {
-      this.displayFooter = true;
-    }
+  registerListener() {
+
+    StoreService.store.onChange(StoreProps.ViewingImage, (value: boolean) => {
+
+      this.displayFooter = !value;
+    })
   }
 
   getFooterHTML() {
@@ -77,5 +66,3 @@ export class AppFooter implements ComponentInterface {
     return this.getFooterHTML();
   }
 }
-
-injectHistory(AppFooter);

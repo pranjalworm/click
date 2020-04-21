@@ -2,18 +2,11 @@ import {
   h,
   Component,
   ComponentInterface,
-  Element,
-  Prop,
-  Watch,
   State,
 } from '@stencil/core';
 import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
-import {
-  RouterHistory,
-  LocationSegments,
-  injectHistory,
-} from '@stencil/router';
-import { HTMLStencilElement } from '@stencil/core/internal';
+import { StoreService, StoreProps } from '../../services/store.service';
+
 
 @Component({
   tag: 'app-header',
@@ -22,31 +15,23 @@ import { HTMLStencilElement } from '@stencil/core/internal';
 })
 export class AppHeader implements ComponentInterface {
 
-  @Element() el: HTMLStencilElement;
-  @Prop() history: RouterHistory;
-  @Prop() location: LocationSegments;
-
   @State() displayHeader: boolean = true;
 
   private siteHeading = 'pranjal dubey';
   private menuOptions = null;
 
-  @Watch('location')
-  locationChanged(newValue: LocationSegments, _oldValue: LocationSegments) {
 
-    const showingImages = newValue.pathname.includes(ROUTE_NAME.VIEW_IMAGE);
-
-    if (showingImages && this.displayHeader) {
-      this.displayHeader = false;
-
-    } else if (!this.displayHeader) {
-      this.displayHeader = true;
-    }
+  componentWillLoad() {
+    this.menuOptions = RouteService.getHeaderRoutes();
+    this.registerListener();
   }
 
+  registerListener() {
 
-  constructor() {
-    this.menuOptions = RouteService.getHeaderRoutes();
+    StoreService.store.onChange(StoreProps.ViewingImage, (value: boolean) => {
+
+      this.displayHeader = !value;
+    })
   }
 
 
@@ -93,6 +78,3 @@ export class AppHeader implements ComponentInterface {
     return this.getHeaderHTML();
   }
 }
-
-
-injectHistory(AppHeader);

@@ -5,17 +5,13 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { LocationSegments, MatchResults, RouterHistory, } from "@stencil/router";
+import { MatchResults, RouterHistory, } from "@stencil/router";
 export namespace Components {
     interface AboutMe {
     }
     interface AppFooter {
-        "history": RouterHistory;
-        "location": LocationSegments;
     }
     interface AppHeader {
-        "history": RouterHistory;
-        "location": LocationSegments;
     }
     interface AppLanding {
         "history": RouterHistory;
@@ -122,12 +118,8 @@ declare namespace LocalJSX {
     interface AboutMe {
     }
     interface AppFooter {
-        "history"?: RouterHistory;
-        "location"?: LocationSegments;
     }
     interface AppHeader {
-        "history"?: RouterHistory;
-        "location"?: LocationSegments;
     }
     interface AppLanding {
         "history"?: RouterHistory;
