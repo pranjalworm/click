@@ -15,7 +15,7 @@ import { StoreService, StoreProps } from '../../services/store.service';
 })
 export class AppHeader implements ComponentInterface {
 
-  @State() displayHeader: boolean = true;
+  @State() displayHeader = true;
 
   private siteHeading = 'pranjal dubey';
   private menuOptions = null;
@@ -35,18 +35,12 @@ export class AppHeader implements ComponentInterface {
   }
 
 
-  getHeaderHTML() {
-
-    let headerHTML = null;
-
-    if (!this.displayHeader) {
-      return headerHTML;
-    }
+  render() {
 
     const landingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
 
-    headerHTML = (
-      <header id='app-header-root'>
+    return (
+      <header id='app-header-root' style={{ 'display': this.displayHeader ? 'flex' : 'none' }}>
         <stencil-route-link url={landingPageRoute.url[0]}>
           <div id='app-heading'>{this.siteHeading}</div>
         </stencil-route-link>
@@ -55,11 +49,9 @@ export class AppHeader implements ComponentInterface {
           {this.menuOptions.map((menuOption: Route) => {
             return (
               <stencil-route-link
-                url={
-                  (Array.isArray(menuOption.url)
-                    ? menuOption.url[0]
-                    : menuOption.url) as string
-                }
+                url={(Array.isArray(menuOption.url)
+                  ? menuOption.url[0]
+                  : menuOption.url) as string}
                 urlMatch={menuOption.urlMatch}
                 exact={true}>
                 <span class='menu-option'>{menuOption.title}</span>
@@ -68,13 +60,6 @@ export class AppHeader implements ComponentInterface {
           })}
         </div>
       </header>
-    );
-
-    return headerHTML;
-  }
-
-
-  render() {
-    return this.getHeaderHTML();
+    )
   }
 }

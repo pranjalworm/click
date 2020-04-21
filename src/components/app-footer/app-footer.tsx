@@ -14,10 +14,11 @@ import { StoreService, StoreProps } from '../../services/store.service';
 })
 export class AppFooter implements ComponentInterface {
 
-  @State() displayFooter: boolean = true;
+  @State() displayFooter = true;
 
 
   componentWillLoad() {
+
     this.registerListener();
   }
 
@@ -30,18 +31,13 @@ export class AppFooter implements ComponentInterface {
     })
   }
 
-  getFooterHTML() {
 
-    let footerHTML = null;
-
-    if (!this.displayFooter) {
-      return footerHTML;
-    }
+  render() {
 
     const aboutMeRoute = RouteService.getRoute(ROUTE_NAME.ABOUT_ME);
 
-    footerHTML = (
-      <div id='app-footer-root'>
+    return (
+      <div id='app-footer-root' style={{ 'display': this.displayFooter ? 'flex' : 'none' }}>
         <div class='section copyright-div'>© Pranjal Dubey Photography</div>
 
         <div class='section'>
@@ -57,12 +53,5 @@ export class AppFooter implements ComponentInterface {
         </div>
       </div>
     );
-
-    return footerHTML;
-  }
-
-  render() {
-
-    return this.getFooterHTML();
   }
 }
