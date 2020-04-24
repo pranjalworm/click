@@ -39,7 +39,7 @@ export class AboutMe implements ComponentInterface {
           </div>
 
           <div>
-            I built this website myself, checkout the source code <a target="_blank" id="source-link" href="https://github.com/pranjalworm/click">here</a>.
+            I built this website myself, checkout the source code <a target="_blank" id="source-link" href="https://github.com/pranjalworm/click">here on Github</a>.
           </div>
         </div>
 

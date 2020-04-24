@@ -3,6 +3,7 @@ import {
   Component,
   ComponentInterface,
   State,
+  Element
 } from '@stencil/core';
 import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
 import { StoreService, StoreProps } from '../../services/store.service';
@@ -15,10 +16,14 @@ import { StoreService, StoreProps } from '../../services/store.service';
 })
 export class AppHeader implements ComponentInterface {
 
+  @Element() host: HTMLElement;
+
   @State() displayHeader = true;
 
   private siteHeading = 'pranjal dubey';
   private menuOptions = null;
+  private showMobileMenu = false;
+  private menuRef: HTMLElement = null;
 
 
   componentWillLoad() {
@@ -26,12 +31,36 @@ export class AppHeader implements ComponentInterface {
     this.registerListener();
   }
 
+
   registerListener() {
 
     StoreService.store.onChange(StoreProps.ViewingImage, (value: boolean) => {
 
       this.displayHeader = !value;
-    })
+    });
+  }
+
+  componentDidLoad() {
+    this.menuRef = this.host.shadowRoot.getElementById('menu');
+  }
+
+
+  mobileMenuClickHandler() {
+
+    this.showMobileMenu = !this.showMobileMenu;
+
+    if (this.showMobileMenu) {
+      this.menuRef.style.display = 'flex';
+    } else {
+      this.menuRef.style.display = 'none';
+    }
+
+  }
+
+
+  menuItemClickHandler() {
+
+    this.showMobileMenu = false;
   }
 
 
@@ -45,6 +74,10 @@ export class AppHeader implements ComponentInterface {
           <div id='app-heading'>{this.siteHeading}</div>
         </stencil-route-link>
 
+        <div id="mobile-menu-link" onClick={() => { this.mobileMenuClickHandler() }}>
+          menu
+        </div>
+
         <div id='menu'>
           {this.menuOptions.map((menuOption: Route) => {
             return (
@@ -54,7 +87,9 @@ export class AppHeader implements ComponentInterface {
                   : menuOption.url) as string}
                 urlMatch={menuOption.urlMatch}
                 exact={true}>
-                <span class='menu-option'>{menuOption.title}</span>
+                <span class='menu-option' onClick={() => { this.mobileMenuClickHandler() }}>
+                  {menuOption.title}
+                </span>
               </stencil-route-link>
             );
           })}

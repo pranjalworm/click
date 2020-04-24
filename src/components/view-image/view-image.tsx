@@ -37,9 +37,9 @@ export class ViewImage {
     StoreService.store.set(StoreProps.ViewingImage, true);
 
     this.currentIndex = Number(this.match.params.index) || 0;
-
     this.fetchImage(this.currentIndex);
   }
+
 
   componentDidUnload() {
 
@@ -81,18 +81,24 @@ export class ViewImage {
     return (
       <div id="view-image-root">
 
-        <div id="exit-view-image" onClick={() => { this.exit() }}>
-          <img src="../assets/icon/close.svg" alt="close" />
-        </div>
+        <div id="image-section">
 
-        <div id="image-div">
-          <img src={this.currentImage.url} alt={this.currentImage.alt} id="image" />
-        </div>
+          <div id="exit-view-wrapper">
+            <div id="exit-view-image" onClick={() => { this.exit() }}>
+              <img src="../assets/icon/close.svg" alt="close" />
+            </div>
+          </div>
 
-        <div id="image-controls">
-          <span class="control" onClick={() => this.getPreviousImage()}>prev</span>
+          <div id="image-div">
+            <img src={this.currentImage.url} alt={this.currentImage.alt} id="image" />
+          </div>
+
+          <div id="image-controls">
+            <span class="control" onClick={() => this.getPreviousImage()}>prev</span>
             /
           <span class="control" onClick={() => this.getNextImage()}>next</span>
+          </div>
+
         </div>
 
         <div id="image-text">

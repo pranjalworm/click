@@ -10,6 +10,10 @@
   background: #fff;
   z-index: 100;
   color: #8e8e8e;
+
+  @media (max-width: 780px) {
+    flex-direction: column-reverse;
+  }
 }
 
 .section {
@@ -18,12 +22,16 @@
   justify-content: space-between;
   align-items: baseline;
   font-size: var(--font-size-small);
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
 }
 
 .link {
   padding: 10px 20px;
-  transition-duration: 0.2s;
   color: #8e8e8e;
+  margin-bottom: 20px;
 }
 
 .link:hover {

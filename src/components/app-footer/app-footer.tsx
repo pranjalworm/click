@@ -4,7 +4,6 @@ import {
   ComponentInterface,
   State,
 } from '@stencil/core';
-import { RouteService, ROUTE_NAME } from '../../services/route.service';
 import { StoreService, StoreProps } from '../../services/store.service';
 
 @Component({
@@ -34,22 +33,16 @@ export class AppFooter implements ComponentInterface {
 
   render() {
 
-    const aboutMeRoute = RouteService.getRoute(ROUTE_NAME.ABOUT_ME);
-
     return (
       <div id='app-footer-root' style={{ 'display': this.displayFooter ? 'flex' : 'none' }}>
+
         <div class='section copyright-div'>© Pranjal Dubey Photography</div>
 
-        <div class='section'>
+        <div class='section link'>
           <a href='https://www.instagram.com/pranjalworm'
-            target='_blank'
-            class='link'>
+            target='_blank'>
             instagram
           </a>
-
-          <stencil-route-link url={aboutMeRoute.url as string} exact={true}>
-            <span class='link'>about me</span>
-          </stencil-route-link>
         </div>
       </div>
     );

@@ -23,6 +23,10 @@ export class LandingContent implements ComponentInterface {
     eventName: 'image-clicked'
   }) imageClicked: EventEmitter;
 
+  @Event({
+    eventName: 'content-loaded'
+  }) contentLoaded: EventEmitter;
+
   // TODO: fix this
   // @Element() host: HTMLElement;
   // private timerRef: number;
@@ -48,6 +52,12 @@ export class LandingContent implements ComponentInterface {
   componentWillLoad() {
 
     this.getLandingImages();
+  }
+
+
+  componentDidLoad() {
+
+    this.contentLoaded.emit();
   }
 
 

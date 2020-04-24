@@ -12,6 +12,7 @@ export class AppRoot implements ComponentInterface {
   private routes: Route[] = [];
 
   constructor() {
+
     this.routes = RouteService.getAllRoutes();
   }
 

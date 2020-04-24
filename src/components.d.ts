@@ -134,6 +134,7 @@ declare namespace LocalJSX {
         "onBanner-loaded"?: (event: CustomEvent<any>) => void;
     }
     interface LandingContent {
+        "onContent-loaded"?: (event: CustomEvent<any>) => void;
         "onImage-clicked"?: (event: CustomEvent<any>) => void;
     }
     interface PageNotFound {

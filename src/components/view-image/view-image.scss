@@ -1,71 +1,91 @@
 @import "../../global/styles/resets";
 
-* {
-  transition-duration: 0.5s;
-}
-
-#exit-view-image {
-  padding: 10px;
-  width: fit-content;
-  height: fit-content;
-  position: absolute;
-  right: 30px;
-  top: 30px;
-
-  img {
-    width: 15px;
-  }
-}
-
-#exit-view-image:hover {
-  cursor: pointer;
-}
-
-#image-div {
-  margin-top: 10vh;
+#view-image-root {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  img {
-    max-height: 80vh;
+  #image-section {
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+
+    #exit-view-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 20px;
+
+      @media (max-width: 780px) {
+        padding: 10px;
+      }
+
+      #exit-view-image {
+        padding: 10px;
+        width: fit-content;
+        height: fit-content;
+
+        img {
+          width: 15px;
+        }
+
+        @media (max-width: 780px) {
+          img {
+            width: 10px;
+          }
+        }
+      }
+
+      #exit-view-image:hover {
+        cursor: pointer;
+      }
+    }
+
+    #image-div {
+      width: 100%;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        max-height: 80vh;
+        max-width: 100%;
+      }
+    }
+
+    #image-controls {
+      width: fit-content;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      margin: 0% auto;
+      margin-top: 2vh;
+      color: #8e8e8e;
+      font-size: var(--font-size-small);
+
+      .control {
+        padding: 5px;
+      }
+
+      .control:hover {
+        cursor: pointer;
+      }
+    }
   }
-}
 
-#image-controls {
-  width: fit-content;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  margin: 0% auto;
-  margin-top: 2vh;
-  color: #8e8e8e;
-  font-size: var(--font-size-small);
+  #image-text {
+    margin: 0px 20px;
 
-  .control {
-    padding: 5px;
-  }
+    #image-caption {
+      color: #000;
+      text-align: center;
+    }
 
-  .control:hover {
-    cursor: pointer;
-  }
-}
-
-#image-text {
-  margin: 0% auto;
-  margin-top: 10vh;
-  width: 80%;
-
-  #image-caption {
-    color: #000;
-    text-align: center;
-  }
-
-  #image-description {
-    margin-bottom: 10vh;
-    margin-top: 5vh;
-    color: #8e8e8e;
+    #image-description {
+      margin-bottom: 10vh;
+      margin-top: 5vh;
+      color: #8e8e8e;
+    }
   }
 }

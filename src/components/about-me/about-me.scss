@@ -8,12 +8,25 @@
   color: #575757;
   height: 90vh;
 
+  @media (max-width: 780px) {
+    flex-direction: column-reverse;
+    height: 100%;
+    margin: 0% 20px;
+  }
+
   #description {
     display: flex;
     flex-direction: column;
     height: 70vh;
     justify-content: space-between;
     width: 50%;
+
+    @media (max-width: 780px) {
+      width: 100%;
+      height: 100%;
+      justify-content: space-around;
+      height: 100%;
+    }
 
     #source-link {
       text-decoration: none;
@@ -22,10 +35,16 @@
   }
 
   #image-div {
+    text-align: center;
     height: 70vh;
 
     img {
       height: 100%;
+    }
+
+    @media (max-width: 780px) {
+      height: 50vh;
+      margin-bottom: 20px;
     }
   }
 }

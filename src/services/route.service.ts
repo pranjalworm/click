@@ -64,6 +64,8 @@ const ROUTES: { [key: string]: Route } = {
 
 export class RouteService {
 
+  static lastScrollTop: number = null;
+
 
   static getHeaderRoutes(): Route[] {
 
