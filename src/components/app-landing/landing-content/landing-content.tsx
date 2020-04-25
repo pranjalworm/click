@@ -8,7 +8,7 @@ import {
   Element
 } from '@stencil/core';
 import PhotographService from '../../../services/photograph.service';
-import ImageLayout from './image-layout';
+import ImageLayout from './image-layout/image-layout';
 
 @Component({
   tag: 'landing-content',
@@ -52,6 +52,7 @@ export class LandingContent implements ComponentInterface {
 
   constructor() {
 
+    this.imagesLoaded = false;
     this.getLandingImages();
   }
 
@@ -73,12 +74,14 @@ export class LandingContent implements ComponentInterface {
 
   showImages() {
 
-    const rootRef = this.host.shadowRoot.getElementById('landing-images-root');
+    setTimeout(() => {
+      const rootRef = this.host.shadowRoot.getElementById('landing-images-root');
 
-    this.imageWrapperDivs.map((wrapper: HTMLElement) => {
+      this.imageWrapperDivs.map((wrapper: HTMLElement) => {
 
-      rootRef.appendChild(wrapper);
-    })
+        rootRef.appendChild(wrapper);
+      })
+    }, 0);
 
   }
 

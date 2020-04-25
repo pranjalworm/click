@@ -1,14 +1,15 @@
 @import "../../../global/styles/resets";
 
-#spinner-wrapper {
-  height: 60vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #landing-images-root {
+  #spinner-wrapper {
+    height: 60vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* image layout styling for mobile display */
   .landscape-wrapper {
     display: flex;
     justify-content: center;
@@ -41,4 +42,6 @@
       width: 100%;
     }
   }
+
+  /* image layout styling for desktop display */
 }
