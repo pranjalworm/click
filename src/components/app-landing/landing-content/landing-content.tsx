@@ -4,10 +4,11 @@ import {
   ComponentInterface,
   State,
   Event,
-  EventEmitter
+  EventEmitter,
+  Element
 } from '@stencil/core';
-import ImageService from '../../../services/image.service';
-import { Image } from '../../../global/interfaces';
+import PhotographService from '../../../services/photograph.service';
+import ImageLayout from './image-layout';
 
 @Component({
   tag: 'landing-content',
@@ -16,8 +17,9 @@ import { Image } from '../../../global/interfaces';
 })
 export class LandingContent implements ComponentInterface {
 
+  @Element() host: HTMLElement;
   @State() imagesLoaded = false;
-  private landingImages: Image[] = [];
+  private imageWrapperDivs: HTMLElement[] = [];
 
   @Event({
     eventName: 'image-clicked'
@@ -48,8 +50,7 @@ export class LandingContent implements ComponentInterface {
   //   }, 1000);
   // }
 
-
-  componentWillLoad() {
+  constructor() {
 
     this.getLandingImages();
   }
@@ -63,26 +64,22 @@ export class LandingContent implements ComponentInterface {
 
   async getLandingImages() {
 
-    this.landingImages = await ImageService.getLandingImages();
+    const images = await PhotographService.getLandingImages();
+    this.imageWrapperDivs = await ImageLayout.getImageWrapperDivs(images);
+
     this.imagesLoaded = true;
   }
 
 
   showImages() {
 
-    return (
-      <div id="landing-images-root">
-        {
-          this.landingImages.map((image: Image, index: number) => {
-            return (
-              <img onClick={() => this.handleImageClick(index)}
-                src={image.url}
-                alt={image.alt} />
-            )
-          })
-        }
-      </div>
-    )
+    const rootRef = this.host.shadowRoot.getElementById('landing-images-root');
+
+    this.imageWrapperDivs.map((wrapper: HTMLElement) => {
+
+      rootRef.appendChild(wrapper);
+    })
+
   }
 
 
@@ -105,7 +102,12 @@ export class LandingContent implements ComponentInterface {
 
     return (
 
-      this.imagesLoaded ? this.showImages() : this.showSpinner()
+      <div id="landing-images-root">
+        {
+          this.imagesLoaded ? this.showImages() : this.showSpinner()
+        }
+      </div>
+
     );
   }
 }

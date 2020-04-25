@@ -1,6 +1,6 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
-import { Image } from '../../global/interfaces';
-import ImageService from '../../services/image.service';
+import { Photograph } from '../../global/interfaces';
+import PhotographService from '../../services/photograph.service';
 
 @Component({
   tag: 'about-me',
@@ -9,10 +9,10 @@ import ImageService from '../../services/image.service';
 })
 export class AboutMe implements ComponentInterface {
 
-  private image: Image;
+  private image: Photograph;
 
   componentWillLoad() {
-    this.image = ImageService.getSelfPortrait();
+    this.image = PhotographService.getSelfPortrait();
   }
 
   render() {

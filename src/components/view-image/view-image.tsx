@@ -1,6 +1,6 @@
 import { h, Component, State, Prop, Listen } from '@stencil/core';
-import ImageService from '../../services/image.service';
-import { Image } from '../../global/interfaces';
+import PhotographService from '../../services/photograph.service';
+import { Photograph } from '../../global/interfaces';
 import '@stencil/router';
 import { RouterHistory, MatchResults } from '@stencil/router';
 import { StoreService, StoreProps } from '../../services/store.service';
@@ -15,10 +15,10 @@ export class ViewImage {
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
 
-  @State() currentImage: Image = null;
+  @State() currentImage: Photograph = null;
 
   private currentIndex = 0;
-  private totalImagesCount = ImageService.getTotalImagesCount();
+  private totalImagesCount = PhotographService.getTotalImagesCount();
 
   @Listen('keydown', {
     target: 'body',
@@ -55,7 +55,7 @@ export class ViewImage {
       this.currentIndex = index = 0;
     }
 
-    this.currentImage = ImageService.getImage(index);
+    this.currentImage = PhotographService.getImage(index);
   }
 
 

@@ -1,10 +1,5 @@
 @import "../../../global/styles/resets";
 
-.disable-hover,
-.disable-hover * {
-  pointer-events: none !important;
-}
-
 #spinner-wrapper {
   height: 60vh;
   width: 100%;
@@ -14,27 +9,36 @@
 }
 
 #landing-images-root {
-  line-height: 0;
-  column-count: 3;
-  column-gap: 8px;
+  .landscape-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 
-  /* TODO: fix this */
-  // img:hover {
-  //   cursor: pointer;
-  //   filter: brightness(0.6);
-  // }
-
-  img {
-    margin-top: 8px;
-    width: 100% !important;
-    height: auto !important;
+    img {
+      width: 100%;
+    }
   }
 
-  @media screen and (max-width: 1024px) {
-    column-count: 2;
+  .portrait-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      width: calc(50% - 5px);
+    }
   }
 
-  @media screen and (max-width: 768px) {
-    column-count: 1;
+  .single-portrait-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+    }
   }
 }

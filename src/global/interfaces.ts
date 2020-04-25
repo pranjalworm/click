@@ -1,4 +1,4 @@
-export type Image = {
+export type Photograph = {
   url: string;
   caption?: string;
   location?: {
@@ -14,5 +14,5 @@ export type Blog = {
   imageUrl: string;
   title: string;
   description?: string;
-  blogImages: Image[]
+  blogImages: Photograph[]
 }

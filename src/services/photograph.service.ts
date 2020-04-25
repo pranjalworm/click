@@ -1,6 +1,6 @@
-import { Image } from '../global/interfaces';
+import { Photograph } from '../global/interfaces';
 
-const dummyData: Image[] = [
+const dummyData: Photograph[] = [
   {
     url: '../assets/images/1.jpg',
     caption: 'We are all made up of pieces from people who have built and broken us.',
@@ -235,9 +235,9 @@ const dummyData: Image[] = [
 ];
 
 
-export default class ImageService {
+export default class PhotographService {
 
-  static getImage(index: number): Image {
+  static getImage(index: number): Photograph {
 
     return dummyData[index];
   }
@@ -250,7 +250,7 @@ export default class ImageService {
   // method to fetch the main banner image on landing page
   static getBannerImage() {
 
-    const image: Image = {
+    const image: Photograph = {
       url: '../assets/images/15.jpg',
       alt: '',
       caption: 'We are all made up of pieces from people who have built and broken us.'
@@ -262,7 +262,7 @@ export default class ImageService {
   // method to fetch image for about-me page
   static getSelfPortrait() {
 
-    const image: Image = {
+    const image: Photograph = {
       url: '../assets/images/10.jpg',
       alt: 'Pranjal Dubey'
     };
@@ -271,9 +271,9 @@ export default class ImageService {
   }
 
   // method to fetch images to be displayed on landing page
-  static getLandingImages(): Promise<Image[]> {
+  static getLandingImages(): Promise<Photograph[]> {
 
-    // return new Promise(resolve => setTimeout(resolve, 2000, dummyData));
+    // return new Promise(resolve => setTimeout(resolve, 5000, dummyData));
 
     return Promise.resolve(dummyData);
   }

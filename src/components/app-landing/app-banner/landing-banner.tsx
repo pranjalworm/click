@@ -5,8 +5,8 @@ import {
   Event,
   EventEmitter
 } from '@stencil/core';
-import ImageService from '../../../services/image.service';
-import { Image } from '../../../global/interfaces';
+import PhotographService from '../../../services/photograph.service';
+import { Photograph } from '../../../global/interfaces';
 
 
 @Component({
@@ -20,12 +20,12 @@ export class LandingBanner implements ComponentInterface {
     eventName: 'banner-loaded'
   }) bannerLoaded: EventEmitter;
 
-  private bannerImage: Image = null;
+  private bannerImage: Photograph = null;
 
 
   componentWillLoad() {
 
-    this.bannerImage = ImageService.getBannerImage();
+    this.bannerImage = PhotographService.getBannerImage();
   }
 
 
