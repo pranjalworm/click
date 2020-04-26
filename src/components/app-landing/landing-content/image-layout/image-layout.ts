@@ -3,9 +3,10 @@
  * responsive photo grid
  */
 
-import { Photograph } from '../../../../global/interfaces';
+import { Photograph, ImageOrientation } from '../../../../global/interfaces';
 import MobileLayout from './mobile-layout';
 import DesktopLayout from './desktop-layout';
+import { Utils } from '../../../../global/utils';
 
 export default class ImageLayout {
 
@@ -20,9 +21,6 @@ export default class ImageLayout {
 
   static async getImageWrapperDivs(allImages: Photograph[]) {
 
-    console.log(`arya > image-layout > images:`)
-    console.log(allImages);
-
     ImageLayout.resetValues();
 
     const freshImages = this.filterFreshImages(allImages);
@@ -31,30 +29,20 @@ export default class ImageLayout {
     const landscapeImages = ImageLayout.landscapeImages;
     const portraitImages = ImageLayout.portraitImages;
 
-    console.log(`arya > image-layout > freshImages:`)
-    console.log(freshImages);
-
     if (!freshImages.length) {
-      console.log(`arya > image-layout > returning same imageWrappers`)
-      console.log(imageWrappers);
-
       return imageWrappers
     }
 
     await ImageLayout.segregateImages(freshImages);
 
-
-    if (ImageLayout.isMobileScreen()) {
-      MobileLayout.getLayoutWrappers(imageWrappers, landscapeImages, portraitImages);
+    if (Utils.isMobileScreen()) {
+      ImageLayout.imageWrappers = MobileLayout.getLayoutWrappers(landscapeImages, portraitImages);
 
     } else {
-      DesktopLayout.getLayoutWrappers(imageWrappers, landscapeImages, portraitImages);
+      ImageLayout.imageWrappers = DesktopLayout.getLayoutWrappers(landscapeImages, portraitImages);
     }
 
-    console.log(`arya > image-layout > imageWrappers`)
-    console.log(imageWrappers);
-
-    return imageWrappers;
+    return ImageLayout.imageWrappers;
   }
 
 
@@ -113,9 +101,11 @@ export default class ImageLayout {
         const width = img.width;
 
         if (width > height) { // landscape orientation image
+          image.orientation = ImageOrientation.Landscape;
           ImageLayout.landscapeImages.push(image);
 
         } else { // portrait orientation image
+          image.orientation = ImageOrientation.Portrait;
           ImageLayout.portraitImages.push(image);
         }
 
@@ -125,14 +115,6 @@ export default class ImageLayout {
       img.onerror = reject;
       img.src = url;
     });
-  }
-
-
-  private static isMobileScreen() {
-
-    const width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-
-    return width < 780;
   }
 
 }

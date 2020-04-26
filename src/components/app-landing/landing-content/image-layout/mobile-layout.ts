@@ -2,24 +2,19 @@ import { Photograph } from "../../../../global/interfaces";
 
 export default class MobileLayout {
 
-  private static landscapeWrappers: HTMLElement[];
-  private static portraitWrappers: HTMLElement[];
 
+  static getLayoutWrappers(landspaceImages: Photograph[], portraitImages: Photograph[]) {
 
-  static getLayoutWrappers(imageWrappers: HTMLElement[],
-    landspaceImages: Photograph[],
-    portraitImages: Photograph[]) {
-
-    MobileLayout.createLandscapeWrappers(landspaceImages);
-    MobileLayout.createPortraitWrappers(portraitImages);
-    MobileLayout.arrangeWrappers(imageWrappers);
+    const landscapeWrappers = MobileLayout.createLandscapeWrappers(landspaceImages);
+    const portraitWrappers = MobileLayout.createPortraitWrappers(portraitImages);
+    return MobileLayout.arrangeWrappers(landscapeWrappers, portraitWrappers);
   }
 
 
   // create divs to hold a single landscape image per div
   private static createLandscapeWrappers(landscapeImages: Photograph[]) {
 
-    MobileLayout.landscapeWrappers = [];
+    const landscapeWrappers: HTMLElement[] = [];
 
     for (const image of landscapeImages) {
 
@@ -31,8 +26,10 @@ export default class MobileLayout {
 
       wrapper.appendChild(img);
 
-      MobileLayout.landscapeWrappers.push(wrapper);
+      landscapeWrappers.push(wrapper);
     }
+
+    return landscapeWrappers;
 
   }
 
@@ -40,7 +37,7 @@ export default class MobileLayout {
   // create divs to hold two portrait images per div
   private static createPortraitWrappers(portraitImages: Photograph[]) {
 
-    MobileLayout.portraitWrappers = [];
+    const portraitWrappers: HTMLElement[] = [];
 
     // if odd number of portrait images, take the last one out and put it in its
     // own separate wrapper
@@ -52,7 +49,7 @@ export default class MobileLayout {
       const img = new Image();
       img.src = lastImage.url;
       wrapper.appendChild(img);
-      MobileLayout.portraitWrappers.push(wrapper);
+      portraitWrappers.push(wrapper);
     }
 
     // put two portrait images in one wrapper
@@ -73,19 +70,21 @@ export default class MobileLayout {
       wrapper.appendChild(img1);
       wrapper.appendChild(img2);
 
-      MobileLayout.portraitWrappers.push(wrapper);
+      portraitWrappers.push(wrapper);
     }
+
+    return portraitWrappers;
 
   }
 
 
   // arrange landscape & portrait wrappers in alternation
-  private static arrangeWrappers(imageWrappers: HTMLElement[]) {
-
-    const landscapeWrappers = MobileLayout.landscapeWrappers;
-    const portraitWrappers = MobileLayout.portraitWrappers;
+  private static arrangeWrappers(landscapeWrappers: HTMLElement[],
+    portraitWrappers: HTMLElement[]) {
 
     const totalCount = landscapeWrappers.length + portraitWrappers.length;
+
+    const imageWrappers = [];
 
     for (let l = 0, p = 0, k = 0; k < totalCount; k++) {
 
@@ -116,6 +115,8 @@ export default class MobileLayout {
         }
       }
     }
+
+    return imageWrappers;
   }
 
 }

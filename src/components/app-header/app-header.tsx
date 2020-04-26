@@ -7,6 +7,7 @@ import {
 } from '@stencil/core';
 import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
 import { StoreService, StoreProps } from '../../services/store.service';
+import { Utils } from '../../global/utils';
 
 
 @Component({
@@ -24,11 +25,13 @@ export class AppHeader implements ComponentInterface {
   private menuOptions = null;
   private showMobileMenu = false;
   private menuRef: HTMLElement = null;
+  private viewingOnMobile: boolean;
 
 
   componentWillLoad() {
     this.menuOptions = RouteService.getHeaderRoutes();
     this.registerListener();
+    this.viewingOnMobile = Utils.isMobileScreen();
   }
 
 
@@ -46,6 +49,8 @@ export class AppHeader implements ComponentInterface {
 
 
   mobileMenuClickHandler() {
+
+    if (!this.viewingOnMobile) return;
 
     this.showMobileMenu = !this.showMobileMenu;
 

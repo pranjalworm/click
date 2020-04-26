@@ -44,7 +44,7 @@ export class AppLanding implements ComponentInterface {
 
     const scrollTop = this.bodyRef.scrollTop;
 
-    console.log(`arya > app-landing > scrollTop: ${scrollTop}`)
+    // console.log(`arya > app-landing > scrollTop: ${scrollTop}`)
 
     RouteService.lastScrollTop = scrollTop;
 

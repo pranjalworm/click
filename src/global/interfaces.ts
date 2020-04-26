@@ -1,3 +1,8 @@
+export enum ImageOrientation {
+  Landscape = 'landscape',
+  Portrait = 'portrait'
+}
+
 export type Photograph = {
   url: string;
   caption?: string;
@@ -8,6 +13,7 @@ export type Photograph = {
   date?: string;
   alt?: string;
   description?: string;
+  orientation?: ImageOrientation;
 }
 
 export type Blog = {
