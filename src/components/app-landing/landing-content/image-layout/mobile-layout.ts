@@ -21,10 +21,7 @@ export default class MobileLayout {
       const wrapper = document.createElement('div');
       wrapper.setAttribute('class', 'landscape-wrapper');
 
-      const img = new Image();
-      img.src = image.url;
-
-      wrapper.appendChild(img);
+      wrapper.appendChild(image.imgNode);
 
       landscapeWrappers.push(wrapper);
     }
@@ -46,9 +43,7 @@ export default class MobileLayout {
       const lastImage = portraitImages.splice(-1, 1)[0];
       const wrapper = document.createElement('div');
       wrapper.setAttribute('class', 'single-portrait-wrapper');
-      const img = new Image();
-      img.src = lastImage.url;
-      wrapper.appendChild(img);
+      wrapper.appendChild(lastImage.imgNode);
       portraitWrappers.push(wrapper);
     }
 
@@ -61,14 +56,8 @@ export default class MobileLayout {
       const wrapper = document.createElement('div');
       wrapper.setAttribute('class', 'portrait-wrapper');
 
-      const img1 = new Image();
-      const img2 = new Image();
-
-      img1.src = image1.url;
-      img2.src = image2.url;
-
-      wrapper.appendChild(img1);
-      wrapper.appendChild(img2);
+      wrapper.appendChild(image1.imgNode);
+      wrapper.appendChild(image2.imgNode);
 
       portraitWrappers.push(wrapper);
     }

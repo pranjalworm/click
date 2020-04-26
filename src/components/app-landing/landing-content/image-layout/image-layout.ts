@@ -81,6 +81,8 @@ export default class ImageLayout {
 
       const img = new Image();
 
+      image.imgNode = img;
+
       const promise = ImageLayout.loadImage(img, image);
       ImageLayout.imagePromises.push(promise);
     }

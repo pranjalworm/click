@@ -20,10 +20,8 @@ export namespace LayoutUtils {
 
     for (const image of images) {
 
-      const img = new Image();
-      img.src = image.url;
-      img.className = image.orientation;
-      wrapper.appendChild(img);
+      image.imgNode.className = image.orientation;
+      wrapper.appendChild(image.imgNode);
     }
   }
 
