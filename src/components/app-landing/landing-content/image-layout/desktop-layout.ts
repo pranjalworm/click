@@ -32,21 +32,21 @@ export default class DesktopLayout {
     }
 
     // check if only landscape orientation images are present
-    if (landspaceImages.length !== 0 && portraitImages.length === 0) {
+    else if (landspaceImages.length !== 0 && portraitImages.length === 0) {
 
       DesktopLayout.createLandscapeWrappers(landspaceImages);
       return true;
     }
 
     // check if only portrait orientation images are present
-    if (landspaceImages.length === 0 && portraitImages.length !== 0) {
+    else if (landspaceImages.length === 0 && portraitImages.length !== 0) {
 
       DesktopLayout.createPortraitWrappers(portraitImages);
       return true;
     }
 
     // when total count is 4 it doesn't play well with the multiple of 3 approach
-    if (landspaceImages.length + portraitImages.length === 4) {
+    else if (landspaceImages.length + portraitImages.length === 4) {
 
       const mixedImages = [...landspaceImages, ...portraitImages];
       const image1 = LayoutUtils.extractRandomImage(mixedImages);
