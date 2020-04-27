@@ -1,4 +1,5 @@
 import { Photograph, ImageOrientation } from "../../../../global/interfaces";
+import { Utils } from "../../../../global/utils";
 
 export namespace LayoutUtils {
 
@@ -78,8 +79,7 @@ export namespace LayoutUtils {
 
     if (images.length === 0) return null;
 
-    const max = images.length;
-    const index = Math.floor(Math.random() * max);
+    const index = Utils.getRandomNumber(0, images.length - 1);
 
     const image = images.splice(index, 1)[0];
 

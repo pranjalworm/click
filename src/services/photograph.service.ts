@@ -1,263 +1,31 @@
 import { Photograph } from '../global/interfaces';
-
-const dummyData: Photograph[] = [
-  {
-    url: '../assets/images/1.jpg',
-    caption: 'We are all made up of pieces from people who have built and broken us.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'April, 2019',
-    alt: 'Alt text',
-    description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. '
-  },
-  {
-    url: '../assets/images/2.jpg',
-    caption: 'Follow your dreams.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'January, 2019',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/3.jpg',
-    caption: 'Wish I could do that too.',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/4.jpg',
-    caption: 'Something like this',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/5.jpg',
-    caption: 'We are all made up of pieces from people who have built and broken us.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'April, 2019',
-    alt: 'Alt text',
-    description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. '
-  },
-  {
-    url: '../assets/images/6.jpg',
-    caption: 'Follow your dreams.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'January, 2019',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/7.jpg',
-    caption: 'Wish I could do that too.',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/8.jpg',
-    caption: 'Something like this',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/9.jpg',
-    caption: 'We are all made up of pieces from people who have built and broken us.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'April, 2019',
-    alt: 'Alt text',
-    description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. '
-  },
-  {
-    url: '../assets/images/10.jpg',
-    caption: 'Follow your dreams.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'January, 2019',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/11.jpg',
-    caption: 'Wish I could do that too.',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/12.jpg',
-    caption: 'Something like this',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/13.jpg',
-    caption: 'We are all made up of pieces from people who have built and broken us.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'April, 2019',
-    alt: 'Alt text',
-    description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. '
-  },
-  {
-    url: '../assets/images/14.jpg',
-    caption: 'Follow your dreams.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'January, 2019',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/15.jpg',
-    caption: 'Wish I could do that too.',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/16.jpg',
-    caption: 'Something like this',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/17.jpg',
-    caption: 'We are all made up of pieces from people who have built and broken us.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'April, 2019',
-    alt: 'Alt text',
-    description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. '
-  },
-  {
-    url: '../assets/images/18.jpg',
-    caption: 'Follow your dreams.',
-    location: {
-      city: 'Mysore',
-      country: 'India'
-    },
-    date: 'January, 2019',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/19.jpg',
-    caption: 'Wish I could do that too.',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/20.jpg',
-    caption: 'Something like this',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  },
-  {
-    url: '../assets/images/21.jpg',
-    caption: 'Something like this',
-    location: {
-      city: 'Bangalore',
-      country: 'India'
-    },
-    date: 'November, 2018',
-    alt: 'Alt text',
-    description: 'Some description text'
-  }
-];
+import { ImageData } from './image-data';
 
 
 export default class PhotographService {
 
   static getImage(index: number): Photograph {
 
-    return dummyData[index];
+    return ImageData.dummyData[index];
   }
+
 
   static getTotalImagesCount(): number {
 
-    return dummyData.length;
+    return ImageData.dummyData.length;
   }
+
 
   // method to fetch the main banner image on landing page
-  static getBannerImage() {
+  static getBannerImage(viewingOnMobile: boolean, index: number) {
 
-    const image: Photograph = {
-      url: '../assets/images/15.jpg',
-      alt: '',
-      caption: 'We are all made up of pieces from people who have built and broken us.'
+    if (viewingOnMobile) {
+      return ImageData.landingImagesMobile[index];
     }
 
-    return image;
+    return ImageData.landingImagesDesktop[index];
   }
+
 
   // method to fetch image for about-me page
   static getSelfPortrait() {
@@ -270,12 +38,13 @@ export default class PhotographService {
     return image;
   }
 
+
   // method to fetch images to be displayed on landing page
   static getLandingImages(): Promise<Photograph[]> {
 
     // return new Promise(resolve => setTimeout(resolve, 5000, dummyData));
 
-    return Promise.resolve(dummyData);
+    return Promise.resolve(ImageData.dummyData);
   }
 
 }

@@ -6,4 +6,12 @@ export namespace Utils {
 
     return width < 780;
   }
+
+
+  //The min and max are both inclusive
+  export const getRandomNumber = (min: number, max: number) => {
+
+
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 }
