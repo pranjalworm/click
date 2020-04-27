@@ -8,7 +8,6 @@ import {
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 import { RouteService } from '../../services/route.service';
-import { Utils } from '../../global/utils';
 
 
 @Component({
@@ -52,9 +51,7 @@ export class AppLanding implements ComponentInterface {
 
     RouteService.lastScrollTop = scrollTop;
 
-    // const index = event.detail;
-
-    const index = Utils.getRandomNumber(0, 15);
+    const index = event.detail;
 
     this.history.push(`/view-image/${index}`);
   }

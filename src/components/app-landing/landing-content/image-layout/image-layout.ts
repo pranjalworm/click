@@ -11,7 +11,7 @@ import { ImagesWrapperConfig } from '../../../images-wrapper/images-wrapper';
 
 export default class ImageLayout {
 
-  private static imageMap: Map<string, Photograph> = new Map();
+  private static allImagesSet: Set<string> = new Set();
   private static imagesWrappers: ImagesWrapperConfig[] = [];
 
   private static imagePromises: Promise<any>[];
@@ -35,13 +35,16 @@ export default class ImageLayout {
 
     await ImageLayout.segregateImages(freshImages);
 
+    let imagesWrappers;
+
     if (Utils.isMobileScreen()) {
-      ImageLayout.imagesWrappers = MobileLayout.getLayoutWrappers(landscapeImages, portraitImages);
+      imagesWrappers = MobileLayout.getLayoutWrappers(landscapeImages, portraitImages);
 
     } else {
-      ImageLayout.imagesWrappers = DesktopLayout.getLayoutWrappers(landscapeImages, portraitImages);
+      imagesWrappers = DesktopLayout.getLayoutWrappers(landscapeImages, portraitImages);
     }
 
+    ImageLayout.imagesWrappers.push(...imagesWrappers);
 
     return ImageLayout.imagesWrappers;
   }
@@ -54,10 +57,10 @@ export default class ImageLayout {
 
     for (const image of images) {
 
-      const isFreshImage = !ImageLayout.imageMap.get(image.url);
+      const isFreshImage = !ImageLayout.allImagesSet.has(image.url);
 
       if (isFreshImage) {
-        ImageLayout.imageMap.set(image.url, image);
+        ImageLayout.allImagesSet.add(image.url);
         freshImages.push(image);
       }
     }

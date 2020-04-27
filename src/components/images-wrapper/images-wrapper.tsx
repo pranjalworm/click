@@ -19,9 +19,9 @@ export class ImagesWrapper implements ComponentInterface {
     eventName: 'wrapper-image-clicked',
   }) wrapperImageClicked: EventEmitter;
 
-  imageClickHandler(url: string) {
+  imageClickHandler(index: number) {
 
-    this.wrapperImageClicked.emit(url);
+    this.wrapperImageClicked.emit(index);
   }
 
 
@@ -31,7 +31,7 @@ export class ImagesWrapper implements ComponentInterface {
       <div class={this.styleClass}>
         {
           this.images.map((image: Photograph) => {
-            return <img onClick={() => { this.imageClickHandler(image.url) }}
+            return <img onClick={() => { this.imageClickHandler(image.index) }}
               src={image.url}
               alt={image.alt}
               class={image.orientation} />

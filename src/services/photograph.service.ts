@@ -4,9 +4,11 @@ import { ImageData } from './image-data';
 
 export default class PhotographService {
 
+  static imagesMasterMap: Map<number, Photograph> = new Map();
+
   static getImage(index: number): Photograph {
 
-    return ImageData.dummyData[index];
+    return PhotographService.imagesMasterMap.get(index);
   }
 
 
@@ -28,7 +30,7 @@ export default class PhotographService {
 
 
   // method to fetch image for about-me page
-  static getSelfPortrait() {
+  static getAboutMePageImage() {
 
     const image: Photograph = {
       url: '../assets/images/10.jpg',
@@ -42,9 +44,19 @@ export default class PhotographService {
   // method to fetch images to be displayed on landing page
   static getLandingImages(): Promise<Photograph[]> {
 
+    const images = ImageData.dummyData;
+
+    let imageIndex = -1;
+
+    for (const image of images) {
+
+      image.index = ++imageIndex;
+      PhotographService.imagesMasterMap.set(image.index, image);
+    }
+
     // return new Promise(resolve => setTimeout(resolve, 5000, dummyData));
 
-    return Promise.resolve(ImageData.dummyData);
+    return Promise.resolve(images);
   }
 
 }

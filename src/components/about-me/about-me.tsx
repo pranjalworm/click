@@ -12,7 +12,7 @@ export class AboutMe implements ComponentInterface {
   private image: Photograph;
 
   componentWillLoad() {
-    this.image = PhotographService.getSelfPortrait();
+    this.image = PhotographService.getAboutMePageImage();
   }
 
   render() {
