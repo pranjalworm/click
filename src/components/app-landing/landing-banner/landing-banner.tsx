@@ -7,6 +7,7 @@ import {
 } from '@stencil/core';
 import PhotographService from '../../../services/photograph.service';
 import { Photograph } from '../../../global/interfaces';
+import { Utils } from '../../../global/utils';
 
 
 @Component({
@@ -25,7 +26,11 @@ export class LandingBanner implements ComponentInterface {
 
   componentWillLoad() {
 
-    this.bannerImage = PhotographService.getBannerImage();
+    const viewingOnMobile = Utils.isMobileScreen();
+
+    const imageIndex = Utils.getRandomNumber(0, 4);
+
+    this.bannerImage = PhotographService.getBannerImage(viewingOnMobile, imageIndex);
   }
 
 
