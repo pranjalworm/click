@@ -31,13 +31,13 @@ export class ViewImage {
     }
   }
 
-
   componentWillLoad() {
 
     StoreService.store.set(StoreProps.ViewingImage, true);
 
     this.currentIndex = Number(this.match.params.index) || 0;
-    this.fetchImage(this.currentIndex);
+
+    this.currentImage = PhotographService.getImage(this.currentIndex)
   }
 
 
@@ -78,6 +78,30 @@ export class ViewImage {
 
   render() {
 
+    let imageContent = (
+      <div id="spinner-wrapper">
+        <app-spinner></app-spinner>
+      </div>
+
+    )
+
+    if (this.currentImage) {
+
+      imageContent = (
+        <div>
+          <div id="image-div">
+            <img src={this.currentImage?.url} alt={this.currentImage?.alt} id="image" />
+          </div>
+
+          <div id="image-controls">
+            <span class="control" onClick={() => this.getPreviousImage()}>prev</span>
+            /
+            <span class="control" onClick={() => this.getNextImage()}>next</span>
+          </div>
+        </div>
+      )
+    }
+
     return (
       <div id="view-image-root">
 
@@ -89,25 +113,17 @@ export class ViewImage {
             </div>
           </div>
 
-          <div id="image-div">
-            <img src={this.currentImage.url} alt={this.currentImage.alt} id="image" />
-          </div>
-
-          <div id="image-controls">
-            <span class="control" onClick={() => this.getPreviousImage()}>prev</span>
-            /
-          <span class="control" onClick={() => this.getNextImage()}>next</span>
-          </div>
+          {imageContent}
 
         </div>
 
         <div id="image-text">
           <div id="image-caption">
-            {this.currentImage.caption}
+            {this.currentImage ? this.currentImage.caption : ''}
           </div>
 
           <div id="image-description">
-            {this.currentImage.description}
+            {this.currentImage ? this.currentImage.description : ''}
           </div>
         </div>
 

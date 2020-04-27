@@ -1,7 +1,7 @@
 import { Photograph } from "../global/interfaces";
 
 export namespace ImageData {
-  export const dummyData: Photograph[] = [
+  export const allImages: Photograph[] = [
     {
       url: '../assets/images/1.jpg',
       caption: 'We are all made up of pieces from people who have built and broken us.',
@@ -235,7 +235,7 @@ export namespace ImageData {
     }
   ];
 
-  export const landingImagesMobile: Photograph[] = [
+  export const bannerImagesMobile: Photograph[] = [
     {
       url: '../assets/images/2.jpg',
       caption: 'We are all made up of pieces from people who have built and broken us.',
@@ -293,7 +293,7 @@ export namespace ImageData {
     },
   ]
 
-  export const landingImagesDesktop: Photograph[] = [
+  export const bannerImagesDesktop: Photograph[] = [
     {
       url: '../assets/images/1.jpg',
       caption: 'We are all made up of pieces from people who have built and broken us.',
@@ -350,5 +350,10 @@ export namespace ImageData {
       description: 'Some description text'
     },
   ]
+
+  export const aboutMeImage: Photograph = {
+    url: '../assets/images/10.jpg',
+    alt: 'Pranjal Dubey'
+  }
 
 }

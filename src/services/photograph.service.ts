@@ -6,6 +6,17 @@ export default class PhotographService {
 
   static imagesMasterMap: Map<number, Photograph> = new Map();
 
+  static fetchImages() {
+
+    let imageIndex = -1;
+
+    for (const image of ImageData.allImages) {
+
+      image.index = ++imageIndex;
+      PhotographService.imagesMasterMap.set(image.index, image);
+    }
+  }
+
   static getImage(index: number): Photograph {
 
     return PhotographService.imagesMasterMap.get(index);
@@ -14,7 +25,7 @@ export default class PhotographService {
 
   static getTotalImagesCount(): number {
 
-    return ImageData.dummyData.length;
+    return ImageData.allImages.length;
   }
 
 
@@ -22,41 +33,26 @@ export default class PhotographService {
   static getBannerImage(viewingOnMobile: boolean, index: number) {
 
     if (viewingOnMobile) {
-      return ImageData.landingImagesMobile[index];
+      return ImageData.bannerImagesMobile[index];
     }
 
-    return ImageData.landingImagesDesktop[index];
+    return ImageData.bannerImagesDesktop[index];
   }
 
 
   // method to fetch image for about-me page
   static getAboutMePageImage() {
 
-    const image: Photograph = {
-      url: '../assets/images/10.jpg',
-      alt: 'Pranjal Dubey'
-    };
-
-    return image;
+    return ImageData.aboutMeImage;
   }
 
 
   // method to fetch images to be displayed on landing page
-  static getLandingImages(): Promise<Photograph[]> {
+  static getLandingImages(): Photograph[] {
 
-    const images = ImageData.dummyData;
-
-    let imageIndex = -1;
-
-    for (const image of images) {
-
-      image.index = ++imageIndex;
-      PhotographService.imagesMasterMap.set(image.index, image);
-    }
-
-    // return new Promise(resolve => setTimeout(resolve, 5000, dummyData));
-
-    return Promise.resolve(images);
+    return ImageData.allImages;
   }
 
 }
+
+PhotographService.fetchImages();

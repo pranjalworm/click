@@ -43,8 +43,6 @@ export class AppLanding implements ComponentInterface {
   @Listen('wrapper-image-clicked')
   imageClickHandler(event: CustomEvent) {
 
-    console.log(`arya > app-landing > image-clicked > detail: ${event.detail}`)
-
     const scrollTop = this.bodyRef.scrollTop;
 
     // console.log(`arya > app-landing > scrollTop: ${scrollTop}`)

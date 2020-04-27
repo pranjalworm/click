@@ -45,7 +45,7 @@ export class LandingContent implements ComponentInterface {
 
   async getLandingImages() {
 
-    const images = await PhotographService.getLandingImages();
+    const images = PhotographService.getLandingImages();
     this.imagesWrapperConfigs = await ImageLayout.getImageWrapperConfigs(images);
 
     this.imagesLoaded = true;
