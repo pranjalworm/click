@@ -7,11 +7,12 @@ import { Photograph, ImageOrientation } from '../../../../global/interfaces';
 import MobileLayout from './mobile-layout';
 import DesktopLayout from './desktop-layout';
 import { Utils } from '../../../../global/utils';
+import { ImagesWrapperConfig } from '../../../images-wrapper/images-wrapper';
 
 export default class ImageLayout {
 
   private static imageMap: Map<string, Photograph> = new Map();
-  private static imageWrappers: HTMLElement[] = [];
+  private static imagesWrappers: ImagesWrapperConfig[] = [];
 
   private static imagePromises: Promise<any>[];
 
@@ -19,30 +20,30 @@ export default class ImageLayout {
   private static portraitImages: Photograph[];
 
 
-  static async getImageWrapperDivs(allImages: Photograph[]) {
+  static async getImageWrapperConfigs(allImages: Photograph[]) {
 
     ImageLayout.resetValues();
 
     const freshImages = this.filterFreshImages(allImages);
 
-    const imageWrappers = ImageLayout.imageWrappers;
     const landscapeImages = ImageLayout.landscapeImages;
     const portraitImages = ImageLayout.portraitImages;
 
     if (!freshImages.length) {
-      return imageWrappers
+      return ImageLayout.imagesWrappers;
     }
 
     await ImageLayout.segregateImages(freshImages);
 
     if (Utils.isMobileScreen()) {
-      ImageLayout.imageWrappers = MobileLayout.getLayoutWrappers(landscapeImages, portraitImages);
+      ImageLayout.imagesWrappers = MobileLayout.getLayoutWrappers(landscapeImages, portraitImages);
 
     } else {
-      ImageLayout.imageWrappers = DesktopLayout.getLayoutWrappers(landscapeImages, portraitImages);
+      ImageLayout.imagesWrappers = DesktopLayout.getLayoutWrappers(landscapeImages, portraitImages);
     }
 
-    return ImageLayout.imageWrappers;
+
+    return ImageLayout.imagesWrappers;
   }
 
 
@@ -80,8 +81,6 @@ export default class ImageLayout {
     for (const image of allImages) {
 
       const img = new Image();
-
-      image.imgNode = img;
 
       const promise = ImageLayout.loadImage(img, image);
       ImageLayout.imagePromises.push(promise);

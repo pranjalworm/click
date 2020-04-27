@@ -1,25 +1,26 @@
 import { Photograph } from "../../../../global/interfaces";
 import { LayoutUtils } from "./layout-utils";
+import { ImagesWrapperConfig } from "../../../images-wrapper/images-wrapper";
 
 export default class DesktopLayout {
 
-  private static imageWrappers: HTMLElement[];
+  private static imagesWrappers: ImagesWrapperConfig[];
 
   static getLayoutWrappers(landspaceImages: Photograph[], portraitImages: Photograph[]) {
 
-    DesktopLayout.imageWrappers = [];
+    DesktopLayout.imagesWrappers = [];
 
     const result = DesktopLayout.createEdgeCasesWrappers(landspaceImages, portraitImages);
 
     if (result) {
-      return DesktopLayout.imageWrappers;
+      return DesktopLayout.imagesWrappers;
     }
 
     const allImages = [...landspaceImages, ...portraitImages];
 
     DesktopLayout.checkImageArrSize(allImages);
 
-    return DesktopLayout.imageWrappers;
+    return DesktopLayout.imagesWrappers;
   }
 
 
@@ -108,9 +109,12 @@ export default class DesktopLayout {
 
     if (landscapeImages.length === 1) {
 
-      const wrapper = LayoutUtils.createWrapperNode(['class'], ['landscape-1-wrapper']);
-      LayoutUtils.appendImagesToWrapper(wrapper, landscapeImages);
-      DesktopLayout.imageWrappers.push(wrapper);
+      const wrapperConfig: ImagesWrapperConfig = {
+        images: landscapeImages,
+        styleClass: 'landscape-1-wrapper'
+      }
+
+      DesktopLayout.imagesWrappers.push(wrapperConfig);
 
     } else if (landscapeImages.length === 2) {
 
@@ -127,9 +131,12 @@ export default class DesktopLayout {
 
     if (portraitImages.length === 1) {
 
-      const wrapper = LayoutUtils.createWrapperNode(['class'], ['portrait-1-wrapper']);
-      LayoutUtils.appendImagesToWrapper(wrapper, portraitImages);
-      DesktopLayout.imageWrappers.push(wrapper);
+      const wrapperConfig: ImagesWrapperConfig = {
+        images: portraitImages,
+        styleClass: 'portrait-1-wrapper'
+      }
+
+      DesktopLayout.imagesWrappers.push(wrapperConfig);
 
     } else if (portraitImages.length === 2) {
 
@@ -146,20 +153,18 @@ export default class DesktopLayout {
   private static createTwoImagesWrapper(image1: Photograph,
     image2: Photograph, reverseFlow: boolean) {
 
-    const attributeNames = ['class'];
-    const classname = LayoutUtils.getClassnameForTwoImagesWrapper(image1, image2);
-
-    let attributeValues = [`${classname}`];
+    let styleClass = LayoutUtils.getClassnameForTwoImagesWrapper(image1, image2);
 
     if (reverseFlow) {
-      attributeValues = [`${classname} flex-direction-reverse-row`];
+      styleClass += ' flex-direction-reverse-row';
     }
 
-    const wrapper = LayoutUtils.createWrapperNode(attributeNames, attributeValues);
+    const wrapperConfig: ImagesWrapperConfig = {
+      images: [image1, image2],
+      styleClass
+    }
 
-    LayoutUtils.appendImagesToWrapper(wrapper, [image1, image2]);
-
-    DesktopLayout.imageWrappers.push(wrapper);
+    DesktopLayout.imagesWrappers.push(wrapperConfig);
 
   }
 
@@ -168,16 +173,14 @@ export default class DesktopLayout {
   private static createThreeImagesWrapper(image1: Photograph,
     image2: Photograph, image3: Photograph) {
 
-    const classname = LayoutUtils.getClassNameForThreeImagesWrapper(image1, image2, image3);
+    const styleClass = LayoutUtils.getClassNameForThreeImagesWrapper(image1, image2, image3);
 
-    const attributeNames = ['class'];
-    const attributeValues = [classname];
+    const wrapperConfig: ImagesWrapperConfig = {
+      images: [image1, image2, image3],
+      styleClass
+    }
 
-    const wrapper = LayoutUtils.createWrapperNode(attributeNames, attributeValues);
-
-    LayoutUtils.appendImagesToWrapper(wrapper, [image1, image2, image3]);
-
-    DesktopLayout.imageWrappers.push(wrapper);
+    DesktopLayout.imagesWrappers.push(wrapperConfig);
 
   }
 

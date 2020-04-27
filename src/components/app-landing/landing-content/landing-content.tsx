@@ -9,6 +9,7 @@ import {
 } from '@stencil/core';
 import PhotographService from '../../../services/photograph.service';
 import ImageLayout from './image-layout/image-layout';
+import { ImagesWrapperConfig } from '../../images-wrapper/images-wrapper';
 
 @Component({
   tag: 'landing-content',
@@ -17,38 +18,17 @@ import ImageLayout from './image-layout/image-layout';
 })
 export class LandingContent implements ComponentInterface {
 
-  @Element() host: HTMLElement;
-  @State() imagesLoaded = false;
-  private imageWrapperDivs: HTMLElement[] = [];
+  private imagesWrapperConfigs: ImagesWrapperConfig[] = [];
 
-  @Event({
-    eventName: 'image-clicked'
-  }) imageClicked: EventEmitter;
+  @State() imagesLoaded = false;
+
+  @Element() host: HTMLElement;
+
 
   @Event({
     eventName: 'content-loaded'
   }) contentLoaded: EventEmitter;
 
-  // TODO: fix this
-  // @Element() host: HTMLElement;
-  // private timerRef: number;
-  // @Listen('scroll', {
-  //   target: 'body',
-  //   passive: true
-  // })
-  // handleScroll(_event: any) {
-
-  //   clearTimeout(this.timerRef);
-  //   this.timerRef = null;
-
-  //   if (!this.host.classList.contains('disable-hover')) {
-  //     this.host.classList.add('disable-hover')
-  //   }
-
-  //   this.timerRef = setTimeout(() => {
-  //     this.host.classList.remove('disable-hover')
-  //   }, 1000);
-  // }
 
   constructor() {
 
@@ -66,7 +46,7 @@ export class LandingContent implements ComponentInterface {
   async getLandingImages() {
 
     const images = await PhotographService.getLandingImages();
-    this.imageWrapperDivs = await ImageLayout.getImageWrapperDivs(images);
+    this.imagesWrapperConfigs = await ImageLayout.getImageWrapperConfigs(images);
 
     this.imagesLoaded = true;
   }
@@ -74,15 +54,14 @@ export class LandingContent implements ComponentInterface {
 
   showImages() {
 
-    setTimeout(() => {
-      const rootRef = this.host.shadowRoot.getElementById('landing-images-root');
-
-      this.imageWrapperDivs.map((wrapper: HTMLElement) => {
-
-        rootRef.appendChild(wrapper);
-      })
-    }, 0);
-
+    return this.imagesWrapperConfigs.map(config => {
+      return (
+        <images-wrapper
+          images={config.images}
+          style-class={config.styleClass}>
+        </images-wrapper>
+      )
+    });
   }
 
 
@@ -92,12 +71,6 @@ export class LandingContent implements ComponentInterface {
         <app-spinner></app-spinner>
       </div>
     )
-  }
-
-
-  handleImageClick(index: number) {
-
-    this.imageClicked.emit(index);
   }
 
 

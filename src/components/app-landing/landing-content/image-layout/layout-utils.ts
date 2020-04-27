@@ -3,29 +3,6 @@ import { Utils } from "../../../../global/utils";
 
 export namespace LayoutUtils {
 
-  export const createWrapperNode = (attributeNames: string[], attributeValues: string[]) => {
-
-    const wrapper = document.createElement('div');
-
-    for (let i = 0; i < attributeNames.length; i++) {
-
-      const key = attributeNames[i];
-      const value = attributeValues[i];
-      wrapper.setAttribute(key, value)
-    }
-
-    return wrapper;
-  }
-
-  export const appendImagesToWrapper = (wrapper: HTMLElement, images: Photograph[]) => {
-
-    for (const image of images) {
-
-      image.imgNode.className = image.orientation;
-      wrapper.appendChild(image.imgNode);
-    }
-  }
-
   export const getClassnameForTwoImagesWrapper = (image1: Photograph, image2: Photograph) => {
 
     const sameOrientation = image1.orientation === image2.orientation;

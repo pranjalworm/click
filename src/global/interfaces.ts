@@ -14,7 +14,8 @@ export type Photograph = {
   alt?: string;
   description?: string;
   orientation?: ImageOrientation;
-  imgNode?: HTMLImageElement;
+  clickCallback?: (data: any) => void;
+  index?: number;
 }
 
 export type Blog = {

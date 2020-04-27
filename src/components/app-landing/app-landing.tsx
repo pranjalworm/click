@@ -8,6 +8,7 @@ import {
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 import { RouteService } from '../../services/route.service';
+import { Utils } from '../../global/utils';
 
 
 @Component({
@@ -39,8 +40,11 @@ export class AppLanding implements ComponentInterface {
   }
 
 
-  @Listen('image-clicked')
+  // TODO: write logic to extract image index on the basis of image URL
+  @Listen('wrapper-image-clicked')
   imageClickHandler(event: CustomEvent) {
+
+    console.log(`arya > app-landing > image-clicked > detail: ${event.detail}`)
 
     const scrollTop = this.bodyRef.scrollTop;
 
@@ -48,7 +52,9 @@ export class AppLanding implements ComponentInterface {
 
     RouteService.lastScrollTop = scrollTop;
 
-    const index = event.detail;
+    // const index = event.detail;
+
+    const index = Utils.getRandomNumber(0, 15);
 
     this.history.push(`/view-image/${index}`);
   }

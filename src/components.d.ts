@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory, } from "@stencil/router";
+import { Photograph, } from "./global/interfaces";
 export namespace Components {
     interface AboutMe {
     }
@@ -21,6 +22,10 @@ export namespace Components {
     interface AppSpinner {
     }
     interface BookShoot {
+    }
+    interface ImagesWrapper {
+        "images": Photograph[];
+        "styleClass": string;
     }
     interface LandingBanner {
     }
@@ -76,6 +81,12 @@ declare global {
         prototype: HTMLBookShootElement;
         new (): HTMLBookShootElement;
     };
+    interface HTMLImagesWrapperElement extends Components.ImagesWrapper, HTMLStencilElement {
+    }
+    var HTMLImagesWrapperElement: {
+        prototype: HTMLImagesWrapperElement;
+        new (): HTMLImagesWrapperElement;
+    };
     interface HTMLLandingBannerElement extends Components.LandingBanner, HTMLStencilElement {
     }
     var HTMLLandingBannerElement: {
@@ -108,6 +119,7 @@ declare global {
         "app-root": HTMLAppRootElement;
         "app-spinner": HTMLAppSpinnerElement;
         "book-shoot": HTMLBookShootElement;
+        "images-wrapper": HTMLImagesWrapperElement;
         "landing-banner": HTMLLandingBannerElement;
         "landing-content": HTMLLandingContentElement;
         "page-not-found": HTMLPageNotFoundElement;
@@ -130,12 +142,16 @@ declare namespace LocalJSX {
     }
     interface BookShoot {
     }
+    interface ImagesWrapper {
+        "images"?: Photograph[];
+        "onWrapper-image-clicked"?: (event: CustomEvent<any>) => void;
+        "styleClass"?: string;
+    }
     interface LandingBanner {
         "onBanner-loaded"?: (event: CustomEvent<any>) => void;
     }
     interface LandingContent {
         "onContent-loaded"?: (event: CustomEvent<any>) => void;
-        "onImage-clicked"?: (event: CustomEvent<any>) => void;
     }
     interface PageNotFound {
     }
@@ -151,6 +167,7 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "app-spinner": AppSpinner;
         "book-shoot": BookShoot;
+        "images-wrapper": ImagesWrapper;
         "landing-banner": LandingBanner;
         "landing-content": LandingContent;
         "page-not-found": PageNotFound;
@@ -168,6 +185,7 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-spinner": LocalJSX.AppSpinner & JSXBase.HTMLAttributes<HTMLAppSpinnerElement>;
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
+            "images-wrapper": LocalJSX.ImagesWrapper & JSXBase.HTMLAttributes<HTMLImagesWrapperElement>;
             "landing-banner": LocalJSX.LandingBanner & JSXBase.HTMLAttributes<HTMLLandingBannerElement>;
             "landing-content": LocalJSX.LandingContent & JSXBase.HTMLAttributes<HTMLLandingContentElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;

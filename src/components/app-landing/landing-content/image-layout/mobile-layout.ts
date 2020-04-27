@@ -1,4 +1,5 @@
 import { Photograph } from "../../../../global/interfaces";
+import { ImagesWrapperConfig } from "../../../images-wrapper/images-wrapper";
 
 export default class MobileLayout {
 
@@ -14,16 +15,16 @@ export default class MobileLayout {
   // create divs to hold a single landscape image per div
   private static createLandscapeWrappers(landscapeImages: Photograph[]) {
 
-    const landscapeWrappers: HTMLElement[] = [];
+    const landscapeWrappers: ImagesWrapperConfig[] = [];
 
     for (const image of landscapeImages) {
 
-      const wrapper = document.createElement('div');
-      wrapper.setAttribute('class', 'landscape-wrapper');
+      const wrapperConfig: ImagesWrapperConfig = {
+        images: [image],
+        styleClass: 'landscape-wrapper'
+      }
 
-      wrapper.appendChild(image.imgNode);
-
-      landscapeWrappers.push(wrapper);
+      landscapeWrappers.push(wrapperConfig);
     }
 
     return landscapeWrappers;
@@ -34,17 +35,20 @@ export default class MobileLayout {
   // create divs to hold two portrait images per div
   private static createPortraitWrappers(portraitImages: Photograph[]) {
 
-    const portraitWrappers: HTMLElement[] = [];
+    const portraitWrappers: ImagesWrapperConfig[] = [];
 
     // if odd number of portrait images, take the last one out and put it in its
     // own separate wrapper
     if (portraitImages.length % 2 !== 0) {
 
       const lastImage = portraitImages.splice(-1, 1)[0];
-      const wrapper = document.createElement('div');
-      wrapper.setAttribute('class', 'single-portrait-wrapper');
-      wrapper.appendChild(lastImage.imgNode);
-      portraitWrappers.push(wrapper);
+
+      const wrapperConfig: ImagesWrapperConfig = {
+        images: [lastImage],
+        styleClass: 'single-portrait-wrapper'
+      }
+
+      portraitWrappers.push(wrapperConfig);
     }
 
     // put two portrait images in one wrapper
@@ -53,13 +57,12 @@ export default class MobileLayout {
       const image1 = portraitImages[i];
       const image2 = portraitImages[i + 1];
 
-      const wrapper = document.createElement('div');
-      wrapper.setAttribute('class', 'portrait-wrapper');
+      const wrapperConfig: ImagesWrapperConfig = {
+        images: [image1, image2],
+        styleClass: 'portrait-wrapper'
+      }
 
-      wrapper.appendChild(image1.imgNode);
-      wrapper.appendChild(image2.imgNode);
-
-      portraitWrappers.push(wrapper);
+      portraitWrappers.push(wrapperConfig);
     }
 
     return portraitWrappers;
@@ -68,8 +71,8 @@ export default class MobileLayout {
 
 
   // arrange landscape & portrait wrappers in alternation
-  private static arrangeWrappers(landscapeWrappers: HTMLElement[],
-    portraitWrappers: HTMLElement[]) {
+  private static arrangeWrappers(landscapeWrappers: ImagesWrapperConfig[],
+    portraitWrappers: ImagesWrapperConfig[]) {
 
     const totalCount = landscapeWrappers.length + portraitWrappers.length;
 
