@@ -1,58 +1,56 @@
-import { Photograph } from '../global/interfaces';
-import { ImageData } from './image-data';
+import { Photograph, GalleryType } from '../global/interfaces';
+import * as ImageData from '../global/image-data';
+import { Utils } from '../global/utils';
 
 
 export default class PhotographService {
 
-  static imagesMasterMap: Map<number, Photograph> = new Map();
-
-  static fetchImages() {
-
-    let imageIndex = -1;
-
-    for (const image of ImageData.allImages) {
-
-      image.index = ++imageIndex;
-      PhotographService.imagesMasterMap.set(image.index, image);
-    }
-  }
-
-  static getImage(index: number): Photograph {
-
-    return PhotographService.imagesMasterMap.get(index);
-  }
-
-
-  static getTotalImagesCount(): number {
-
-    return ImageData.allImages.length;
-  }
-
-
   // method to fetch the main banner image on landing page
-  static getBannerImage(viewingOnMobile: boolean, index: number) {
+  static getLandingBannerImage(viewingOnMobile: boolean, index: number): Photograph {
 
     if (viewingOnMobile) {
-      return ImageData.bannerImagesMobile[index];
+      return ImageData.BannersMobile[index];
     }
 
-    return ImageData.bannerImagesDesktop[index];
+    return ImageData.BannersDesktop[index];
   }
 
 
   // method to fetch image for about-me page
-  static getAboutMePageImage() {
+  static getAboutMePageImage(): Photograph {
 
-    return ImageData.aboutMeImage;
+    return ImageData.AboutMeImage;
   }
 
+  /**
+   * fetches the banner image for the specified gallery type according to the
+   * user's device
+   */
+  static getGalleryBanner(galleryType: GalleryType): Photograph {
 
-  // method to fetch images to be displayed on landing page
-  static getLandingImages(): Photograph[] {
+    const viewingOnMobile = Utils.isMobileScreen();
 
-    return ImageData.allImages;
+    switch (galleryType) {
+      case GalleryType.PreWedding:
+        return viewingOnMobile ? ImageData.PreWeddingBannerMobile :
+          ImageData.PreWeddingBannerDesktop;
+
+      case GalleryType.Travel:
+        return viewingOnMobile ? ImageData.TravelBannerMobile :
+          ImageData.TravelBannerDesktop;
+
+      case GalleryType.Portrait:
+        return viewingOnMobile ? ImageData.PortraitBannerMobile :
+          ImageData.PortraitBannerDesktop;
+
+      case GalleryType.Kids:
+        return viewingOnMobile ? ImageData.KidsBannerMobile :
+          ImageData.KidsBannerDesktop;
+
+      case GalleryType.Street:
+        return viewingOnMobile ? ImageData.StreetBannerMobile :
+          ImageData.StreetBannerDesktop;
+    }
   }
 
 }
-
-PhotographService.fetchImages();

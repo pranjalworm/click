@@ -2,14 +2,10 @@ import {
   h,
   Component,
   ComponentInterface,
-  State,
   Event,
-  EventEmitter,
-  Element
+  EventEmitter
 } from '@stencil/core';
-import PhotographService from '../../../services/photograph.service';
-import ImageLayout from './image-layout/image-layout';
-import { ImagesWrapperConfig } from '../../images-wrapper/images-wrapper';
+import { CardListType } from '../../../global/interfaces';
 
 @Component({
   tag: 'landing-content',
@@ -18,23 +14,12 @@ import { ImagesWrapperConfig } from '../../images-wrapper/images-wrapper';
 })
 export class LandingContent implements ComponentInterface {
 
-  private imagesWrapperConfigs: ImagesWrapperConfig[] = [];
-
-  @State() imagesLoaded = false;
-
-  @Element() host: HTMLElement;
+  private cardListType = CardListType.Gallery;
 
 
   @Event({
     eventName: 'content-loaded'
   }) contentLoaded: EventEmitter;
-
-
-  constructor() {
-
-    this.imagesLoaded = false;
-    this.getLandingImages();
-  }
 
 
   componentDidLoad() {
@@ -43,44 +28,13 @@ export class LandingContent implements ComponentInterface {
   }
 
 
-  async getLandingImages() {
-
-    const images = PhotographService.getLandingImages();
-    this.imagesWrapperConfigs = await ImageLayout.getImageWrapperConfigs(images);
-
-    this.imagesLoaded = true;
-  }
-
-
-  showImages() {
-
-    return this.imagesWrapperConfigs.map(config => {
-      return (
-        <images-wrapper
-          images={config.images}
-          style-class={config.styleClass}>
-        </images-wrapper>
-      )
-    });
-  }
-
-
-  showSpinner() {
-    return (
-      <div id="spinner-wrapper">
-        <app-spinner></app-spinner>
-      </div>
-    )
-  }
-
-
   render() {
 
     return (
 
-      <div id="landing-images-root">
+      <div id="landing-content-root">
         {
-          this.imagesLoaded ? this.showImages() : this.showSpinner()
+          <card-list card-list-type={this.cardListType}></card-list>
         }
       </div>
 

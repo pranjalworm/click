@@ -1,0 +1,57 @@
+@import "../../global/styles/resets";
+
+#card-link-root {
+  width: 100%;
+
+  #image-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #title-wrapper {
+    color: #777;
+  }
+
+  #description-wrapper {
+    color: #8e8e8e;
+  }
+
+  .mobile-style {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    #image-wrapper {
+      width: 100%;
+    }
+
+    #text-wrapper {
+      width: 100%;
+    }
+  }
+
+  .desktop-style {
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+
+    #image-wrapper {
+      width: 50%;
+    }
+
+    #text-wrapper {
+      padding: 50px;
+      width: 50%;
+    }
+  }
+}
+
+#card-link-root:hover {
+  border: 1px solid #777;
+  border-radius: 4px;
+}
+
+#card-link-root:hover #title-wrapper {
+  color: #c43131;
+}

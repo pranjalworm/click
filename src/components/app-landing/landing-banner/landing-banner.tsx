@@ -30,13 +30,13 @@ export class LandingBanner implements ComponentInterface {
 
     const imageIndex = Utils.getRandomNumber(0, 4);
 
-    this.bannerImage = PhotographService.getBannerImage(viewingOnMobile, imageIndex);
+    this.bannerImage = PhotographService.getLandingBannerImage(viewingOnMobile, imageIndex);
   }
 
 
+  // tells the app-landing component that it has finished loading
   componentDidLoad() {
 
-    // tells the app-landing component that it has finished loading
     this.bannerLoaded.emit();
   }
 

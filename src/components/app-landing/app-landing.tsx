@@ -12,7 +12,6 @@ import { RouteService } from '../../services/route.service';
 
 @Component({
   tag: 'app-landing',
-  styleUrl: 'app-landing.scss',
   shadow: true
 })
 export class AppLanding implements ComponentInterface {
@@ -71,10 +70,7 @@ export class AppLanding implements ComponentInterface {
   componentDidLoad() {
 
     this.bodyRef = document.querySelector('body');
-
     this.landingRootRef = this.host.shadowRoot.getElementById('landing-root');
-    const landingBannerRef = document.createElement('landing-banner');
-    this.landingRootRef.appendChild(landingBannerRef);
   }
 
 
@@ -83,6 +79,7 @@ export class AppLanding implements ComponentInterface {
     return (
       <div id="landing-root">
         {/* landing-banner will be loaded first */}
+        <landing-banner></landing-banner>
 
         {/* landing-content will be loaded after landing-banner has been loaded */}
       </div>

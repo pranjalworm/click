@@ -10,6 +10,8 @@ export interface Route {
 export const enum ROUTE_NAME {
   HOME = 'home',
   PORTFOLIO = 'portfolio',
+  GALLERY = 'gallery',
+  CONTENT_TYPE = 'ct',
   // BLOG = 'blog',
   // BOOK_A_SHOOT = 'book-a-shoot',
   ABOUT_ME = 'about-me',
@@ -20,23 +22,33 @@ export const enum ROUTE_NAME {
 
 const ROUTES: { [key: string]: Route } = {
   [ROUTE_NAME.HOME]: {
-    title: '',
+    title: 'home',
     url: '/',
+    urlMatch: ['/'],
     exact: true,
     component: 'app-landing'
   },
   [ROUTE_NAME.PORTFOLIO]: {
     title: 'portfolio',
-    url: '/portfolio',
-    urlMatch: ['/', '/portfolio'],
+    url: '/cp/portfolio',
     exact: true,
-    component: 'app-landing'
+    component: 'content-page'
+  },
+  [ROUTE_NAME.GALLERY]: {
+    url: '/cp/gallery',
+    exact: true,
+    component: 'content-page'
+  },
+  [ROUTE_NAME.CONTENT_TYPE]: {
+    url: '/cp/:contentType',
+    exact: true,
+    component: 'content-page'
   },
   // [ROUTE_NAME.BLOG]: {
   //   title: 'blog',
   //   url: '/blog/',
   //   urlMatch: '/blog/*',
-  //   component: 'blog'
+  //   component: 'content-page'
   // },
   // [ROUTE_NAME.BOOK_A_SHOOT]: {
   //   title: 'book a shoot',
@@ -70,6 +82,7 @@ export class RouteService {
   static getHeaderRoutes(): Route[] {
 
     const headerRoutes: Route[] = [
+      ROUTES[ROUTE_NAME.HOME],
       ROUTES[ROUTE_NAME.PORTFOLIO],
       // ROUTES[ROUTE_NAME.BLOG],
       // ROUTES[ROUTE_NAME.BOOK_A_SHOOT],

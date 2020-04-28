@@ -6,7 +6,8 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory, } from "@stencil/router";
-import { Photograph, } from "./global/interfaces";
+import { CardLinkConfig, } from "./components/card-link/card-link";
+import { CardListType, GalleryType, Photograph, } from "./global/interfaces";
 export namespace Components {
     interface AboutMe {
     }
@@ -23,6 +24,16 @@ export namespace Components {
     }
     interface BookShoot {
     }
+    interface CardLink {
+        "cardLinkConfig": CardLinkConfig;
+    }
+    interface CardList {
+        "cardListType": CardListType;
+    }
+    interface ContentPage {
+        "history": RouterHistory;
+        "match": MatchResults;
+    }
     interface ImagesWrapper {
         "images": Photograph[];
         "styleClass": string;
@@ -34,6 +45,7 @@ export namespace Components {
     interface PageNotFound {
     }
     interface ViewImage {
+        "galleryType": GalleryType;
         "history": RouterHistory;
         "match": MatchResults;
     }
@@ -81,6 +93,24 @@ declare global {
         prototype: HTMLBookShootElement;
         new (): HTMLBookShootElement;
     };
+    interface HTMLCardLinkElement extends Components.CardLink, HTMLStencilElement {
+    }
+    var HTMLCardLinkElement: {
+        prototype: HTMLCardLinkElement;
+        new (): HTMLCardLinkElement;
+    };
+    interface HTMLCardListElement extends Components.CardList, HTMLStencilElement {
+    }
+    var HTMLCardListElement: {
+        prototype: HTMLCardListElement;
+        new (): HTMLCardListElement;
+    };
+    interface HTMLContentPageElement extends Components.ContentPage, HTMLStencilElement {
+    }
+    var HTMLContentPageElement: {
+        prototype: HTMLContentPageElement;
+        new (): HTMLContentPageElement;
+    };
     interface HTMLImagesWrapperElement extends Components.ImagesWrapper, HTMLStencilElement {
     }
     var HTMLImagesWrapperElement: {
@@ -119,6 +149,9 @@ declare global {
         "app-root": HTMLAppRootElement;
         "app-spinner": HTMLAppSpinnerElement;
         "book-shoot": HTMLBookShootElement;
+        "card-link": HTMLCardLinkElement;
+        "card-list": HTMLCardListElement;
+        "content-page": HTMLContentPageElement;
         "images-wrapper": HTMLImagesWrapperElement;
         "landing-banner": HTMLLandingBannerElement;
         "landing-content": HTMLLandingContentElement;
@@ -142,6 +175,17 @@ declare namespace LocalJSX {
     }
     interface BookShoot {
     }
+    interface CardLink {
+        "cardLinkConfig"?: CardLinkConfig;
+        "onCard-clicked"?: (event: CustomEvent<any>) => void;
+    }
+    interface CardList {
+        "cardListType"?: CardListType;
+    }
+    interface ContentPage {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
+    }
     interface ImagesWrapper {
         "images"?: Photograph[];
         "onWrapper-image-clicked"?: (event: CustomEvent<any>) => void;
@@ -156,6 +200,7 @@ declare namespace LocalJSX {
     interface PageNotFound {
     }
     interface ViewImage {
+        "galleryType"?: GalleryType;
         "history"?: RouterHistory;
         "match"?: MatchResults;
     }
@@ -167,6 +212,9 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "app-spinner": AppSpinner;
         "book-shoot": BookShoot;
+        "card-link": CardLink;
+        "card-list": CardList;
+        "content-page": ContentPage;
         "images-wrapper": ImagesWrapper;
         "landing-banner": LandingBanner;
         "landing-content": LandingContent;
@@ -185,6 +233,9 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-spinner": LocalJSX.AppSpinner & JSXBase.HTMLAttributes<HTMLAppSpinnerElement>;
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
+            "card-link": LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
+            "card-list": LocalJSX.CardList & JSXBase.HTMLAttributes<HTMLCardListElement>;
+            "content-page": LocalJSX.ContentPage & JSXBase.HTMLAttributes<HTMLContentPageElement>;
             "images-wrapper": LocalJSX.ImagesWrapper & JSXBase.HTMLAttributes<HTMLImagesWrapperElement>;
             "landing-banner": LocalJSX.LandingBanner & JSXBase.HTMLAttributes<HTMLLandingBannerElement>;
             "landing-content": LocalJSX.LandingContent & JSXBase.HTMLAttributes<HTMLLandingContentElement>;

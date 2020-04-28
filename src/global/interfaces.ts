@@ -24,3 +24,31 @@ export type Blog = {
   description?: string;
   blogImages: Photograph[]
 }
+
+export enum GalleryType {
+  PreWedding = 'pre-wedding',
+  Portrait = 'portrait',
+  Street = 'street',
+  Travel = 'travel',
+  Kids = 'kids',
+}
+
+export type Gallery = {
+  imageUrlMobile: string;
+  imageUrlDesktop: string;
+  type: GalleryType;
+  title: string;
+  description?: string;
+}
+
+export enum CardListType {
+  Gallery = 'gallery',
+  Blog = 'blog',
+}
+
+export enum ContentType {
+  Portfolio = 'portfolio', // for displaying all the gallery cards,
+  Gallery = 'gallery', // for displaying images of a specific galleryType
+  Blog = 'blog', // for displaying all the blog cards
+  BlogPost = 'blog-post' // for displaying a specific blog post
+}
