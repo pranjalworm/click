@@ -25,7 +25,7 @@ export class AppRoot implements ComponentInterface {
         <app-header></app-header>
 
         <main>
-          <stencil-router titleSuffix=" - Pranjal Dubey Photography">
+          <stencil-router>
 
             <stencil-route-switch scrollTopOffset={0}>
               {

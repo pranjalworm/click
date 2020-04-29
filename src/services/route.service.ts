@@ -20,7 +20,7 @@ export const enum ROUTE_NAME {
 }
 
 
-const ROUTES: { [key: string]: Route } = {
+export const ROUTES: { [key: string]: Route } = {
   [ROUTE_NAME.HOME]: {
     title: 'home',
     url: '/',
@@ -35,6 +35,7 @@ const ROUTES: { [key: string]: Route } = {
     component: 'portfolio-page'
   },
   [ROUTE_NAME.GALLERY]: {
+    title: 'gallery',
     url: '/gallery/:galleryType',
     exact: true,
     component: 'gallery-page'

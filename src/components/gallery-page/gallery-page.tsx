@@ -98,6 +98,7 @@ export class GalleryPage implements ComponentInterface {
 
 
   render() {
+
     return (
       <div id="gallery-page-root">
         {this.content}
