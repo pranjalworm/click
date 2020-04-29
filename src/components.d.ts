@@ -7,7 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory, } from "@stencil/router";
 import { CardLinkConfig, } from "./components/card-link/card-link";
-import { CardListType, Photograph, } from "./global/interfaces";
+import { CardListConfig, } from "./components/card-list/card-list";
+import { Photograph, } from "./global/interfaces";
 export namespace Components {
     interface AboutMe {
     }
@@ -28,7 +29,7 @@ export namespace Components {
         "cardLinkConfig": CardLinkConfig;
     }
     interface CardList {
-        "cardListType": CardListType;
+        "config": CardListConfig;
     }
     interface GalleryPage {
         "history": RouterHistory;
@@ -190,7 +191,7 @@ declare namespace LocalJSX {
         "onCard-link-clicked"?: (event: CustomEvent<any>) => void;
     }
     interface CardList {
-        "cardListType"?: CardListType;
+        "config"?: CardListConfig;
     }
     interface GalleryPage {
         "history"?: RouterHistory;
@@ -205,6 +206,7 @@ declare namespace LocalJSX {
         "onBanner-loaded"?: (event: CustomEvent<any>) => void;
     }
     interface LandingContent {
+        "onSection-title-clicked"?: (event: CustomEvent<any>) => void;
     }
     interface PageNotFound {
     }

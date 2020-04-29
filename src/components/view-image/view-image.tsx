@@ -27,8 +27,20 @@ export class ViewImage {
   })
   handleKeyDown(event: KeyboardEvent) {
 
-    if (event.key === 'Escape') {
-      this.exit();
+    const key = event.key;
+
+    switch (key) {
+      case 'Escape':
+        this.exit();
+        break;
+
+      case 'ArrowLeft':
+        this.getPreviousImage();
+        break;
+
+      case 'ArrowRight':
+        this.getNextImage();
+        break;
     }
   }
 

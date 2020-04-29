@@ -46,6 +46,12 @@ export enum CardListType {
   Blog = 'blog',
 }
 
+export enum CardListMode {
+  Page = 'page', // when card-links occupies the whole page
+  Section = 'section', // when card-links are embedded in some other page
+}
+
+
 export enum ContentType {
   Portfolio = 'portfolio', // for displaying all the gallery cards,
   Gallery = 'gallery', // for displaying images of a specific galleryType

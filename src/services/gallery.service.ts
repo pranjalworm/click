@@ -1,6 +1,6 @@
 // import { Photograph } from "../global/interfaces";
 
-import { GalleryType, Photograph } from "../global/interfaces";
+import { GalleryType, Photograph, CardListMode } from "../global/interfaces";
 import * as ImageData from '../global/image-data';
 import { CardLinkConfig } from "../components/card-link/card-link";
 import PhotographService from "./photograph.service";
@@ -8,18 +8,28 @@ import { GalleryText } from "../global/text-data/gallery-text";
 
 export default class GalleryService {
 
-  static getGalleryCards(): CardLinkConfig[] {
+  /**
+   * @param cardCount number of cards required
+   */
+  static getGalleryCards(mode: CardListMode, cardCount?: number): CardLinkConfig[] {
 
     let galleryCards: CardLinkConfig[] = [];
+    let counter = 0;
 
     for (let galleryType in GalleryType) {
 
       if (isNaN(Number(galleryType))) {
 
+        if (cardCount && counter === cardCount) {
+          break;
+        }
+
         const type = GalleryType[galleryType];
 
-        const galleryCardConfig = GalleryService.createGalleryCard(type);
+        const galleryCardConfig = GalleryService.createGalleryCard(type, mode);
+
         galleryCards.push(galleryCardConfig);
+        counter++;
       }
     }
 
@@ -48,13 +58,14 @@ export default class GalleryService {
   }
 
 
-  private static createGalleryCard(galleryType: GalleryType): CardLinkConfig {
+  private static createGalleryCard(galleryType: GalleryType, mode: CardListMode): CardLinkConfig {
 
     return {
       image: PhotographService.getGalleryBanner(galleryType),
       title: GalleryService.getGalleryTitle(galleryType),
       description: GalleryService.getGalleryDescription(galleryType),
-      contentId: galleryType
+      contentId: galleryType,
+      mode
     }
   }
 

@@ -1,12 +1,13 @@
 import { h, Component, ComponentInterface, Prop, EventEmitter, Event } from '@stencil/core';
 import { Utils } from '../../global/utils';
-import { Photograph } from '../../global/interfaces';
+import { Photograph, CardListMode } from '../../global/interfaces';
 
 export interface CardLinkConfig {
   contentId: string;
   image: Photograph;
   title: string;
   description?: string;
+  mode: CardListMode;
 }
 
 @Component({
@@ -15,8 +16,6 @@ export interface CardLinkConfig {
   shadow: true
 })
 export class CardLink implements ComponentInterface {
-
-  private viewingOnMobile = Utils.isMobileScreen();
 
   @Prop() cardLinkConfig: CardLinkConfig;
 
@@ -33,19 +32,21 @@ export class CardLink implements ComponentInterface {
 
   render() {
 
-    const styleClass = this.viewingOnMobile ? 'mobile-style' : 'desktop-style';
+    let styleClass = Utils.isMobileScreen() ? 'mobile-style' : 'desktop-style';
+
+    styleClass += this.cardLinkConfig.mode === CardListMode.Page ? ' page-styling' : ' section-styling';
 
     return (
-      <div id="card-link-root" class={styleClass} onClick={() => this.cardClickHandler()}>
-        <div id="image-wrapper">
+      <div class={`card-link-root ${styleClass}`} onClick={() => this.cardClickHandler()}>
+        <div class="image-wrapper">
           <img src={this.cardLinkConfig?.image.url} alt={this.cardLinkConfig?.image.alt} />
         </div>
 
-        <div id="text-wrapper">
-          <div id="title-wrapper">
+        <div class="text-wrapper">
+          <div class="title-wrapper">
             {this.cardLinkConfig?.title}
           </div>
-          <div id="description-wrapper">
+          <div class="description-wrapper">
             {this.cardLinkConfig?.description}
           </div>
         </div>

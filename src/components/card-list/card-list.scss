@@ -1,6 +1,16 @@
 @import "../../global/styles/resets";
 
 #card-list-root {
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#card-list-root.page-styling {
   flex-direction: column;
+}
+
+#card-list-root.section-styling {
+  flex-direction: row;
 }

@@ -2,8 +2,12 @@ import {
   h,
   Component,
   ComponentInterface,
+  Event,
+  EventEmitter
 } from '@stencil/core';
-import { CardListType } from '../../../global/interfaces';
+import { CardListType, CardListMode } from '../../../global/interfaces';
+import { CardListConfig } from '../../card-list/card-list';
+import { ROUTE_NAME } from '../../../services/route.service';
 
 @Component({
   tag: 'landing-content',
@@ -12,17 +16,53 @@ import { CardListType } from '../../../global/interfaces';
 })
 export class LandingContent implements ComponentInterface {
 
-  private cardListType = CardListType.Gallery;
+  @Event({
+    eventName: 'section-title-clicked'
+  }) sectionTitleClicked: EventEmitter;
+
+  sectionTitleClickHandler(route: string) {
+
+    this.sectionTitleClicked.emit(route);
+  }
 
 
   render() {
 
+    const galleryCardListConfig: CardListConfig = {
+      cardListMode: CardListMode.Section,
+      cardListType: CardListType.Gallery
+    }
+
     return (
 
       <div id="landing-content-root">
-        {
-          <card-list card-list-type={this.cardListType}></card-list>
-        }
+        <div class="section-wrapper">
+          <div class="section-title" onClick={() => {
+            const route = ROUTE_NAME.PORTFOLIO;
+            this.sectionTitleClickHandler(route)
+          }}>
+            Portfolio
+          </div>
+          <div class="section-content">
+            {
+              <card-list config={galleryCardListConfig}></card-list>
+            }
+          </div>
+          <div class="section-footer" onClick={() => {
+            const route = ROUTE_NAME.PORTFOLIO;
+            this.sectionTitleClickHandler(route)
+          }}>
+            view all...
+          </div>
+        </div>
+
+        {/* TODO */}
+        {/* <div id="blog-preview-wrapper">
+          {
+            <card-list card-list-type={CardListType.Blog}></card-list>
+          }
+        </div> */}
+
       </div>
 
     );

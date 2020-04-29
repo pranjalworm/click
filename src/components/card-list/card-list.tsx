@@ -1,7 +1,12 @@
 import { h, Component, ComponentInterface, Prop } from '@stencil/core';
-import { CardListType } from '../../global/interfaces';
+import { CardListType, CardListMode } from '../../global/interfaces';
 import GalleryService from '../../services/gallery.service';
 import { CardLinkConfig } from '../card-link/card-link';
+
+export interface CardListConfig {
+  cardListType: CardListType;
+  cardListMode: CardListMode;
+}
 
 @Component({
   tag: 'card-list',
@@ -10,39 +15,51 @@ import { CardLinkConfig } from '../card-link/card-link';
 })
 export class CardList implements ComponentInterface {
 
-  @Prop() cardListType: CardListType = null;
+  @Prop() config: CardListConfig;
 
   private cardLinkConfigs: CardLinkConfig[];
 
   componentWillLoad() {
 
-    switch (this.cardListType) {
+    let cardCount = null;
+
+    if (this.config.cardListMode === CardListMode.Section) {
+      cardCount = 4;
+    }
+
+    switch (this.config.cardListType) {
 
       case CardListType.Gallery:
-        this.getGalleryCards()
+        this.getGalleryCards(cardCount)
         break;
 
       case CardListType.Blog:
-        this.getBlogCards();
+        this.getBlogCards(cardCount);
         break;
     }
   }
 
-  getGalleryCards() {
 
-    this.cardLinkConfigs = GalleryService.getGalleryCards();
+  getGalleryCards(cardCount: number) {
+
+    this.cardLinkConfigs = GalleryService.getGalleryCards(this.config.cardListMode, cardCount);
   }
 
 
-  getBlogCards() {
+  // TODO: pending
+  getBlogCards(_cardCount: number) {
 
-    // TODO: pending
+
   }
 
 
   render() {
+
+    const styleClass = this.config.cardListMode === CardListMode.Page ?
+      'page-styling' : 'section-styling';
+
     return (
-      <div id="card-list-root">
+      <div id="card-list-root" class={styleClass}>
         {
           this.cardLinkConfigs.map(cardLinkConfig => {
             return <card-link cardLinkConfig={cardLinkConfig}></card-link>

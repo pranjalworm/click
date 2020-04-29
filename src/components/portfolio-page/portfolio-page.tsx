@@ -4,7 +4,8 @@
 
 import { h, Component, ComponentInterface, Prop, Listen } from '@stencil/core';
 import { RouterHistory, MatchResults } from '@stencil/router';
-import { CardListType, GalleryType } from '../../global/interfaces';
+import { CardListType, GalleryType, CardListMode } from '../../global/interfaces';
+import { CardListConfig } from '../card-list/card-list';
 
 
 @Component({
@@ -33,9 +34,15 @@ export class PortfolioPage implements ComponentInterface {
 
 
   render() {
+
+    const cardListConfig: CardListConfig = {
+      cardListType: CardListType.Gallery,
+      cardListMode: CardListMode.Page
+    }
+
     return (
       <div id="portfolio-page-root">
-        <card-list card-list-type={CardListType.Gallery}></card-list>
+        <card-list config={cardListConfig}></card-list>
       </div>
     )
   }

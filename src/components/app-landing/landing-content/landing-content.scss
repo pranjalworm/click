@@ -3,17 +3,32 @@
 // TODO: condense commonly used flex styling
 
 #landing-content-root {
-  padding: 0px 30px;
+  padding: 0px 40px;
 
-  div {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+  @media (max-width: 780px) {
+    padding: 0px 30px;
   }
 
-  #spinner-wrapper {
-    height: 60vh;
-    width: 100%;
-    justify-content: center;
+  .section-title {
+    font-size: var(--font-size-large);
+    color: #c43131;
+    transition-duration: 0.3s;
+    font-weight: bold;
+    padding: 10px 10px 10px 0px;
+    margin-bottom: 50px;
+    width: fit-content;
+  }
+
+  .section-footer {
+    padding: 10px;
+    color: #c43131;
+    margin: 0% auto;
+    width: fit-content;
+    font-weight: bold;
+  }
+
+  .section-title:hover,
+  .section-footer:hover {
+    cursor: pointer;
   }
 }

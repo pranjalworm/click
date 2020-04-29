@@ -7,7 +7,7 @@ import {
   Prop,
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
-import { GalleryType } from '../../global/interfaces';
+import { ROUTE_NAME } from '../../services/route.service';
 
 
 @Component({
@@ -38,14 +38,24 @@ export class AppLanding implements ComponentInterface {
   cardLinkClickedHandler(event: CustomEvent) {
 
     const galleryType = event.detail;
-    this.openGallery(galleryType);
-  }
-
-
-  openGallery(galleryType: GalleryType) {
-
     this.history.push(`/gallery/${galleryType}`);
   }
+
+
+  @Listen('section-title-clicked')
+  sectionTitleClickHandler(event: CustomEvent) {
+
+    const route = event.detail;
+
+    if (route === ROUTE_NAME.PORTFOLIO) {
+      this.openPortfolio();
+    }
+  }
+
+  openPortfolio() {
+    this.history.push(`/portfolio`);
+  }
+
 
   render() {
 
