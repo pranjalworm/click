@@ -1,5 +1,5 @@
-import { Photograph } from "../../../../global/interfaces";
-import { ImagesWrapperConfig } from "../../../images-wrapper/images-wrapper";
+import { Photograph } from "../interfaces";
+import { ImagesWrapperConfig } from "../../components/images-wrapper/images-wrapper";
 
 export default class MobileLayout {
 
@@ -8,6 +8,7 @@ export default class MobileLayout {
 
     const landscapeWrappers = MobileLayout.createLandscapeWrappers(landspaceImages);
     const portraitWrappers = MobileLayout.createPortraitWrappers(portraitImages);
+
     return MobileLayout.arrangeWrappers(landscapeWrappers, portraitWrappers);
   }
 

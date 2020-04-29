@@ -1,6 +1,6 @@
-import { Photograph } from "../../../../global/interfaces";
+import { Photograph } from "../interfaces";
 import { LayoutUtils } from "./layout-utils";
-import { ImagesWrapperConfig } from "../../../images-wrapper/images-wrapper";
+import { ImagesWrapperConfig } from "../../components/images-wrapper/images-wrapper";
 
 export default class DesktopLayout {
 

@@ -1,8 +1,9 @@
 import { h, Component, ComponentInterface, Prop, State, Listen } from '@stencil/core';
 import { RouterHistory, MatchResults } from '@stencil/router';
 import { Photograph, GalleryType } from '../../global/interfaces';
-import ImageLayout from '../app-landing/landing-content/image-layout/image-layout';
+import ImageLayout from '../../global/image-layout/image-layout';
 import GalleryService from '../../services/gallery.service';
+import { ImagesWrapperConfigsMap } from '../../global/image-layout/wrapper-configs-map';
 
 @Component({
   tag: 'gallery-page',
@@ -42,6 +43,22 @@ export class GalleryPage implements ComponentInterface {
     )
   }
 
+  async fetchImageWrapperConfigs(galleryType: GalleryType, images: Photograph[]) {
+
+    // see if configs are already calculated for this galleryType
+    let wrapperConfigs = ImagesWrapperConfigsMap.getConfigs(galleryType);
+
+    if (!wrapperConfigs) {
+
+      const imageLayout = new ImageLayout();
+      wrapperConfigs = await imageLayout.getImageWrapperConfigs(images);
+      ImagesWrapperConfigsMap.saveConfigs(galleryType, wrapperConfigs);
+    }
+
+    return wrapperConfigs;
+
+  }
+
 
   async showGalleryImages() {
 
@@ -51,7 +68,7 @@ export class GalleryPage implements ComponentInterface {
     const galleryTitle = GalleryService.getGalleryTitle(this.galleryType);
     const galleryDescription = GalleryService.getGalleryDescription(this.galleryType);
 
-    const wrapperConfigs = await ImageLayout.getImageWrapperConfigs(galleryImages);
+    const wrapperConfigs = await this.fetchImageWrapperConfigs(this.galleryType, galleryImages);
 
     return (
       <div id="gallery-content">

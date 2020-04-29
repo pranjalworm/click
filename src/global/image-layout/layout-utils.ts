@@ -1,5 +1,5 @@
-import { Photograph, ImageOrientation } from "../../../../global/interfaces";
-import { Utils } from "../../../../global/utils";
+import { Photograph, ImageOrientation } from "../interfaces";
+import { Utils } from "../utils";
 
 export namespace LayoutUtils {
 
