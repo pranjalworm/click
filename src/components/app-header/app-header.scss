@@ -5,10 +5,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 50px;
+  padding: 50px 40px;
   margin: 0% auto;
   background: #fff;
   z-index: 100;
+  font-weight: bold;
 
   @media (max-width: 780px) {
     display: flex;

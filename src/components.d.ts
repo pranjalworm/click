@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory, } from "@stencil/router";
 import { CardLinkConfig, } from "./components/card-link/card-link";
-import { CardListType, GalleryType, Photograph, } from "./global/interfaces";
+import { CardListType, Photograph, } from "./global/interfaces";
 export namespace Components {
     interface AboutMe {
     }
@@ -30,7 +30,7 @@ export namespace Components {
     interface CardList {
         "cardListType": CardListType;
     }
-    interface ContentPage {
+    interface GalleryPage {
         "history": RouterHistory;
         "match": MatchResults;
     }
@@ -44,8 +44,11 @@ export namespace Components {
     }
     interface PageNotFound {
     }
+    interface PortfolioPage {
+        "history": RouterHistory;
+        "match": MatchResults;
+    }
     interface ViewImage {
-        "galleryType": GalleryType;
         "history": RouterHistory;
         "match": MatchResults;
     }
@@ -105,11 +108,11 @@ declare global {
         prototype: HTMLCardListElement;
         new (): HTMLCardListElement;
     };
-    interface HTMLContentPageElement extends Components.ContentPage, HTMLStencilElement {
+    interface HTMLGalleryPageElement extends Components.GalleryPage, HTMLStencilElement {
     }
-    var HTMLContentPageElement: {
-        prototype: HTMLContentPageElement;
-        new (): HTMLContentPageElement;
+    var HTMLGalleryPageElement: {
+        prototype: HTMLGalleryPageElement;
+        new (): HTMLGalleryPageElement;
     };
     interface HTMLImagesWrapperElement extends Components.ImagesWrapper, HTMLStencilElement {
     }
@@ -135,6 +138,12 @@ declare global {
         prototype: HTMLPageNotFoundElement;
         new (): HTMLPageNotFoundElement;
     };
+    interface HTMLPortfolioPageElement extends Components.PortfolioPage, HTMLStencilElement {
+    }
+    var HTMLPortfolioPageElement: {
+        prototype: HTMLPortfolioPageElement;
+        new (): HTMLPortfolioPageElement;
+    };
     interface HTMLViewImageElement extends Components.ViewImage, HTMLStencilElement {
     }
     var HTMLViewImageElement: {
@@ -151,11 +160,12 @@ declare global {
         "book-shoot": HTMLBookShootElement;
         "card-link": HTMLCardLinkElement;
         "card-list": HTMLCardListElement;
-        "content-page": HTMLContentPageElement;
+        "gallery-page": HTMLGalleryPageElement;
         "images-wrapper": HTMLImagesWrapperElement;
         "landing-banner": HTMLLandingBannerElement;
         "landing-content": HTMLLandingContentElement;
         "page-not-found": HTMLPageNotFoundElement;
+        "portfolio-page": HTMLPortfolioPageElement;
         "view-image": HTMLViewImageElement;
     }
 }
@@ -177,12 +187,12 @@ declare namespace LocalJSX {
     }
     interface CardLink {
         "cardLinkConfig"?: CardLinkConfig;
-        "onCard-clicked"?: (event: CustomEvent<any>) => void;
+        "onCard-link-clicked"?: (event: CustomEvent<any>) => void;
     }
     interface CardList {
         "cardListType"?: CardListType;
     }
-    interface ContentPage {
+    interface GalleryPage {
         "history"?: RouterHistory;
         "match"?: MatchResults;
     }
@@ -195,12 +205,14 @@ declare namespace LocalJSX {
         "onBanner-loaded"?: (event: CustomEvent<any>) => void;
     }
     interface LandingContent {
-        "onContent-loaded"?: (event: CustomEvent<any>) => void;
     }
     interface PageNotFound {
     }
+    interface PortfolioPage {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
+    }
     interface ViewImage {
-        "galleryType"?: GalleryType;
         "history"?: RouterHistory;
         "match"?: MatchResults;
     }
@@ -214,11 +226,12 @@ declare namespace LocalJSX {
         "book-shoot": BookShoot;
         "card-link": CardLink;
         "card-list": CardList;
-        "content-page": ContentPage;
+        "gallery-page": GalleryPage;
         "images-wrapper": ImagesWrapper;
         "landing-banner": LandingBanner;
         "landing-content": LandingContent;
         "page-not-found": PageNotFound;
+        "portfolio-page": PortfolioPage;
         "view-image": ViewImage;
     }
 }
@@ -235,11 +248,12 @@ declare module "@stencil/core" {
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
             "card-link": LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
             "card-list": LocalJSX.CardList & JSXBase.HTMLAttributes<HTMLCardListElement>;
-            "content-page": LocalJSX.ContentPage & JSXBase.HTMLAttributes<HTMLContentPageElement>;
+            "gallery-page": LocalJSX.GalleryPage & JSXBase.HTMLAttributes<HTMLGalleryPageElement>;
             "images-wrapper": LocalJSX.ImagesWrapper & JSXBase.HTMLAttributes<HTMLImagesWrapperElement>;
             "landing-banner": LocalJSX.LandingBanner & JSXBase.HTMLAttributes<HTMLLandingBannerElement>;
             "landing-content": LocalJSX.LandingContent & JSXBase.HTMLAttributes<HTMLLandingContentElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
+            "portfolio-page": LocalJSX.PortfolioPage & JSXBase.HTMLAttributes<HTMLPortfolioPageElement>;
             "view-image": LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
         }
     }

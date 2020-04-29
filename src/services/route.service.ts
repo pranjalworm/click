@@ -30,19 +30,14 @@ const ROUTES: { [key: string]: Route } = {
   },
   [ROUTE_NAME.PORTFOLIO]: {
     title: 'portfolio',
-    url: '/cp/portfolio',
+    url: '/portfolio',
     exact: true,
-    component: 'content-page'
+    component: 'portfolio-page'
   },
   [ROUTE_NAME.GALLERY]: {
-    url: '/cp/gallery',
+    url: '/gallery/:galleryType',
     exact: true,
-    component: 'content-page'
-  },
-  [ROUTE_NAME.CONTENT_TYPE]: {
-    url: '/cp/:contentType',
-    exact: true,
-    component: 'content-page'
+    component: 'gallery-page'
   },
   // [ROUTE_NAME.BLOG]: {
   //   title: 'blog',
@@ -64,7 +59,7 @@ const ROUTES: { [key: string]: Route } = {
   },
   [ROUTE_NAME.VIEW_IMAGE]: {
     title: 'view image',
-    url: '/view-image/:index',
+    url: '/view-image/:galleryType/:index',
     exact: true,
     component: 'view-image'
   },
@@ -75,9 +70,6 @@ const ROUTES: { [key: string]: Route } = {
 
 
 export class RouteService {
-
-  static lastScrollTop: number = null;
-
 
   static getHeaderRoutes(): Route[] {
 

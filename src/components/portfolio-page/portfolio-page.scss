@@ -1,0 +1,9 @@
+@import "../../global/styles/resets";
+
+#portfolio-page-root {
+  padding: 0px 40px;
+
+  @media (max-width: 780px) {
+    padding: 0px 30px;
+  }
+}

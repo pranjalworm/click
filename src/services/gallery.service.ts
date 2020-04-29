@@ -16,7 +16,9 @@ export default class GalleryService {
 
       if (isNaN(Number(galleryType))) {
 
-        const galleryCardConfig = GalleryService.createGalleryCard(galleryType as GalleryType);
+        const type = GalleryType[galleryType];
+
+        const galleryCardConfig = GalleryService.createGalleryCard(type);
         galleryCards.push(galleryCardConfig);
       }
     }
@@ -57,7 +59,7 @@ export default class GalleryService {
   }
 
 
-  private static getGalleryTitle(galleryType: GalleryType): string {
+  static getGalleryTitle(galleryType: GalleryType): string {
 
     switch (galleryType) {
       case GalleryType.PreWedding:
@@ -78,7 +80,7 @@ export default class GalleryService {
   }
 
 
-  private static getGalleryDescription(galleryType: GalleryType): string {
+  static getGalleryDescription(galleryType: GalleryType): string {
 
     switch (galleryType) {
       case GalleryType.PreWedding:

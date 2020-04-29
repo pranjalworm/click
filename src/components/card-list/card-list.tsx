@@ -45,7 +45,7 @@ export class CardList implements ComponentInterface {
       <div id="card-list-root">
         {
           this.cardLinkConfigs.map(cardLinkConfig => {
-            return <card-link card-link-config={cardLinkConfig}></card-link>
+            return <card-link cardLinkConfig={cardLinkConfig}></card-link>
           })
         }
       </div>

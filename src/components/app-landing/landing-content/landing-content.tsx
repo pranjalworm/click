@@ -2,8 +2,6 @@ import {
   h,
   Component,
   ComponentInterface,
-  Event,
-  EventEmitter
 } from '@stencil/core';
 import { CardListType } from '../../../global/interfaces';
 
@@ -15,17 +13,6 @@ import { CardListType } from '../../../global/interfaces';
 export class LandingContent implements ComponentInterface {
 
   private cardListType = CardListType.Gallery;
-
-
-  @Event({
-    eventName: 'content-loaded'
-  }) contentLoaded: EventEmitter;
-
-
-  componentDidLoad() {
-
-    this.contentLoaded.emit();
-  }
 
 
   render() {

@@ -18,16 +18,16 @@ export class CardLink implements ComponentInterface {
 
   private viewingOnMobile = Utils.isMobileScreen();
 
-  @Prop() cardLinkConfig: CardLinkConfig = null;
+  @Prop() cardLinkConfig: CardLinkConfig;
 
 
   @Event({
-    eventName: 'card-clicked'
-  }) cardClicked: EventEmitter;
+    eventName: 'card-link-clicked'
+  }) cardLinkClicked: EventEmitter;
 
 
   cardClickHandler() {
-    this.cardClicked.emit(this.cardLinkConfig.contentId)
+    this.cardLinkClicked.emit(this.cardLinkConfig.contentId)
   }
 
 

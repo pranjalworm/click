@@ -14,12 +14,12 @@ export class ViewImage {
 
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
-  @Prop() galleryType: GalleryType;
 
   @State() currentImage: Photograph = null;
 
   private currentIndex = 0;
-  private totalImagesCount = GalleryService.getGalleryImagesCount(this.galleryType);
+  private totalImagesCount: number;
+  private galleryType: GalleryType;
 
   @Listen('keydown', {
     target: 'body',
@@ -32,11 +32,14 @@ export class ViewImage {
     }
   }
 
+
   componentWillLoad() {
 
     StoreService.store.set(StoreProps.ViewingImage, true);
 
+    this.galleryType = this.match.params.galleryType as GalleryType;
     this.currentIndex = Number(this.match.params.index) || 0;
+    this.totalImagesCount = GalleryService.getGalleryImagesCount(this.galleryType)
 
     this.currentImage = GalleryService.getGalleryImage(this.galleryType,
       this.currentIndex);
@@ -112,7 +115,7 @@ export class ViewImage {
 
           <div id="exit-view-wrapper">
             <div id="exit-view-image" onClick={() => { this.exit() }}>
-              <img src="../assets/icon/close.svg" alt="close" />
+              <img src="./assets/icon/close.svg" alt="close" />
             </div>
           </div>
 

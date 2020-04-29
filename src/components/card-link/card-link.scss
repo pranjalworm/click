@@ -2,6 +2,8 @@
 
 #card-link-root {
   width: 100%;
+  padding: 20px;
+  transition-duration: 0.3s;
 
   #image-wrapper {
     display: flex;
@@ -11,45 +13,64 @@
 
   #title-wrapper {
     color: #777;
+    transition-duration: 0.3s;
+    font-size: var(--font-size-large);
+    font-weight: bold;
+    margin-bottom: 10px;
   }
 
   #description-wrapper {
     color: #8e8e8e;
   }
+}
 
-  .mobile-style {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+#card-link-root.mobile-style {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 70px;
 
-    #image-wrapper {
-      width: 100%;
-    }
+  #image-wrapper {
+    width: 100%;
 
-    #text-wrapper {
+    img {
       width: 100%;
     }
   }
 
-  .desktop-style {
-    padding: 50px;
-    display: flex;
-    flex-direction: row;
+  #text-wrapper {
+    margin-top: 15px;
+    width: 100%;
+  }
+}
 
-    #image-wrapper {
-      width: 50%;
-    }
+#card-link-root.desktop-style {
+  width: 70%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  margin: 0% auto 100px auto;
+  border: 1px solid #fff;
+  border-radius: 4px;
 
-    #text-wrapper {
-      padding: 50px;
-      width: 50%;
+  #image-wrapper {
+    width: 100%;
+
+    img {
+      width: 100%;
     }
+  }
+
+  #text-wrapper {
+    margin-top: 15px;
   }
 }
 
 #card-link-root:hover {
-  border: 1px solid #777;
-  border-radius: 4px;
+  // border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0px 5px 50px 5px #efefef;
 }
 
 #card-link-root:hover #title-wrapper {

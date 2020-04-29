@@ -7,7 +7,7 @@ import {
   Prop,
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
-import { RouteService } from '../../services/route.service';
+import { GalleryType } from '../../global/interfaces';
 
 
 @Component({
@@ -19,7 +19,6 @@ export class AppLanding implements ComponentInterface {
   @Prop() history: RouterHistory;
   @Element() host: HTMLElement;
   private landingRootRef: HTMLElement = null;
-  private bodyRef: HTMLElement = null;
 
   /**
    * waiting for the banner-loaded event, only after that the rest of the 
@@ -28,60 +27,33 @@ export class AppLanding implements ComponentInterface {
   @Listen('banner-loaded')
   bannerLoadedHandler() {
 
+    this.landingRootRef = this.host.shadowRoot.getElementById('landing-root');
+
     const landingContentRef = document.createElement('landing-content');
     this.landingRootRef.appendChild(landingContentRef);
   }
 
-  @Listen('content-loaded')
-  contentLoadedHandler() {
-    this.scrollToLastPosition();
+
+  @Listen('card-link-clicked')
+  cardLinkClickedHandler(event: CustomEvent) {
+
+    const galleryType = event.detail;
+    this.openGallery(galleryType);
   }
 
 
-  // TODO: write logic to extract image index on the basis of image URL
-  @Listen('wrapper-image-clicked')
-  imageClickHandler(event: CustomEvent) {
+  openGallery(galleryType: GalleryType) {
 
-    const scrollTop = this.bodyRef.scrollTop;
-
-    // console.log(`arya > app-landing > scrollTop: ${scrollTop}`)
-
-    RouteService.lastScrollTop = scrollTop;
-
-    const index = event.detail;
-
-    this.history.push(`/view-image/${index}`);
+    this.history.push(`/gallery/${galleryType}`);
   }
-
-
-  // scroll to the last position at which the user navigated to another page
-  scrollToLastPosition() {
-
-    const scrollTop = RouteService.lastScrollTop;
-
-    // console.log(`arya > app-landing > scrollToLastPosition > scrollTop: ${scrollTop}`)
-
-    if (scrollTop === undefined || scrollTop === null) return;
-
-    this.bodyRef.scrollTo(0, scrollTop);
-  }
-
-
-  componentDidLoad() {
-
-    this.bodyRef = document.querySelector('body');
-    this.landingRootRef = this.host.shadowRoot.getElementById('landing-root');
-  }
-
 
   render() {
 
     return (
       <div id="landing-root">
-        {/* landing-banner will be loaded first */}
         <landing-banner></landing-banner>
 
-        {/* landing-content will be loaded after landing-banner has been loaded */}
+        {/* landing-content will be loaded here after landing-banner has been loaded */}
       </div>
     );
   }

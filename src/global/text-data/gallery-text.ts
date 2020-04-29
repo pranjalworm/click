@@ -9,10 +9,10 @@ export namespace GalleryText {
   }
 
   export const enum GalleryDescription {
-    PreWedding = 'pre-weddings & weddings description',
-    Portrait = 'portraits description',
-    Travel = 'travel description',
-    Kids = 'kids description',
-    Street = 'street description',
+    PreWedding = 'The quick brown fox jumps right over the lazy dog.',
+    Portrait = 'The quick brown fox jumps right over the lazy dog.',
+    Travel = 'The quick brown fox jumps right over the lazy dog.',
+    Kids = 'The quick brown fox jumps right over the lazy dog.',
+    Street = 'The quick brown fox jumps right over the lazy dog.',
   }
 }
