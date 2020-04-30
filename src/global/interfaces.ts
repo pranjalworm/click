@@ -58,3 +58,7 @@ export enum ContentType {
   Blog = 'blog', // for displaying all the blog cards
   BlogPost = 'blog-post' // for displaying a specific blog post
 }
+
+export enum StorageKeys {
+  LandingBannerIndex = 'landing-banner-index'
+}

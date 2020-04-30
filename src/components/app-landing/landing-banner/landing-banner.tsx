@@ -7,8 +7,9 @@ import {
   getAssetPath
 } from '@stencil/core';
 import PhotographService from '../../../services/photograph.service';
-import { Photograph } from '../../../global/interfaces';
+import { Photograph, StorageKeys } from '../../../global/interfaces';
 import { Utils } from '../../../global/utils';
+import StorageService from '../../../services/storage.service';
 
 
 @Component({
@@ -28,11 +29,7 @@ export class LandingBanner implements ComponentInterface {
 
   componentWillLoad() {
 
-    const viewingOnMobile = Utils.isMobileScreen();
-
-    const imageIndex = Utils.getRandomNumber(0, 4);
-
-    this.bannerImage = PhotographService.getLandingBannerImage(viewingOnMobile, imageIndex);
+    this.getBannerImage();
   }
 
 
@@ -40,6 +37,29 @@ export class LandingBanner implements ComponentInterface {
   componentDidLoad() {
 
     this.bannerLoaded.emit();
+  }
+
+
+  private getBannerImage() {
+
+    const viewingOnMobile = Utils.isMobileScreen();
+
+    let imageIndex: any = StorageService.getItem(StorageKeys.LandingBannerIndex);
+
+    if (imageIndex === undefined) {
+      StorageService.setItem(StorageKeys.LandingBannerIndex, 0);
+      imageIndex = 0;
+
+    } else {
+
+      if (++imageIndex > 4) {
+        imageIndex = 0;
+      }
+
+      StorageService.setItem(StorageKeys.LandingBannerIndex, imageIndex);
+    }
+
+    this.bannerImage = PhotographService.getLandingBannerImage(viewingOnMobile, imageIndex);
   }
 
 
