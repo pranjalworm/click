@@ -47,10 +47,7 @@ export class CardList implements ComponentInterface {
 
 
   // TODO: pending
-  getBlogCards(_cardCount: number) {
-
-
-  }
+  getBlogCards(_cardCount: number) { }
 
 
   render() {

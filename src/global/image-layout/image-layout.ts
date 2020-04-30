@@ -85,6 +85,8 @@ export default class ImageLayout {
 
     const url = image.url;
 
+    console.log(`arya > image-layout > loadImage > url: ${url}`)
+
     return new Promise((resolve, reject) => {
 
       img.onload = () => {

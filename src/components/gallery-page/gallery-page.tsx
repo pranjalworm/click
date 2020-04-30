@@ -1,4 +1,4 @@
-import { h, Component, ComponentInterface, Prop, State, Listen } from '@stencil/core';
+import { h, Component, ComponentInterface, Prop, State, Listen, getAssetPath } from '@stencil/core';
 import { RouterHistory, MatchResults } from '@stencil/router';
 import { Photograph, GalleryType } from '../../global/interfaces';
 import ImageLayout from '../../global/image-layout/image-layout';
@@ -8,7 +8,8 @@ import { ImagesWrapperConfigsMap } from '../../global/image-layout/wrapper-confi
 @Component({
   tag: 'gallery-page',
   styleUrl: 'gallery-page.scss',
-  shadow: true
+  shadow: true,
+  assetsDir: '../../assets'
 })
 export class GalleryPage implements ComponentInterface {
 
@@ -17,7 +18,7 @@ export class GalleryPage implements ComponentInterface {
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
 
-  @State() content: any; // TODO: State required?
+  @State() content: any; // TODO: state required? any better way?
 
   @Listen('wrapper-image-clicked')
   imageClickHandler(event: CustomEvent) {
@@ -60,11 +61,25 @@ export class GalleryPage implements ComponentInterface {
   }
 
 
+  processImageUrls(images: Photograph[]) {
+
+    const imagesCopy: Photograph[] = JSON.parse(JSON.stringify(images));
+
+    for (const image of imagesCopy) {
+
+      image.url = getAssetPath(`../../assets/images/${image.url}`);
+    }
+
+    return imagesCopy;
+  }
+
+
   async showGalleryImages() {
 
     this.galleryType = this.match.params.galleryType as GalleryType;
 
-    const galleryImages: Photograph[] = GalleryService.getGalleryImages(this.galleryType);
+    const images = GalleryService.getGalleryImages(this.galleryType);
+    const galleryImages = this.processImageUrls(images);
     const galleryTitle = GalleryService.getGalleryTitle(this.galleryType);
     const galleryDescription = GalleryService.getGalleryDescription(this.galleryType);
 

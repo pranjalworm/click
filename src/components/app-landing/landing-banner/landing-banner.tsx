@@ -3,7 +3,8 @@ import {
   Component,
   ComponentInterface,
   Event,
-  EventEmitter
+  EventEmitter,
+  getAssetPath
 } from '@stencil/core';
 import PhotographService from '../../../services/photograph.service';
 import { Photograph } from '../../../global/interfaces';
@@ -13,7 +14,8 @@ import { Utils } from '../../../global/utils';
 @Component({
   tag: 'landing-banner',
   styleUrl: 'landing-banner.scss',
-  shadow: true
+  shadow: true,
+  assetsDir: '../../../assets'
 })
 export class LandingBanner implements ComponentInterface {
 
@@ -43,12 +45,14 @@ export class LandingBanner implements ComponentInterface {
 
   render() {
 
+    const imageSrc = getAssetPath(`../../../assets/images/${this.bannerImage.url}`);
+
     return (
 
       <div id="landing-section">
 
         <div id="banner-image">
-          <img src={this.bannerImage.url} alt={this.bannerImage.alt} />
+          <img src={imageSrc} alt={this.bannerImage.alt} />
         </div>
 
         <div id="banner-caption">

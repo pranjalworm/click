@@ -1,11 +1,12 @@
-import { h, Component, ComponentInterface } from '@stencil/core';
+import { h, Component, ComponentInterface, getAssetPath } from '@stencil/core';
 import { Photograph } from '../../global/interfaces';
 import PhotographService from '../../services/photograph.service';
 
 @Component({
   tag: 'about-me',
   styleUrl: 'about-me.scss',
-  shadow: true
+  shadow: true,
+  assetsDir: '../../assets'
 })
 export class AboutMe implements ComponentInterface {
 
@@ -16,6 +17,9 @@ export class AboutMe implements ComponentInterface {
   }
 
   render() {
+
+    const imageSrc = getAssetPath(`../../assets/images/${this.image.url}`);
+
     return (
       <div id="about-me-root">
 
@@ -45,7 +49,7 @@ export class AboutMe implements ComponentInterface {
 
 
         <div id="image-div">
-          <img src={this.image.url} alt={this.image.alt} />
+          <img src={imageSrc} alt={this.image.alt} />
         </div>
 
       </div>

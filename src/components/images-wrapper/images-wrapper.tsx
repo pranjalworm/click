@@ -8,7 +8,8 @@ export interface ImagesWrapperConfig {
 
 @Component({
   tag: 'images-wrapper',
-  shadow: false
+  shadow: false,
+  assetsDir: '../../assets'
 })
 export class ImagesWrapper implements ComponentInterface {
 
@@ -31,6 +32,7 @@ export class ImagesWrapper implements ComponentInterface {
       <div class={this.styleClass}>
         {
           this.images.map((image: Photograph) => {
+
             return <img onClick={() => { this.imageClickHandler(image.index) }}
               src={image.url}
               alt={image.alt}

@@ -1,4 +1,4 @@
-import { h, Component, State, Prop, Listen } from '@stencil/core';
+import { h, Component, State, Prop, Listen, getAssetPath } from '@stencil/core';
 import { Photograph, GalleryType } from '../../global/interfaces';
 import '@stencil/router';
 import { RouterHistory, MatchResults } from '@stencil/router';
@@ -8,7 +8,8 @@ import GalleryService from '../../services/gallery.service';
 @Component({
   tag: 'view-image',
   styleUrl: 'view-image.scss',
-  shadow: true
+  shadow: true,
+  assetsDir: '../../assets'
 })
 export class ViewImage {
 
@@ -105,10 +106,12 @@ export class ViewImage {
 
     if (this.currentImage) {
 
+      const imageSrc = getAssetPath(`../../assets/images/${this.currentImage.url}`)
+
       imageContent = (
         <div>
           <div id="image-div">
-            <img src={this.currentImage?.url} alt={this.currentImage?.alt} id="image" />
+            <img src={imageSrc} alt={this.currentImage.alt} id="image" />
           </div>
 
           <div id="image-controls">
@@ -120,6 +123,8 @@ export class ViewImage {
       )
     }
 
+    const closeIcSrc = getAssetPath('../../assets/icon/close.svg');
+
     return (
       <div id="view-image-root">
 
@@ -127,7 +132,7 @@ export class ViewImage {
 
           <div id="exit-view-wrapper">
             <div id="exit-view-image" onClick={() => { this.exit() }}>
-              <img src="./assets/icon/close.svg" alt="close" />
+              <img src={closeIcSrc} alt="close" />
             </div>
           </div>
 

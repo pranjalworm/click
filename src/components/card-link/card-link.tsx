@@ -1,4 +1,4 @@
-import { h, Component, ComponentInterface, Prop, EventEmitter, Event } from '@stencil/core';
+import { h, Component, ComponentInterface, Prop, EventEmitter, Event, getAssetPath } from '@stencil/core';
 import { Utils } from '../../global/utils';
 import { Photograph, CardListMode } from '../../global/interfaces';
 
@@ -13,7 +13,8 @@ export interface CardLinkConfig {
 @Component({
   tag: 'card-link',
   styleUrl: 'card-link.scss',
-  shadow: true
+  shadow: true,
+  assetsDir: '../../assets'
 })
 export class CardLink implements ComponentInterface {
 
@@ -36,10 +37,12 @@ export class CardLink implements ComponentInterface {
 
     styleClass += this.cardLinkConfig.mode === CardListMode.Page ? ' page-styling' : ' section-styling';
 
+    const imageSrc = getAssetPath(`../../assets/images/${this.cardLinkConfig?.image.url}`)
+
     return (
       <div class={`card-link-root ${styleClass}`} onClick={() => this.cardClickHandler()}>
         <div class="image-wrapper">
-          <img src={this.cardLinkConfig?.image.url} alt={this.cardLinkConfig?.image.alt} />
+          <img src={imageSrc} alt={this.cardLinkConfig?.image.alt} />
         </div>
 
         <div class="text-wrapper">

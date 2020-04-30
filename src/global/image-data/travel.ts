@@ -2,7 +2,7 @@ import { Photograph } from "../interfaces";
 
 export const TravelImages: Photograph[] = [
   {
-    url: '../assets/images/1.jpg',
+    url: '1.jpg',
     caption: 'We are all made up of pieces from people who have built and broken us.',
     location: {
       city: 'Mysore',
@@ -14,7 +14,7 @@ export const TravelImages: Photograph[] = [
     index: 0
   },
   {
-    url: '../assets/images/2.jpg',
+    url: '2.jpg',
     caption: 'Follow your dreams.',
     location: {
       city: 'Mysore',
@@ -26,7 +26,7 @@ export const TravelImages: Photograph[] = [
     index: 1
   },
   {
-    url: '../assets/images/3.jpg',
+    url: '3.jpg',
     caption: 'Wish I could do that too.',
     location: {
       city: 'Bangalore',
@@ -38,7 +38,7 @@ export const TravelImages: Photograph[] = [
     index: 2
   },
   {
-    url: '../assets/images/4.jpg',
+    url: '4.jpg',
     caption: 'Something like this',
     location: {
       city: 'Bangalore',
@@ -50,7 +50,7 @@ export const TravelImages: Photograph[] = [
     index: 3
   },
   {
-    url: '../assets/images/5.jpg',
+    url: '5.jpg',
     caption: 'We are all made up of pieces from people who have built and broken us.',
     location: {
       city: 'Mysore',
@@ -62,7 +62,7 @@ export const TravelImages: Photograph[] = [
     index: 4
   },
   {
-    url: '../assets/images/6.jpg',
+    url: '6.jpg',
     caption: 'Follow your dreams.',
     location: {
       city: 'Mysore',
@@ -74,7 +74,7 @@ export const TravelImages: Photograph[] = [
     index: 4
   },
   {
-    url: '../assets/images/7.jpg',
+    url: '7.jpg',
     caption: 'Wish I could do that too.',
     location: {
       city: 'Bangalore',
@@ -86,7 +86,7 @@ export const TravelImages: Photograph[] = [
     index: 5
   },
   {
-    url: '../assets/images/8.jpg',
+    url: '8.jpg',
     caption: 'Something like this',
     location: {
       city: 'Bangalore',
@@ -98,7 +98,7 @@ export const TravelImages: Photograph[] = [
     index: 6
   },
   {
-    url: '../assets/images/9.jpg',
+    url: '9.jpg',
     caption: 'We are all made up of pieces from people who have built and broken us.',
     location: {
       city: 'Mysore',
@@ -110,7 +110,7 @@ export const TravelImages: Photograph[] = [
     index: 7
   },
   {
-    url: '../assets/images/10.jpg',
+    url: '10.jpg',
     caption: 'Follow your dreams.',
     location: {
       city: 'Mysore',
@@ -122,7 +122,7 @@ export const TravelImages: Photograph[] = [
     index: 8
   },
   {
-    url: '../assets/images/11.jpg',
+    url: '11.jpg',
     caption: 'Wish I could do that too.',
     location: {
       city: 'Bangalore',
@@ -134,7 +134,7 @@ export const TravelImages: Photograph[] = [
     index: 9
   },
   {
-    url: '../assets/images/12.jpg',
+    url: '12.jpg',
     caption: 'Something like this',
     location: {
       city: 'Bangalore',
@@ -146,7 +146,7 @@ export const TravelImages: Photograph[] = [
     index: 10
   },
   {
-    url: '../assets/images/13.jpg',
+    url: '13.jpg',
     caption: 'We are all made up of pieces from people who have built and broken us.',
     location: {
       city: 'Mysore',
@@ -158,7 +158,7 @@ export const TravelImages: Photograph[] = [
     index: 11
   },
   {
-    url: '../assets/images/14.jpg',
+    url: '14.jpg',
     caption: 'Follow your dreams.',
     location: {
       city: 'Mysore',
@@ -170,7 +170,7 @@ export const TravelImages: Photograph[] = [
     index: 12
   },
   {
-    url: '../assets/images/15.jpg',
+    url: '15.jpg',
     caption: 'Wish I could do that too.',
     location: {
       city: 'Bangalore',
@@ -182,7 +182,7 @@ export const TravelImages: Photograph[] = [
     index: 13
   },
   {
-    url: '../assets/images/16.jpg',
+    url: '16.jpg',
     caption: 'Something like this',
     location: {
       city: 'Bangalore',
@@ -194,7 +194,7 @@ export const TravelImages: Photograph[] = [
     index: 14
   },
   {
-    url: '../assets/images/17.jpg',
+    url: '17.jpg',
     caption: 'We are all made up of pieces from people who have built and broken us.',
     location: {
       city: 'Mysore',
@@ -206,7 +206,7 @@ export const TravelImages: Photograph[] = [
     index: 15
   },
   {
-    url: '../assets/images/18.jpg',
+    url: '18.jpg',
     caption: 'Follow your dreams.',
     location: {
       city: 'Mysore',
@@ -218,7 +218,7 @@ export const TravelImages: Photograph[] = [
     index: 16
   },
   {
-    url: '../assets/images/19.jpg',
+    url: '19.jpg',
     caption: 'Wish I could do that too.',
     location: {
       city: 'Bangalore',
@@ -230,7 +230,7 @@ export const TravelImages: Photograph[] = [
     index: 17
   },
   {
-    url: '../assets/images/20.jpg',
+    url: '20.jpg',
     caption: 'Something like this',
     location: {
       city: 'Bangalore',
@@ -242,7 +242,7 @@ export const TravelImages: Photograph[] = [
     index: 18
   },
   {
-    url: '../assets/images/21.jpg',
+    url: '21.jpg',
     caption: 'Something like this',
     location: {
       city: 'Bangalore',
@@ -256,12 +256,12 @@ export const TravelImages: Photograph[] = [
 ];
 
 export const TravelBannerMobile: Photograph = {
-  url: '../assets/images/3.jpg',
+  url: '3.jpg',
   alt: 'A man standing on some rocks by the sea'
 }
 
 export const TravelBannerDesktop: Photograph = {
-  url: '../assets/images/30.jpg',
+  url: '30.jpg',
   alt: 'A fisherman casting a net'
 }
 
