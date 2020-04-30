@@ -17,6 +17,11 @@
     padding: 10px 10px 10px 0px;
     margin-bottom: 50px;
     width: fit-content;
+
+    @media (max-width: 780px) {
+      margin: 0% auto;
+      margin-bottom: 50px;
+    }
   }
 
   .section-footer {
