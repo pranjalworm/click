@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { MatchResults, RouterHistory, } from "@stencil/router";
+import { ToastConfig, } from "./components/app-toast/app-toast";
 import { CardLinkConfig, } from "./components/card-link/card-link";
 import { CardListConfig, } from "./components/card-list/card-list";
 import { Photograph, } from "./global/interfaces";
@@ -22,6 +23,9 @@ export namespace Components {
     interface AppRoot {
     }
     interface AppSpinner {
+    }
+    interface AppToast {
+        "toastConfig": ToastConfig;
     }
     interface BookShoot {
     }
@@ -91,6 +95,12 @@ declare global {
         prototype: HTMLAppSpinnerElement;
         new (): HTMLAppSpinnerElement;
     };
+    interface HTMLAppToastElement extends Components.AppToast, HTMLStencilElement {
+    }
+    var HTMLAppToastElement: {
+        prototype: HTMLAppToastElement;
+        new (): HTMLAppToastElement;
+    };
     interface HTMLBookShootElement extends Components.BookShoot, HTMLStencilElement {
     }
     var HTMLBookShootElement: {
@@ -158,6 +168,7 @@ declare global {
         "app-landing": HTMLAppLandingElement;
         "app-root": HTMLAppRootElement;
         "app-spinner": HTMLAppSpinnerElement;
+        "app-toast": HTMLAppToastElement;
         "book-shoot": HTMLBookShootElement;
         "card-link": HTMLCardLinkElement;
         "card-list": HTMLCardListElement;
@@ -183,6 +194,9 @@ declare namespace LocalJSX {
     interface AppRoot {
     }
     interface AppSpinner {
+    }
+    interface AppToast {
+        "toastConfig"?: ToastConfig;
     }
     interface BookShoot {
     }
@@ -217,6 +231,7 @@ declare namespace LocalJSX {
     interface ViewImage {
         "history"?: RouterHistory;
         "match"?: MatchResults;
+        "onShow-toast"?: (event: CustomEvent<any>) => void;
     }
     interface IntrinsicElements {
         "about-me": AboutMe;
@@ -225,6 +240,7 @@ declare namespace LocalJSX {
         "app-landing": AppLanding;
         "app-root": AppRoot;
         "app-spinner": AppSpinner;
+        "app-toast": AppToast;
         "book-shoot": BookShoot;
         "card-link": CardLink;
         "card-list": CardList;
@@ -247,6 +263,7 @@ declare module "@stencil/core" {
             "app-landing": LocalJSX.AppLanding & JSXBase.HTMLAttributes<HTMLAppLandingElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-spinner": LocalJSX.AppSpinner & JSXBase.HTMLAttributes<HTMLAppSpinnerElement>;
+            "app-toast": LocalJSX.AppToast & JSXBase.HTMLAttributes<HTMLAppToastElement>;
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
             "card-link": LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
             "card-list": LocalJSX.CardList & JSXBase.HTMLAttributes<HTMLCardListElement>;

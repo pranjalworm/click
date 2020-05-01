@@ -6,4 +6,9 @@
   margin: 0% auto;
   position: relative;
   overflow: hidden;
+
+  app-toast {
+    z-index: 200;
+    display: none;
+  }
 }

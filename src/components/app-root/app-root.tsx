@@ -1,6 +1,8 @@
-import { h, Component, ComponentInterface } from '@stencil/core';
+import { h, Component, ComponentInterface, Listen, Element } from '@stencil/core';
 import '@stencil/router';
 import { Route, RouteService } from '../../services/route.service';
+
+const TOAST_VISIBLE_TIMEOUT = 3000;
 
 @Component({
   tag: 'app-root',
@@ -10,10 +12,33 @@ import { Route, RouteService } from '../../services/route.service';
 export class AppRoot implements ComponentInterface {
 
   private routes: Route[] = [];
+  private appToastRef: HTMLAppToastElement = null;
+
+  @Element() host: HTMLElement;
 
   constructor() {
 
     this.routes = RouteService.getAllRoutes();
+  }
+
+  @Listen('show-toast')
+  showToastHandler(event: CustomEvent) {
+
+    const toastConfig = event.detail;
+
+    if (!toastConfig.message) return;
+
+    this.appToastRef.toastConfig = toastConfig;
+    this.appToastRef.style.display = 'flex';
+
+    setTimeout(() => {
+      this.appToastRef.style.display = 'none';
+    }, TOAST_VISIBLE_TIMEOUT);
+  }
+
+
+  componentDidLoad() {
+    this.appToastRef = this.host.shadowRoot.querySelector('app-toast');
   }
 
 
@@ -21,6 +46,8 @@ export class AppRoot implements ComponentInterface {
 
     return (
       <div id="app-root">
+
+        <app-toast></app-toast>
 
         <app-header></app-header>
 

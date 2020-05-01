@@ -62,3 +62,8 @@ export enum ContentType {
 export enum StorageKeys {
   LandingBannerIndex = 'landing-banner-index'
 }
+
+export enum ToastMessageType {
+  Success = 'success',
+  Failure = 'failure'
+}

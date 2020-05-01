@@ -1,0 +1,24 @@
+#app-toast-root {
+  width: fit-content;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 10vh;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0% auto;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: var(--font-size-small);
+}
+
+.success {
+  background: #3838f2;
+}
+
+.failure {
+  background: red;
+}

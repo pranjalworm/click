@@ -1,9 +1,13 @@
-import { h, Component, State, Prop, Listen, getAssetPath } from '@stencil/core';
-import { Photograph, GalleryType } from '../../global/interfaces';
+import { h, Component, State, Prop, Listen, getAssetPath, Event, EventEmitter } from '@stencil/core';
+import { Photograph, GalleryType, ToastMessageType } from '../../global/interfaces';
 import '@stencil/router';
 import { RouterHistory, MatchResults } from '@stencil/router';
 import { StoreService, StoreProps } from '../../services/store.service';
 import GalleryService from '../../services/gallery.service';
+import { ToastConfig } from '../app-toast/app-toast';
+
+const TOAST_SUCCESS_MESSAGE = 'Image link copied!';
+const TOAST_FAILURE_MESSAGE = 'Could not copy image link!'
 
 @Component({
   tag: 'view-image',
@@ -13,14 +17,19 @@ import GalleryService from '../../services/gallery.service';
 })
 export class ViewImage {
 
+  private currentIndex = 0;
+  private totalImagesCount: number;
+  private galleryType: GalleryType;
+
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
 
   @State() currentImage: Photograph = null;
 
-  private currentIndex = 0;
-  private totalImagesCount: number;
-  private galleryType: GalleryType;
+  @Event({
+    eventName: 'show-toast'
+  }) showToast: EventEmitter;
+
 
   @Listen('keydown', {
     target: 'body',
@@ -84,13 +93,36 @@ export class ViewImage {
 
     try {
       const successful = document.execCommand('copy');
-      const msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Copying text command was ' + msg);  // TODO: replace this with toast message
+
+      this.showToastMessage(successful);
+
     } catch (err) {
-      console.log('Oops, unable to copy');
+
+      this.showToastMessage(false)
     }
 
     document.body.removeChild(textArea);
+  }
+
+
+  showToastMessage(successful: boolean) {
+
+    let toastConfig: ToastConfig;
+
+    if (successful) {
+      toastConfig = {
+        message: successful ? TOAST_SUCCESS_MESSAGE : TOAST_FAILURE_MESSAGE,
+        toastMessageType: successful ? ToastMessageType.Success : ToastMessageType.Failure
+      }
+    } else {
+
+      toastConfig = {
+        message: TOAST_FAILURE_MESSAGE,
+        toastMessageType: ToastMessageType.Failure
+      }
+    }
+
+    this.showToast.emit(toastConfig);
   }
 
 
