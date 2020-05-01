@@ -36,11 +36,11 @@ export class ViewImage {
         break;
 
       case 'ArrowLeft':
-        this.getPreviousImage();
+        this.getImage(false);
         break;
 
       case 'ArrowRight':
-        this.getNextImage();
+        this.getImage(true);
         break;
     }
   }
@@ -64,34 +64,74 @@ export class ViewImage {
     StoreService.store.set(StoreProps.ViewingImage, false);
   }
 
+  copyTextToClipboard(text: string) {
 
-  fetchImage(index: number) {
+    const textArea = document.createElement("textarea");
+    textArea.style.position = 'fixed';
+    textArea.style.top = '0px';
+    textArea.style.left = '0px';
+    textArea.style.width = '2em';
+    textArea.style.height = '2em';
+    textArea.style.padding = '0px';
+    textArea.style.border = 'none';
+    textArea.style.outline = 'none';
+    textArea.style.boxShadow = 'none';
+    textArea.style.background = 'transparent';
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      const successful = document.execCommand('copy');
+      const msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Copying text command was ' + msg);  // TODO: replace this with toast message
+    } catch (err) {
+      console.log('Oops, unable to copy');
+    }
+
+    document.body.removeChild(textArea);
+  }
+
+
+  getIndex(index: number, navigateToNext: boolean) {
+
+    navigateToNext ? index++ : index--;
 
     if (index < 0) {
-      this.currentIndex = index = this.totalImagesCount - 1;
-    } else if (index === this.totalImagesCount) {
-      this.currentIndex = index = 0;
+      index = this.totalImagesCount - 1;
+    } else if (index >= this.totalImagesCount) {
+      index = 0;
     }
+
+    return index;
+  }
+
+
+  getImage(navigateToNext: boolean) {
+
+    const currentIndexCopy = this.currentIndex;
+
+    this.currentIndex = this.getIndex(this.currentIndex, navigateToNext);
 
     this.currentImage = GalleryService.getGalleryImage(this.galleryType,
       this.currentIndex);
+
+    const url = this.history.location.pathname.replace(`${currentIndexCopy}`, `${this.currentIndex}`);
+
+    this.history.replace(url);
   }
 
-
-  getNextImage() {
-
-    this.fetchImage(++this.currentIndex);
-  }
-
-
-  getPreviousImage() {
-
-    this.fetchImage(--this.currentIndex);
-  }
 
   exit() {
 
     this.history.goBack();
+  }
+
+  getImageShareUrl(): string {
+
+    const shareUrl = `https://pranjaldubey.photography${this.history.location.pathname}`;
+    return shareUrl;
   }
 
 
@@ -106,7 +146,10 @@ export class ViewImage {
 
     if (this.currentImage) {
 
-      const imageSrc = getAssetPath(`../../assets/images/${this.currentImage.url}`)
+      const imageSrc = getAssetPath(`../../assets/images/${this.currentImage.url}`);
+      const imageDownloadUrl = getAssetPath(`../../assets/images/high-res/${this.currentImage.url}`);
+      const imageShareUrl = this.getImageShareUrl();
+      const filename = `pranjal-dubey-photography-${this.currentImage.index}`;
 
       imageContent = (
         <div>
@@ -115,9 +158,28 @@ export class ViewImage {
           </div>
 
           <div id="image-controls">
-            <span class="control" onClick={() => this.getPreviousImage()}>prev</span>
-            /
-            <span class="control" onClick={() => this.getNextImage()}>next</span>
+
+            <div class="control-section">
+              <a href={imageDownloadUrl} download={filename}>
+                <span class="control">download</span>
+              </a>
+            </div>
+
+            <div class="control-section">
+              <span class="control" onClick={() => this.getImage(false)}>
+                prev
+              </span>
+              /
+              <span class="control" onClick={() => this.getImage(true)}>
+                next
+              </span>
+            </div>
+
+            <div class="control-section">
+              <span class="control" onClick={() => this.copyTextToClipboard(imageShareUrl)}>
+                share image
+              </span>
+            </div>
           </div>
         </div>
       )

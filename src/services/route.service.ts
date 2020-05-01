@@ -11,7 +11,6 @@ export const enum ROUTE_NAME {
   HOME = 'home',
   PORTFOLIO = 'portfolio',
   GALLERY = 'gallery',
-  CONTENT_TYPE = 'ct',
   // BLOG = 'blog',
   // BOOK_A_SHOOT = 'book-a-shoot',
   ABOUT_ME = 'about-me',
@@ -44,7 +43,7 @@ export const ROUTES: { [key: string]: Route } = {
   //   title: 'blog',
   //   url: '/blog/',
   //   urlMatch: '/blog/*',
-  //   component: 'content-page'
+  //   component: 'blog-page'
   // },
   // [ROUTE_NAME.BOOK_A_SHOOT]: {
   //   title: 'book a shoot',

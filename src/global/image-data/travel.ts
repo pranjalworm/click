@@ -71,7 +71,7 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 4
+    index: 5
   },
   {
     url: '7.jpg',
@@ -83,7 +83,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 5
+    index: 6
   },
   {
     url: '8.jpg',
@@ -95,7 +95,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 6
+    index: 7
   },
   {
     url: '9.jpg',
@@ -107,7 +107,7 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 7
+    index: 8
   },
   {
     url: '10.jpg',
@@ -119,7 +119,7 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 8
+    index: 9
   },
   {
     url: '11.jpg',
@@ -131,7 +131,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 9
+    index: 10
   },
   {
     url: '12.jpg',
@@ -143,7 +143,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 10
+    index: 11
   },
   {
     url: '13.jpg',
@@ -155,7 +155,7 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 11
+    index: 12
   },
   {
     url: '14.jpg',
@@ -167,7 +167,7 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 12
+    index: 13
   },
   {
     url: '15.jpg',
@@ -179,7 +179,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 13
+    index: 14
   },
   {
     url: '16.jpg',
@@ -191,7 +191,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 14
+    index: 15
   },
   {
     url: '17.jpg',
@@ -203,7 +203,7 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 15
+    index: 16
   },
   {
     url: '18.jpg',
@@ -215,7 +215,7 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 16
+    index: 17
   },
   {
     url: '19.jpg',
@@ -227,7 +227,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 17
+    index: 18
   },
   {
     url: '20.jpg',
@@ -239,7 +239,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 18
+    index: 19
   },
   {
     url: '21.jpg',
@@ -251,7 +251,7 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 19
+    index: 20
   }
 ];
 
