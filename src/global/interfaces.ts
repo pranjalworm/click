@@ -4,6 +4,7 @@ export enum ImageOrientation {
 }
 
 export type Photograph = {
+  id: number;
   url: string;
   caption?: string;
   location?: {
@@ -13,9 +14,8 @@ export type Photograph = {
   date?: string;
   alt?: string;
   description?: string;
-  orientation?: ImageOrientation;
+  orientation: ImageOrientation;
   clickCallback?: (data: any) => void;
-  index?: number;
 }
 
 export type Blog = {

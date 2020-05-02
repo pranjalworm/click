@@ -1,26 +1,11 @@
-import { Photograph, ImageOrientation } from "../interfaces";
+import { Photograph } from "../interfaces";
+import { MasterImages } from "./images-master";
 
 export const KidsImages: Photograph[] = [
-  {
-    url: '25.jpg',
-    alt: 'A baby playing with a toy and laughing',
-    index: 0,
-    orientation: ImageOrientation.Portrait
-  },
-  {
-    url: '24.jpg',
-    alt: 'A baby\'s portrait',
-    index: 1,
-    orientation: ImageOrientation.Landscape
-  }
+  MasterImages[23],
+  MasterImages[24]
 ];
 
-export const KidsBannerMobile: Photograph = {
-  url: '25.jpg',
-  alt: 'A baby playing with a toy and laughing'
-}
+export const KidsBannerMobile: Photograph = MasterImages[23];
 
-export const KidsBannerDesktop: Photograph = {
-  url: '24.jpg',
-  alt: 'A baby\'s portrait'
-}
+export const KidsBannerDesktop: Photograph = MasterImages[24];

@@ -224,4 +224,19 @@ export default class GalleryService {
   }
 
 
+  static getIndexById(galleryType: GalleryType, id: number) {
+
+    const galleryImages = GalleryService.getGalleryImages(galleryType);
+
+    let index = 0;
+
+    for (const image of galleryImages) {
+
+      if (image.id === id) return index;
+
+      index++;
+    }
+  }
+
+
 }

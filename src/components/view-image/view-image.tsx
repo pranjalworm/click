@@ -60,11 +60,9 @@ export class ViewImage {
     StoreService.store.set(StoreProps.ViewingImage, true);
 
     this.galleryType = this.match.params.galleryType as GalleryType;
-    this.currentIndex = Number(this.match.params.index) || 0;
+    this.currentIndex = Number(this.match.params.index);
+    this.currentImage = GalleryService.getGalleryImage(this.galleryType, this.currentIndex);
     this.totalImagesCount = GalleryService.getGalleryImagesCount(this.galleryType)
-
-    this.currentImage = GalleryService.getGalleryImage(this.galleryType,
-      this.currentIndex);
   }
 
 
@@ -181,7 +179,7 @@ export class ViewImage {
       const imageSrc = getAssetPath(`../../assets/images/${this.currentImage.url}`);
       const imageDownloadUrl = getAssetPath(`../../assets/images/high-res/${this.currentImage.url}`);
       const imageShareUrl = this.getImageShareUrl();
-      const filename = `pranjal-dubey-photography-${this.currentImage.index}`;
+      const filename = `pranjal-dubey-photography-${this.currentImage.id}`;
 
       imageContent = (
         <div>

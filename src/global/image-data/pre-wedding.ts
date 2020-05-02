@@ -1,28 +1,12 @@
-import { Photograph, ImageOrientation } from "../interfaces";
+import { Photograph } from "../interfaces";
+import { MasterImages } from "./images-master";
 
 export const PreWeddingImages: Photograph[] = [
-  {
-    url: '29.jpg',
-    alt: 'A couple\'s silhouette',
-    index: 0,
-    orientation: ImageOrientation.Portrait
-  },
-  {
-    url: '45.jpg',
-    alt: 'A couple sitting in a boat nearby a submerged church.',
-    index: 1,
-    orientation: ImageOrientation.Landscape
-  },
-
+  MasterImages[47],
+  MasterImages[48],
 ];
 
-export const PreWeddingBannerMobile: Photograph = {
-  url: '29.jpg',
-  alt: 'A couple\'s silhouette'
-}
+export const PreWeddingBannerMobile: Photograph = MasterImages[47];
 
-export const PreWeddingBannerDesktop: Photograph = {
-  url: '45.jpg',
-  alt: 'A couple sitting in a boat nearby a submerged church.',
-}
+export const PreWeddingBannerDesktop: Photograph = MasterImages[48];
 

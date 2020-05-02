@@ -23,7 +23,8 @@ export class GalleryPage implements ComponentInterface {
   @Listen('wrapper-image-clicked')
   imageClickHandler(event: CustomEvent) {
 
-    const index = event.detail;
+    const id = event.detail;
+    const index = GalleryService.getIndexById(this.galleryType, id);
 
     this.history.push(`/view-image/${this.galleryType}/${index}`);
   }
