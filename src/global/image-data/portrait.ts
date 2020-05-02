@@ -35,12 +35,12 @@ export const PortraitImages: Photograph[] = [
 ];
 
 export const PortraitBannerMobile: Photograph = {
-  url: '22.jpg',
-  alt: 'A girl\'s portrait'
+  url: '21.jpg',
+  alt: 'A girl\'s portrait on a beach'
 }
 
 export const PortraitBannerDesktop: Photograph = {
   url: '23.jpg',
-  alt: 'A girl\'s portrait'
+  alt: 'A girl\'s closeup black and white portrait'
 }
 

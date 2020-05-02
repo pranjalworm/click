@@ -18,8 +18,8 @@ export const BannersMobile: Photograph[] = [
     caption: 'To the strangers we will never meet again.'
   },
   {
-    url: '18.jpg',
-    caption: 'I still wonder who I would have been.'
+    url: '32.jpg',
+    caption: 'I found God.'
   }
 ]
 
@@ -37,8 +37,8 @@ export const BannersDesktop: Photograph[] = [
     caption: 'There is no other place I would rather be.'
   },
   {
-    url: '23.jpg',
-    caption: 'If you are happy in dreams, does that count?'
+    url: '43.jpg',
+    caption: 'What if one day you discover it was never random?'
   },
   {
     url: '30.jpg',

@@ -7,8 +7,8 @@ export const PreWeddingImages: Photograph[] = [
     index: 0
   },
   {
-    url: '27.jpg',
-    alt: 'A couple looking into each other\'s eyes at a beach',
+    url: '45.jpg',
+    alt: 'A couple sitting in a boat nearby a submerged church.',
     index: 1
   },
 
@@ -20,7 +20,7 @@ export const PreWeddingBannerMobile: Photograph = {
 }
 
 export const PreWeddingBannerDesktop: Photograph = {
-  url: '27.jpg',
-  alt: 'A couple looking into each other\'s eyes at a beach'
+  url: '45.jpg',
+  alt: 'A couple sitting in a boat nearby a submerged church.',
 }
 

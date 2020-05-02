@@ -261,7 +261,7 @@ export const TravelBannerMobile: Photograph = {
 }
 
 export const TravelBannerDesktop: Photograph = {
-  url: '30.jpg',
-  alt: 'A fisherman casting a net'
+  url: '46.jpg',
+  alt: 'A girl walking on a pathway beside a lake.'
 }
 

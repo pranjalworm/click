@@ -26,14 +26,11 @@ export class AboutMe implements ComponentInterface {
         <div id="description">
           <div>
             <p>
-              I am Pranjal Dubey, full-time programmer, part-time photographer, die hard reader.
-              The quick brown fox jumps right over the lazy dog.
-              The quick brown fox jumps right over the lazy dog.
+              I am a full-time programmer, part-time photographer, die hard reader.
             </p>
             <br />
             <p>
-              The quick brown fox jumps right over the lazy dog.
-              The quick brown fox jumps right over the lazy dog.
+              I like traveling. I love eating Pizza.
             </p>
             <br />
             <p>

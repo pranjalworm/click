@@ -3,8 +3,8 @@
 import { GalleryType, Photograph, CardListMode } from "../global/interfaces";
 import * as ImageData from '../global/image-data';
 import { CardLinkConfig } from "../components/card-link/card-link";
-import PhotographService from "./photograph.service";
 import { GalleryText } from "../global/text-data/gallery-text";
+import { Utils } from "../global/utils";
 
 export default class GalleryService {
 
@@ -37,6 +37,18 @@ export default class GalleryService {
   }
 
 
+  private static createGalleryCard(galleryType: GalleryType, mode: CardListMode): CardLinkConfig {
+
+    return {
+      image: GalleryService.getGalleryBanner(galleryType),
+      title: GalleryService.getGalleryTitle(galleryType),
+      description: GalleryService.getGalleryDescription(galleryType),
+      contentId: galleryType,
+      mode
+    }
+  }
+
+
   static getGalleryImages(galleryType: GalleryType): Photograph[] {
 
     switch (galleryType) {
@@ -54,18 +66,12 @@ export default class GalleryService {
 
       case GalleryType.Street:
         return ImageData.StreetImages;
-    }
-  }
 
+      case GalleryType.Wallpapers:
+        return ImageData.WallpapersImages;
 
-  private static createGalleryCard(galleryType: GalleryType, mode: CardListMode): CardLinkConfig {
-
-    return {
-      image: PhotographService.getGalleryBanner(galleryType),
-      title: GalleryService.getGalleryTitle(galleryType),
-      description: GalleryService.getGalleryDescription(galleryType),
-      contentId: galleryType,
-      mode
+      default:
+        throw new Error(`GalleryService > getGalleryImages > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -87,6 +93,12 @@ export default class GalleryService {
 
       case GalleryType.Street:
         return GalleryText.GalleryTitle.Street;
+
+      case GalleryType.Wallpapers:
+        return GalleryText.GalleryTitle.Wallpapers;
+
+      default:
+        throw new Error(`GalleryService > getGalleryTitle > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -108,8 +120,15 @@ export default class GalleryService {
 
       case GalleryType.Street:
         return GalleryText.GalleryDescription.Street;
+
+      case GalleryType.Wallpapers:
+        return GalleryText.GalleryDescription.Wallpapers;
+
+      default:
+        throw new Error(`GalleryService > getGalleryDescription > galleryType: ${galleryType} not found!`);
     }
   }
+
 
   static getGalleryImagesCount(galleryType: GalleryType) {
 
@@ -128,8 +147,15 @@ export default class GalleryService {
 
       case GalleryType.Street:
         return ImageData.StreetImages.length;
+
+      case GalleryType.Wallpapers:
+        return ImageData.WallpapersImages.length;
+
+      default:
+        throw new Error(`GalleryService > getGalleryImagesCount > galleryType: ${galleryType} not found!`);
     }
   }
+
 
   static getGalleryImage(galleryType: GalleryType, index: number) {
 
@@ -148,7 +174,54 @@ export default class GalleryService {
 
       case GalleryType.Street:
         return ImageData.StreetImages[index];
+
+      case GalleryType.Wallpapers:
+        return ImageData.WallpapersImages[index];
+
+      default:
+        throw new Error(`GalleryService > getGalleryImage > galleryType: ${galleryType} not found!`);
     }
   }
+
+
+
+  /**
+   * fetches the banner image for the specified gallery type according to the
+   * user's device
+   */
+  static getGalleryBanner(galleryType: GalleryType): Photograph {
+
+    const viewingOnMobile = Utils.isMobileScreen();
+
+    switch (galleryType) {
+      case GalleryType.PreWedding:
+        return viewingOnMobile ? ImageData.PreWeddingBannerMobile :
+          ImageData.PreWeddingBannerDesktop;
+
+      case GalleryType.Travel:
+        return viewingOnMobile ? ImageData.TravelBannerMobile :
+          ImageData.TravelBannerDesktop;
+
+      case GalleryType.Portrait:
+        return viewingOnMobile ? ImageData.PortraitBannerMobile :
+          ImageData.PortraitBannerDesktop;
+
+      case GalleryType.Kids:
+        return viewingOnMobile ? ImageData.KidsBannerMobile :
+          ImageData.KidsBannerDesktop;
+
+      case GalleryType.Street:
+        return viewingOnMobile ? ImageData.StreetBannerMobile :
+          ImageData.StreetBannerDesktop;
+
+      case GalleryType.Wallpapers:
+        return viewingOnMobile ? ImageData.WallpapersBannerMobile :
+          ImageData.WallpapersBannerDesktop;
+
+      default:
+        throw new Error(`GalleryService > getGalleryBanner > galleryType: ${galleryType} not found!`);
+    }
+  }
+
 
 }
