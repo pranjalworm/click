@@ -14,8 +14,6 @@ export default class ImageLayout {
   private allImagesSet: Set<string> = new Set();
   private imagesWrappers: ImagesWrapperConfig[] = [];
 
-  private imagePromises: Promise<any>[] = [];
-
   private landscapeImages: Photograph[] = [];
   private portraitImages: Photograph[] = [];
 
@@ -30,8 +28,9 @@ export default class ImageLayout {
       return this.imagesWrappers;
     }
 
-    await this.segregateImages(freshImages);
+    this.segregateImages(freshImages);
 
+    // this is done in case a page is trying to lazy load images one batch at a time
     let newImagesWrappers;
 
     if (Utils.isMobileScreen()) {
@@ -67,46 +66,17 @@ export default class ImageLayout {
 
 
   // segregate images into landscapes and portraits (orientations)
-  private async segregateImages(allImages: Photograph[]) {
+  private segregateImages(allImages: Photograph[]) {
 
     for (const image of allImages) {
 
-      const img = new Image();
-
-      const promise = this.loadImage(img, image);
-      this.imagePromises.push(promise);
+      if (image.orientation === ImageOrientation.Landscape) {
+        this.landscapeImages.push(image);
+      } else {
+        this.portraitImages.push(image);
+      }
     }
 
-    return await Promise.all(this.imagePromises);
-  }
-
-
-  private async loadImage(img: HTMLImageElement, image: Photograph) {
-
-    const url = image.url;
-
-    return new Promise((resolve, reject) => {
-
-      img.onload = () => {
-
-        const height = img.height;
-        const width = img.width;
-
-        if (width > height) { // landscape orientation image
-          image.orientation = ImageOrientation.Landscape;
-          this.landscapeImages.push(image);
-
-        } else { // portrait orientation image
-          image.orientation = ImageOrientation.Portrait;
-          this.portraitImages.push(image);
-        }
-
-        return resolve(img);
-      }
-
-      img.onerror = reject;
-      img.src = url;
-    });
   }
 
 }

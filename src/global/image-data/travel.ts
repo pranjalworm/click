@@ -1,4 +1,4 @@
-import { Photograph } from "../interfaces";
+import { Photograph, ImageOrientation } from "../interfaces";
 
 export const TravelImages: Photograph[] = [
   {
@@ -11,10 +11,11 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 0
+    index: 0,
+    orientation: ImageOrientation.Portrait
   },
   {
-    url: '2.jpg',
+    url: '32.jpg',
     caption: 'Follow your dreams.',
     location: {
       city: 'Mysore',
@@ -23,7 +24,8 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 1
+    index: 1,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '3.jpg',
@@ -35,7 +37,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 2
+    index: 2,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '4.jpg',
@@ -47,7 +50,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 3
+    index: 3,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '5.jpg',
@@ -59,7 +63,8 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 4
+    index: 4,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '6.jpg',
@@ -71,7 +76,8 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 5
+    index: 5,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '7.jpg',
@@ -83,7 +89,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 6
+    index: 6,
+    orientation: ImageOrientation.Landscape
   },
   {
     url: '8.jpg',
@@ -95,7 +102,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 7
+    index: 7,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '9.jpg',
@@ -107,7 +115,8 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 8
+    index: 8,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '10.jpg',
@@ -119,7 +128,8 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 9
+    index: 9,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '11.jpg',
@@ -131,7 +141,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 10
+    index: 10,
+    orientation: ImageOrientation.Landscape
   },
   {
     url: '12.jpg',
@@ -143,7 +154,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 11
+    index: 11,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '13.jpg',
@@ -155,7 +167,8 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 12
+    index: 12,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '14.jpg',
@@ -167,7 +180,8 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 13
+    index: 13,
+    orientation: ImageOrientation.Landscape
   },
   {
     url: '15.jpg',
@@ -179,7 +193,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 14
+    index: 14,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '16.jpg',
@@ -191,7 +206,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 15
+    index: 15,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '17.jpg',
@@ -203,7 +219,8 @@ export const TravelImages: Photograph[] = [
     date: 'April, 2019',
     alt: 'Alt text',
     description: 'the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.the quick brown fox jumps right over the lazy dog. ',
-    index: 16
+    index: 16,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '18.jpg',
@@ -215,7 +232,8 @@ export const TravelImages: Photograph[] = [
     date: 'January, 2019',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 17
+    index: 17,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '19.jpg',
@@ -227,7 +245,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 18
+    index: 18,
+    orientation: ImageOrientation.Portrait
   },
   {
     url: '20.jpg',
@@ -239,7 +258,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 19
+    index: 19,
+    orientation: ImageOrientation.Landscape
   },
   {
     url: '21.jpg',
@@ -251,7 +271,8 @@ export const TravelImages: Photograph[] = [
     date: 'November, 2018',
     alt: 'Alt text',
     description: 'Some description text',
-    index: 20
+    index: 20,
+    orientation: ImageOrientation.Portrait
   }
 ];
 
