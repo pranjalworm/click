@@ -463,6 +463,12 @@ export const MasterImages: { [key: number]: Photograph } = {
     url: '30.jpg',
     caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
     orientation: ImageOrientation.Landscape
+  },
+  53: {
+    id: 53,
+    url: '27.jpg',
+    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
+    orientation: ImageOrientation.Landscape
   }
 
 
