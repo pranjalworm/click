@@ -3,13 +3,13 @@
 #app-footer-root {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   padding: 50px 40px;
   margin: 0% auto;
   background: #fff;
   z-index: 100;
-  color: #8e8e8e;
+  color: var(--font-color);
   font-weight: bold;
 
   @media (max-width: 780px) {
@@ -29,33 +29,25 @@
   }
 }
 
-.link {
-  padding: 10px;
-  color: #8e8e8e;
-  margin-bottom: 20px;
+@media (min-width: 780px) {
+  .link:last-child {
+    padding-right: 0;
+  }
 }
 
-.link:hover {
-  cursor: pointer;
-  color: #c91c1c;
+.link {
+  padding: 10px;
+  color: var(--font-color);
+  margin-bottom: 20px;
 }
 
 a {
   text-decoration: none;
-  color: #8e8e8e;
+  color: var(--font-color);
 }
 
 a:hover {
-  color: #c91c1c;
-}
-
-#book-a-shoot-button {
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
-#book-a-shoot-button:hover {
-  color: #c91c1c;
+  color: var(--font-color-accent-dark);
 }
 
 .copyright-div {

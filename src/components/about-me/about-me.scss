@@ -5,7 +5,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 0% 40px;
-  color: #777;
+  color: var(--font-color-dark);
   height: 80vh;
 
   @media (max-width: 780px) {
@@ -30,7 +30,7 @@
 
     #source-link {
       text-decoration: none;
-      color: #c43131;
+      color: var(--font-color-accent);
     }
   }
 

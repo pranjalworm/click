@@ -4,6 +4,11 @@
   --font-size-large: 1.5rem;
   --font-size-normal: 1rem;
   --font-size-small: 0.8rem;
+  --font-color: #8e8e8e;
+  --font-color-dark: #777;
+  --font-color-accent: #c43131;
+  --font-color-accent-dark: #c91c1c;
+  --font-color-toast: #fff;
 }
 
 html {
@@ -63,5 +68,5 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #8e8e8e;
+  background-color: var(--font-color);
 }

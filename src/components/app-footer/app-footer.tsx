@@ -38,9 +38,10 @@ export class AppFooter implements ComponentInterface {
 
         <div class='section copyright-div'>© Pranjal Dubey Photography</div>
 
-        <div class='section link'>
+        <div class='section'>
           <a href='https://www.instagram.com/pranjalworm'
-            target='_blank'>
+            target='_blank'
+            class="link">
             instagram
           </a>
         </div>

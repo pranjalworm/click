@@ -21,7 +21,7 @@
   #mobile-menu-link {
     font-size: var(--font-size-small);
     margin-top: 10px;
-    color: #8e8e8e;
+    color: var(--font-color);
     font-weight: bold;
 
     @media (min-width: 781px) {
@@ -31,12 +31,12 @@
 
   #app-heading {
     font-size: var(--font-size-x-large);
-    color: #8e8e8e;
+    color: var(--font-color);
   }
 
   #app-heading:hover {
     cursor: pointer;
-    color: #c43131;
+    color: var(--font-color-accent);
   }
 
   #menu {
@@ -51,12 +51,18 @@
   }
 
   a {
-    color: #8e8e8e;
+    color: var(--font-color);
     text-decoration: none;
   }
 
   .link-active {
-    color: #c91c1c !important;
+    color: var(--font-color-accent-dark) !important;
+  }
+
+  @media (min-width: 780px) {
+    .menu-option:last-child {
+      padding-right: 0;
+    }
   }
 
   .menu-option {
@@ -73,6 +79,6 @@
 
   .menu-option:hover {
     cursor: pointer;
-    color: #c91c1c;
+    color: var(--font-color-accent-dark);
   }
 }

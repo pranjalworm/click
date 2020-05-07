@@ -66,7 +66,7 @@
       justify-content: space-between;
       margin: 0% auto;
       margin-top: 2vh;
-      color: #8e8e8e;
+      color: var(--font-color);
       font-size: var(--font-size-small);
 
       .control-section {
@@ -82,11 +82,12 @@
 
       .control:hover {
         cursor: pointer;
+        color: var(--font-color-accent);
       }
 
       a {
         text-decoration: none;
-        color: #8e8e8e;
+        color: var(--font-color);
       }
     }
   }
@@ -96,13 +97,14 @@
     margin-bottom: 10vh;
 
     #image-caption {
-      color: #000;
+      color: var(--font-color-dark);
       text-align: center;
+      font-weight: bold;
     }
 
     #image-description {
       margin-top: 40px;
-      color: #8e8e8e;
+      color: var(--font-color);
     }
   }
 }

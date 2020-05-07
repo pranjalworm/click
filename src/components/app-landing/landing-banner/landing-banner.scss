@@ -10,7 +10,18 @@
 
   #banner-image {
     text-align: center;
-    height: 65vh;
+    width: 100%;
+    padding: 0 40px;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  @media (max-width: 780px) {
+    #banner-image {
+      height: 65vh;
+    }
 
     img {
       height: 100%;
@@ -19,6 +30,7 @@
 
   #banner-caption {
     margin: 30px 20px 0px 20px;
-    color: #8e8e8e;
+    font-weight: bold;
+    color: var(--font-color-dark);
   }
 }

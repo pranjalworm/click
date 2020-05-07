@@ -10,9 +10,9 @@ export const BannersMobile: Photograph[] = [
 ]
 
 export const BannersDesktop: Photograph[] = [
-  MasterImages[1],
-  MasterImages[49],
-  MasterImages[50],
-  MasterImages[51],
-  MasterImages[52],
+  MasterImages[54],
+  MasterImages[55],
+  MasterImages[56],
+  MasterImages[57],
+  MasterImages[58],
 ]

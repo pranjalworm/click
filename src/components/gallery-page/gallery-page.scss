@@ -31,12 +31,12 @@
 
       #gallery-title {
         font-size: var(--font-size-large);
-        color: #c91c1c;
+        color: var(--font-color-accent);
         margin-bottom: 10px;
       }
 
       #gallery-description {
-        color: #8e8e8e;
+        color: var(--font-color);
       }
     }
 
