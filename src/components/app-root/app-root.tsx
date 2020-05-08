@@ -37,6 +37,7 @@ export class AppRoot implements ComponentInterface {
   }
 
 
+
   componentDidLoad() {
     this.appToastRef = this.host.shadowRoot.querySelector('app-toast');
   }

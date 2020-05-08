@@ -1,4 +1,5 @@
 import { StoreService, StoreProps } from "../services/store.service";
+import { ThemeService } from "../services/theme.service";
 
 
 export default async () => {
@@ -9,11 +10,13 @@ export default async () => {
    */
 
   // initialising store
-
   const storeConfig = {
     [StoreProps.ViewingImage]: false
   };
 
   new StoreService(storeConfig);
+
+  // initialising theme
+  ThemeService.init();
 
 };

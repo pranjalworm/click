@@ -3,7 +3,7 @@ import { sass } from '@stencil/sass';
 
 
 export const config: Config = {
-  globalStyle: 'src/global/styles/app.scss',
+  globalStyle: 'src/global/styles/global-master.scss',
   globalScript: 'src/global/app.ts',
   outputTargets: [
     {

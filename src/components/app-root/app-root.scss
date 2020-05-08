@@ -1,4 +1,8 @@
-@import "../../global/styles/resets";
+@import "../../global/styles/local-master";
+
+* {
+  background: var(--background);
+}
 
 #app-root {
   max-width: 1280px !important;

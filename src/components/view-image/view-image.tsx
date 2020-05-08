@@ -31,11 +31,11 @@ export class ViewImage {
   }) showToast: EventEmitter;
 
 
-  @Listen('keydown', {
+  @Listen('keyup', {
     target: 'body',
     passive: true
   })
-  handleKeyDown(event: KeyboardEvent) {
+  handleKeyUp(event: KeyboardEvent) {
 
     const key = event.key;
 

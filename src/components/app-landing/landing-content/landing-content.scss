@@ -1,4 +1,4 @@
-@import "../../../global/styles/resets";
+@import "../../../global/styles/local-master";
 
 // TODO: condense commonly used flex styling
 
@@ -12,7 +12,6 @@
   .section-title {
     font-size: var(--font-size-large);
     color: var(--font-color-accent);
-    transition-duration: 0.3s;
     font-weight: bold;
     padding: 10px 10px 10px 0px;
     margin-bottom: 50px;

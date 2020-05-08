@@ -1,0 +1,36 @@
+:root {
+  --tap-hightlight-color: rgba(0, 0, 0, 0);
+  --scrollbar-shadow: rgba(0, 0, 0, 0.3);
+}
+
+.light-theme {
+  /* FONT COLORS */
+  --font-color: #8e8e8e;
+  --font-color-dark: #777;
+  --font-color-accent: #c43131;
+  --font-color-accent-dark: #c91c1c;
+  --font-color-toast: #fff;
+
+  /* BACKGROUND COLORS */
+  --background: #fff;
+  --shadow: #efefef;
+
+  /* SCROLLBAR COLORS */
+  --scrollbar-background: #f5f5f5;
+}
+
+.dark-theme {
+  /* FONT COLORS */
+  --font-color: #8e8e8e;
+  --font-color-dark: #777;
+  --font-color-accent: #c43131;
+  --font-color-accent-dark: #c91c1c;
+  --font-color-toast: #fff;
+
+  /* BACKGROUND COLORS */
+  --background: #000;
+  --shadow: #202020;
+
+  /* SCROLLBAR COLORS */
+  --scrollbar-background: #606060;
+}
