@@ -1,0 +1,12 @@
+{
+  "editor.tabSize": 2,
+  "editor.cursorWidth": 2,
+  "editor.minimap.enabled": false,
+  "workbench.enableExperiments": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 5,
+  "workbench.editor.limit.perEditorGroup": true,
+  "explorer.autoReveal": false,
+  "timeline.pageSize": null,
+  "telemetry.enableTelemetry": false
+}
