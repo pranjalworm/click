@@ -5,15 +5,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 40px;
+  padding: 0px 40px;
+  height: 14vh;
   margin: 0% auto;
   z-index: 100;
-  font-weight: bold;
 
   @media (max-width: 780px) {
     display: flex;
     flex-direction: column;
-    padding: 30px 50px;
+    padding: 0px 50px;
     justify-content: center;
   }
 
@@ -21,7 +21,6 @@
     font-size: var(--font-size-small);
     margin-top: 10px;
     color: var(--font-color);
-    font-weight: bold;
 
     @media (min-width: 781px) {
       display: none;
@@ -59,7 +58,7 @@
   }
 
   @media (min-width: 780px) {
-    .menu-option:last-child {
+    .menu-option-link:last-child .menu-option {
       padding-right: 0;
     }
   }

@@ -469,38 +469,6 @@ export const MasterImages: { [key: number]: Photograph } = {
     url: '27.jpg',
     caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
     orientation: ImageOrientation.Landscape
-  },
-  54: {
-    id: 54,
-    url: '39-banner.jpg',
-    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
-    orientation: ImageOrientation.Landscape
-  },
-  55: {
-    id: 55,
-    url: '33-banner.jpg',
-    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
-    orientation: ImageOrientation.Landscape
-  },
-  56: {
-    id: 56,
-    url: '31-banner.jpg',
-    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
-    orientation: ImageOrientation.Landscape
-  },
-  57: {
-    id: 57,
-    url: '30-banner.jpg',
-    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
-    orientation: ImageOrientation.Landscape
-  },
-  58: {
-    id: 58,
-    url: '43-banner.jpg',
-    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
-    orientation: ImageOrientation.Landscape
-  },
-
-
+  }
 
 }

@@ -86,16 +86,18 @@ export class AppHeader implements ComponentInterface {
         <div id='menu'>
           {this.menuOptions.map((menuOption: Route) => {
             return (
-              <stencil-route-link
-                url={(Array.isArray(menuOption.url)
-                  ? menuOption.url[0]
-                  : menuOption.url) as string}
-                urlMatch={menuOption.urlMatch}
-                exact={true}>
-                <span class='menu-option' onClick={() => { this.mobileMenuClickHandler() }}>
-                  {menuOption.title}
-                </span>
-              </stencil-route-link>
+              <div class="menu-option-link">
+                <stencil-route-link
+                  url={(Array.isArray(menuOption.url)
+                    ? menuOption.url[0]
+                    : menuOption.url) as string}
+                  urlMatch={menuOption.urlMatch}
+                  exact={true}>
+                  <span class='menu-option' onClick={() => { this.mobileMenuClickHandler() }}>
+                    {menuOption.title}
+                  </span>
+                </stencil-route-link>
+              </div>
             );
           })}
         </div>

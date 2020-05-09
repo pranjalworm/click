@@ -3,7 +3,6 @@
 .card-link-root {
   width: 100%;
   padding: 20px;
-  font-weight: bold;
 
   .image-wrapper {
     display: flex;
@@ -43,8 +42,8 @@
 }
 
 .card-link-root.desktop-style.page-styling {
-  width: 70%;
-  padding: 50px;
+  width: 60%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   margin: 0% auto 100px auto;
