@@ -1,4 +1,4 @@
-@import "../../global/styles/resets";
+@import "../../global/styles/local-master";
 
 #page-not-found-root {
   display: flex;
@@ -14,7 +14,6 @@
 
     #oops {
       font-size: var(--font-size-x-large);
-      font-weight: bold;
       color: var(--font-color-dark);
     }
 

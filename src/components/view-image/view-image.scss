@@ -1,4 +1,4 @@
-@import "../../global/styles/resets";
+@import "../../global/styles/local-master";
 
 #view-image-root {
   width: 100%;
@@ -99,7 +99,6 @@
     #image-caption {
       color: var(--font-color-dark);
       text-align: center;
-      font-weight: bold;
     }
 
     #image-description {

@@ -1,4 +1,4 @@
-@import "../../global/styles/resets";
+@import "../../global/styles/local-master";
 
 // TODO: condense commonly used flex styling
 
@@ -26,7 +26,6 @@
       flex-direction: column;
       width: 100%;
       align-items: start;
-      font-weight: bold;
       margin-bottom: 50px;
 
       #gallery-title {

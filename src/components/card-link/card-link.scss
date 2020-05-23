@@ -1,10 +1,8 @@
-@import "../../global/styles/resets";
+@import "../../global/styles/local-master";
 
 .card-link-root {
   width: 100%;
   padding: 20px;
-  transition-duration: 0.3s;
-  font-weight: bold;
 
   .image-wrapper {
     display: flex;
@@ -14,7 +12,6 @@
 
   .title-wrapper {
     color: var(--font-color);
-    transition-duration: 0.3s;
     font-size: var(--font-size-large);
     margin-bottom: 10px;
   }
@@ -45,8 +42,8 @@
 }
 
 .card-link-root.desktop-style.page-styling {
-  width: 70%;
-  padding: 50px;
+  width: 60%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   margin: 0% auto 100px auto;
@@ -89,7 +86,7 @@
 
 .card-link-root:hover {
   cursor: pointer;
-  box-shadow: 0px 5px 50px 5px #efefef;
+  box-shadow: 0px 5px 50px 5px var(--shadow);
 }
 
 .card-link-root:hover .title-wrapper {

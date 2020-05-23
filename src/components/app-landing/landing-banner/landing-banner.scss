@@ -1,36 +1,32 @@
-@import "../../../global/styles/resets";
+@import "../../../global/styles/local-master";
 
 #landing-section {
-  height: 90vh;
-  max-height: 90vh;
-  min-height: 90vh;
+  height: 86vh;
+  max-height: 86vh;
+  min-height: 86vh;
   text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 
   #banner-image {
     text-align: center;
-    width: 100%;
     padding: 0 40px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   img {
     width: 100%;
   }
 
-  @media (max-width: 780px) {
-    #banner-image {
-      height: 65vh;
-    }
-
-    img {
-      height: 100%;
-    }
-  }
-
   #banner-caption {
-    margin: 30px 20px 0px 20px;
-    font-weight: bold;
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--font-color-dark);
   }
 }
