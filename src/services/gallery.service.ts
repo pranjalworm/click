@@ -70,6 +70,9 @@ export default class GalleryService {
       case GalleryType.Wallpapers:
         return ImageData.WallpapersImages;
 
+      case GalleryType.Silhouette:
+        return ImageData.SilhouetteImages;
+
       default:
         throw new Error(`GalleryService > getGalleryImages > galleryType: ${galleryType} not found!`);
     }
@@ -96,6 +99,9 @@ export default class GalleryService {
 
       case GalleryType.Wallpapers:
         return GalleryText.GalleryTitle.Wallpapers;
+
+      case GalleryType.Silhouette:
+        return GalleryText.GalleryTitle.Silhouette;
 
       default:
         throw new Error(`GalleryService > getGalleryTitle > galleryType: ${galleryType} not found!`);
@@ -124,6 +130,9 @@ export default class GalleryService {
       case GalleryType.Wallpapers:
         return GalleryText.GalleryDescription.Wallpapers;
 
+      case GalleryType.Silhouette:
+        return GalleryText.GalleryDescription.Silhouette;
+
       default:
         throw new Error(`GalleryService > getGalleryDescription > galleryType: ${galleryType} not found!`);
     }
@@ -151,6 +160,9 @@ export default class GalleryService {
       case GalleryType.Wallpapers:
         return ImageData.WallpapersImages.length;
 
+      case GalleryType.Silhouette:
+        return ImageData.SilhouetteImages.length;
+
       default:
         throw new Error(`GalleryService > getGalleryImagesCount > galleryType: ${galleryType} not found!`);
     }
@@ -177,6 +189,9 @@ export default class GalleryService {
 
       case GalleryType.Wallpapers:
         return ImageData.WallpapersImages[index];
+
+      case GalleryType.Silhouette:
+        return ImageData.SilhouetteImages[index];
 
       default:
         throw new Error(`GalleryService > getGalleryImage > galleryType: ${galleryType} not found!`);
@@ -217,6 +232,10 @@ export default class GalleryService {
       case GalleryType.Wallpapers:
         return viewingOnMobile ? ImageData.WallpapersBannerMobile :
           ImageData.WallpapersBannerDesktop;
+
+      case GalleryType.Silhouette:
+        return viewingOnMobile ? ImageData.SilhouetteBannerMobile :
+          ImageData.SilhouetteBannerDesktop;
 
       default:
         throw new Error(`GalleryService > getGalleryBanner > galleryType: ${galleryType} not found!`);

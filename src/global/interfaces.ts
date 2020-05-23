@@ -35,6 +35,7 @@ export enum GalleryType {
   Wallpapers = 'wallpapers',
   Kids = 'kids',
   Street = 'street',
+  Silhouette = 'silhouette'
 }
 
 

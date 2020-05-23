@@ -7,6 +7,7 @@ export namespace GalleryText {
     Kids = 'kids',
     Street = 'street',
     Wallpapers = 'wallpapers',
+    Silhouette = 'silhouette',
   }
 
   export const enum GalleryDescription {
@@ -16,5 +17,6 @@ export namespace GalleryText {
     Kids = 'The quick brown fox jumps right over the lazy dog.',
     Street = 'The quick brown fox jumps right over the lazy dog.',
     Wallpapers = 'A collection of my photographs which I use as wallpapers. Download them for free.',
+    Silhouette = 'A collection of my silhouette photographs.',
   }
 }

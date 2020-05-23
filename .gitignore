@@ -66,3 +66,5 @@ typings/
 
 # assets dir built by stencil during compilation
 assets
+
+desktop.ini
