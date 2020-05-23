@@ -3,6 +3,7 @@ export enum ImageOrientation {
   Portrait = 'portrait'
 }
 
+
 export type Photograph = {
   id: number;
   url: string;
@@ -18,12 +19,14 @@ export type Photograph = {
   clickCallback?: (data: any) => void;
 }
 
+
 export type Blog = {
   imageUrl: string;
   title: string;
   description?: string;
   blogImages: Photograph[]
 }
+
 
 export enum GalleryType {
   PreWedding = 'pre-wedding',
@@ -34,6 +37,7 @@ export enum GalleryType {
   Street = 'street',
 }
 
+
 export type Gallery = {
   imageUrlMobile: string;
   imageUrlDesktop: string;
@@ -42,10 +46,12 @@ export type Gallery = {
   description?: string;
 }
 
+
 export enum CardListType {
   Gallery = 'gallery',
   Blog = 'blog',
 }
+
 
 export enum CardListMode {
   Page = 'page', // when card-links occupies the whole page
@@ -60,9 +66,12 @@ export enum ContentType {
   BlogPost = 'blog-post' // for displaying a specific blog post
 }
 
+
 export enum StorageKeys {
-  LandingBannerIndex = 'landing-banner-index'
+  LandingBannerIndex = 'landing-banner-index',
+  CurrentTheme = 'light-theme'
 }
+
 
 export enum ToastMessageType {
   Success = 'success',

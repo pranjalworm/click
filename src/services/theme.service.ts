@@ -1,18 +1,31 @@
+import StorageService from "./storage.service";
+import { StorageKeys } from "../global/interfaces";
+
 export namespace ThemeService {
+
 
   enum ThemeClass {
     DarkTheme = 'dark-theme',
     LightTheme = 'light-theme'
   }
 
+
   const bodyRef = document.querySelector('body');
-  let currentThemeClass: ThemeClass = ThemeClass.LightTheme;
+
 
   export const init = () => {
+
+    let currentThemeClass = getCurrentTheme();
+
+    if (!currentThemeClass) {
+      StorageService.setItem(StorageKeys.CurrentTheme, ThemeClass.LightTheme);
+      currentThemeClass = ThemeClass.LightTheme;
+    }
 
     bodyRef.classList.add(currentThemeClass);
     registerListener();
   }
+
 
   const registerListener = () => {
 
@@ -27,18 +40,31 @@ export namespace ThemeService {
     })
   }
 
+
   const toggleTheme = () => {
 
-    if (currentThemeClass === ThemeClass.LightTheme) {
+    if (getCurrentTheme() === ThemeClass.LightTheme) {
       bodyRef.classList.remove(ThemeClass.LightTheme);
       bodyRef.classList.add(ThemeClass.DarkTheme);
-      currentThemeClass = ThemeClass.DarkTheme;
+      setCurrentTheme(ThemeClass.DarkTheme);
 
     } else {
       bodyRef.classList.remove(ThemeClass.DarkTheme);
       bodyRef.classList.add(ThemeClass.LightTheme);
-      currentThemeClass = ThemeClass.LightTheme;
+      setCurrentTheme(ThemeClass.LightTheme);
     }
+  }
+
+
+  const getCurrentTheme = () => {
+
+    return StorageService.getItem(StorageKeys.CurrentTheme) as ThemeClass;
+  }
+
+
+  const setCurrentTheme = (themeClass: ThemeClass) => {
+
+    StorageService.setItem(StorageKeys.CurrentTheme, themeClass);
   }
 
 }
