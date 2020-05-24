@@ -3,8 +3,7 @@ import { StorageKeys } from "../global/interfaces";
 
 export namespace ThemeService {
 
-
-  enum ThemeClass {
+  export enum ThemeClass {
     DarkTheme = 'dark-theme',
     LightTheme = 'light-theme'
   }
@@ -15,14 +14,7 @@ export namespace ThemeService {
 
   export const init = () => {
 
-    let currentThemeClass = getCurrentTheme();
-
-    if (!currentThemeClass) {
-      StorageService.setItem(StorageKeys.CurrentTheme, ThemeClass.LightTheme);
-      currentThemeClass = ThemeClass.LightTheme;
-    }
-
-    bodyRef.classList.add(currentThemeClass);
+    bodyRef.classList.add(getInitTheme());
     registerListener();
   }
 
@@ -33,7 +25,7 @@ export namespace ThemeService {
 
       const key = event.key;
 
-      if (key === 'b' || key === 'B') {
+      if (key === 'd' || key === 'D') {
 
         toggleTheme();
       }
@@ -41,7 +33,7 @@ export namespace ThemeService {
   }
 
 
-  const toggleTheme = () => {
+  export const toggleTheme = () => {
 
     if (getCurrentTheme() === ThemeClass.LightTheme) {
       bodyRef.classList.remove(ThemeClass.LightTheme);
@@ -56,7 +48,23 @@ export namespace ThemeService {
   }
 
 
-  const getCurrentTheme = () => {
+  const getInitTheme = () => {
+
+    const date = new Date();
+    const hour = date.getHours();
+
+    // use dark theme during night
+    if (hour === 23 || (hour >= 0 && hour <= 7)) {
+      setCurrentTheme(ThemeClass.DarkTheme);
+      return ThemeClass.DarkTheme;
+    }
+
+    setCurrentTheme(ThemeClass.LightTheme);
+    return ThemeClass.LightTheme;
+  }
+
+
+  export const getCurrentTheme = () => {
 
     return StorageService.getItem(StorageKeys.CurrentTheme) as ThemeClass;
   }

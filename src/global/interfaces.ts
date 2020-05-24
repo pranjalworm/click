@@ -70,7 +70,7 @@ export enum ContentType {
 
 export enum StorageKeys {
   LandingBannerIndex = 'landing-banner-index',
-  CurrentTheme = 'light-theme'
+  CurrentTheme = 'current-theme'
 }
 
 
