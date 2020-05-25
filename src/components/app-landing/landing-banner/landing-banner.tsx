@@ -21,7 +21,9 @@ import StorageService from '../../../services/storage.service';
 export class LandingBanner implements ComponentInterface {
 
   @Event({
-    eventName: 'banner-loaded'
+    eventName: 'banner-loaded',
+    bubbles: true,
+    composed: true
   }) bannerLoaded: EventEmitter;
 
   private bannerImage: Photograph = null;

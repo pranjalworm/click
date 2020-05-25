@@ -4,7 +4,7 @@ import {
   ComponentInterface,
   Listen,
   Element,
-  Prop,
+  Prop
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 import { ROUTE_NAME } from '../../services/route.service';

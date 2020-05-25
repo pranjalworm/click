@@ -1,4 +1,10 @@
-import { h, Component, ComponentInterface, Listen, Element } from '@stencil/core';
+import {
+  h,
+  Component,
+  ComponentInterface,
+  Listen,
+  Element
+} from '@stencil/core';
 import '@stencil/router';
 import { Route, RouteService } from '../../services/route.service';
 
@@ -11,10 +17,10 @@ const TOAST_VISIBLE_TIMEOUT = 3000;
 })
 export class AppRoot implements ComponentInterface {
 
+  @Element() host: HTMLElement;
+
   private routes: Route[] = [];
   private appToastRef: HTMLAppToastElement = null;
-
-  @Element() host: HTMLElement;
 
   constructor() {
 
@@ -37,8 +43,8 @@ export class AppRoot implements ComponentInterface {
   }
 
 
-
   componentDidLoad() {
+
     this.appToastRef = this.host.shadowRoot.querySelector('app-toast');
   }
 

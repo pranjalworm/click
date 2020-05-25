@@ -11,8 +11,25 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="x-ua-compatible" content="IE=Edge" />
 
-  <link href="/build/app.css" rel="stylesheet">
+  <style>
+    #first-load-banner {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-family: "Quicksand", sans-serif;
+      color: #777;
+      font-weight: bold;
+    }
+  </style>
+
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="/build/app.css" rel="stylesheet">
   <script type="module" src="/build/app.esm.js"></script>
   <script nomodule src="/build/app.js"></script>
 
@@ -22,11 +39,25 @@
   <base href=".">
 </head>
 
-<body>
+<body id="body">
 
   <noscript>Please enable javascript to access this website.</noscript>
 
+  <div id="first-load-banner">
+    pranjal dubey
+  </div>
+
   <app-root id="app-root"></app-root>
+
+  <script>
+    const firstLoadBannerRef = document.getElementById('first-load-banner');
+    const appRootRef = document.getElementById('app-root');
+    const bodyRef = document.getElementById('body');
+
+    appRootRef.addEventListener('banner-loaded', (event) => {
+      bodyRef.removeChild(firstLoadBannerRef);
+    })
+  </script>
 
 </body>
 
