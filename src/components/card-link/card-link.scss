@@ -11,13 +11,23 @@
   }
 
   .title-wrapper {
-    color: var(--font-color);
+    color: var(--font-color-accent);
     font-size: var(--font-size-large);
     margin-bottom: 10px;
   }
 
   .description-wrapper {
     color: var(--font-color-dark);
+    margin-bottom: 10px;
+  }
+
+  .info-wrapper {
+    margin-top: 15px;
+    display: flex;
+  }
+
+  .arrow-wrapper {
+    filter: invert(15%) sepia(96%) saturate(2886%) hue-rotate(348deg) brightness(101%) contrast(99%);
   }
 }
 
@@ -33,11 +43,6 @@
     img {
       width: 100%;
     }
-  }
-
-  .text-wrapper {
-    margin-top: 15px;
-    width: 100%;
   }
 }
 
@@ -56,10 +61,6 @@
       width: 100%;
     }
   }
-
-  .text-wrapper {
-    margin-top: 15px;
-  }
 }
 
 .card-link-root.desktop-style.section-styling {
@@ -77,10 +78,6 @@
     img {
       width: 100%;
     }
-  }
-
-  .text-wrapper {
-    margin-top: 15px;
   }
 }
 
