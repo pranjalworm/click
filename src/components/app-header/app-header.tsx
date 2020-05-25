@@ -74,6 +74,17 @@ export class AppHeader implements ComponentInterface {
       toggleButton = <input checked type="checkbox" id="toggleButton" onChange={() => this.toggleTheme()} />
     }
 
+    const mobileMenuControls = this.viewingOnMobile ? (
+      <div id="controls-wrapper">
+        <div class="control">
+          <span>night mode</span>
+          <label class="switch">
+            {toggleButton}
+            <div class="slider round"></div>
+          </label>
+        </div>
+      </div>) : '';
+
     return (
       <div id="menu-wrapper" class="fade-in">
         <div id="menu">
@@ -96,15 +107,8 @@ export class AppHeader implements ComponentInterface {
           })}
         </div>
 
-        <div id="controls-wrapper">
-          <div class="control">
-            <span>night mode</span>
-            <label class="switch">
-              {toggleButton}
-              <div class="slider round"></div>
-            </label>
-          </div>
-        </div>
+        {mobileMenuControls}
+
       </div>
     )
   }
