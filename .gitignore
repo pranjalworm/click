@@ -1,6 +1,10 @@
 # Custom ignore
 www
- 
+assets
+desktop.ini
+.firebase
+.firebaserc
+firebase.json
 
 # Logs
 logs
@@ -63,6 +67,3 @@ typings/
 
 # next.js build output
 .next
-
-# assets dir built by stencil during compilation
-assets
