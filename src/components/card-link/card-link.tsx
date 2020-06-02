@@ -37,7 +37,7 @@ export class CardLink implements ComponentInterface {
 
     styleClass += this.cardLinkConfig.mode === CardListMode.Page ? ' page-styling' : ' section-styling';
 
-    const imageSrc = getAssetPath(`../../assets/images/${this.cardLinkConfig?.image.url}`)
+    const imageSrc = getAssetPath(`../../assets/images/${this.cardLinkConfig?.image.url}`);
 
     return (
       <div class={`card-link-root ${styleClass}`} onClick={() => this.cardClickHandler()}>
@@ -45,13 +45,16 @@ export class CardLink implements ComponentInterface {
           <img src={imageSrc} alt={this.cardLinkConfig?.image.alt} />
         </div>
 
-        <div class="text-wrapper">
+        <div class="info-wrapper">
+
           <div class="title-wrapper">
             {this.cardLinkConfig?.title}
           </div>
+
           <div class="description-wrapper">
             {this.cardLinkConfig?.description}
           </div>
+
         </div>
 
       </div>

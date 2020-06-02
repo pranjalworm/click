@@ -3,15 +3,17 @@
 #app-footer-root {
   display: flex;
   flex-direction: row;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  padding: 50px 20px;
+  height: 14vh;
+  padding: 0px 40px;
   margin: 0% auto;
   z-index: 100;
   color: var(--font-color);
 
   @media (max-width: 780px) {
     flex-direction: column-reverse;
+    justify-content: space-around;
   }
 }
 
@@ -36,7 +38,12 @@
 .link {
   padding: 10px;
   color: var(--font-color);
-  margin-bottom: 20px;
+}
+
+@media (max-width: 780px) {
+  .link {
+    margin-bottom: 20px;
+  }
 }
 
 a {
