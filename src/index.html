@@ -25,13 +25,41 @@
       font-family: "Quicksand", sans-serif;
       color: #777;
       font-weight: bold;
+      z-index: 200;
+      background: #fff;
+    }
+
+    #app-root {
+      z-index: 100;
+    }
+
+    .fade-out {
+      animation: fadeOut ease 1s;
+    }
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      99% {
+        opacity: 0;
+      }
+
+      100% {
+        display: none;
+      }
     }
   </style>
 
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="/build/app.css" rel="stylesheet">
-  <script type="module" src="/build/app.esm.js"></script>
-  <script nomodule src="/build/app.js"></script>
+  <script defer type="module" src="/build/app.esm.js"></script>
+  <script defer nomodule src="/build/app.js"></script>
 
   <link rel="apple-touch-icon" href="/assets/icon/icon.png">
   <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
@@ -50,13 +78,25 @@
   <app-root id="app-root"></app-root>
 
   <script>
+
+    const bodyRef = document.getElementById('body');
     const firstLoadBannerRef = document.getElementById('first-load-banner');
     const appRootRef = document.getElementById('app-root');
-    const bodyRef = document.getElementById('body');
 
-    appRootRef.addEventListener('banner-loaded', (event) => {
-      bodyRef.removeChild(firstLoadBannerRef);
-    })
+    /**
+     * fade out first-load-banner and show app content if
+     * the website is loading for the first during that session
+     */
+
+    window.addEventListener('banner-loaded', (event) => {
+
+      sessionStorage.setItem('first-load', true);
+      firstLoadBannerRef.classList.add('fade-out');
+
+      setTimeout(() => {
+        bodyRef.removeChild(firstLoadBannerRef);
+      }, 950);
+    });
   </script>
 
 </body>

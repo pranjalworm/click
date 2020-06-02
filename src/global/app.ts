@@ -14,7 +14,7 @@ export default async () => {
     [StoreProps.ViewingImage]: false
   };
 
-  new StoreService(storeConfig);
+  StoreService.init(storeConfig);
 
   // initialising theme
   ThemeService.init();

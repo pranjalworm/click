@@ -8,7 +8,7 @@ export class StoreService {
 
   static store;
 
-  constructor(config: { [key: string]: any }) {
+  static init(config: { [key: string]: any }) {
 
     StoreService.store = createStore(config);
   }
