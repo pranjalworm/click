@@ -12,7 +12,6 @@ export const TravelImages: Photograph[] = [
   MasterImages[33],
   MasterImages[35],
   MasterImages[34],
-  MasterImages[35],
   MasterImages[39],
   MasterImages[46],
   MasterImages[52],

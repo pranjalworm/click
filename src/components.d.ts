@@ -5,11 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults, RouterHistory, } from "@stencil/router";
-import { ToastConfig, } from "./components/app-toast/app-toast";
-import { CardLinkConfig, } from "./components/card-link/card-link";
-import { CardListConfig, } from "./components/card-list/card-list";
-import { Photograph, } from "./global/interfaces";
+import { MatchResults, RouterHistory } from "@stencil/router";
+import { ToastConfig } from "./components/app-toast/app-toast";
+import { CardLinkConfig } from "./components/card-link/card-link";
+import { CardListConfig } from "./components/card-list/card-list";
+import { Photograph } from "./global/interfaces";
 export namespace Components {
     interface AboutMe {
     }

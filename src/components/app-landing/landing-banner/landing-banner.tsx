@@ -22,8 +22,7 @@ export class LandingBanner implements ComponentInterface {
 
   @Event({
     eventName: 'banner-loaded',
-    bubbles: true,
-    composed: true
+    bubbles: true
   }) bannerLoaded: EventEmitter;
 
   private bannerImage: Photograph = null;

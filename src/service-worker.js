@@ -1,12 +1,13 @@
 importScripts('workbox-v4.3.1/workbox-sw.js');
 
 const { registerRoute } = workbox.routing;
-const { CacheFirst } = workbox.strategies;
-
+const { StaleWhileRevalidate } = workbox.strategies;
 
 registerRoute(
-  new RegExp('/assets/images/'),
-  new CacheFirst()
+  ({ request }) => request.destination === 'image',
+  new StaleWhileRevalidate({
+    cacheName: 'image-cache'
+  })
 );
 
 // the precache manifest will be injected into the following line

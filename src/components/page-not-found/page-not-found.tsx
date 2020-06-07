@@ -23,7 +23,7 @@ export class PageNotFound implements ComponentInterface {
             <stencil-route-link
               url={landingPageRoute.url[0]}
               exact={true}>
-              <span>Go to home >></span>
+              <span>Go to home &gt;&gt;</span>
             </stencil-route-link>
           </div>
         </div>

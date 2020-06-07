@@ -12,6 +12,11 @@
   <meta http-equiv="x-ua-compatible" content="IE=Edge" />
 
   <style>
+    html,
+    body {
+      transition-duration: 0.3s;
+    }
+
     #first-load-banner {
       position: fixed;
       top: 0;
@@ -61,8 +66,6 @@
   <script defer type="module" src="/build/app.esm.js"></script>
   <script defer nomodule src="/build/app.js"></script>
 
-  <link rel="apple-touch-icon" href="/assets/icon/icon.png">
-  <link rel="icon" type="image/x-icon" href="/assets/icon/favicon.ico">
   <link rel="manifest" href="/manifest.json">
   <base href=".">
 </head>
@@ -81,22 +84,14 @@
 
     const bodyRef = document.getElementById('body');
     const firstLoadBannerRef = document.getElementById('first-load-banner');
-    const appRootRef = document.getElementById('app-root');
 
-    /**
-     * fade out first-load-banner and show app content if
-     * the website is loading for the first during that session
-     */
+    sessionStorage.setItem('first-load', true);
+    firstLoadBannerRef.classList.add('fade-out');
 
-    window.addEventListener('banner-loaded', (event) => {
+    setTimeout(() => {
+      bodyRef.removeChild(firstLoadBannerRef);
+    }, 950);
 
-      sessionStorage.setItem('first-load', true);
-      firstLoadBannerRef.classList.add('fade-out');
-
-      setTimeout(() => {
-        bodyRef.removeChild(firstLoadBannerRef);
-      }, 950);
-    });
   </script>
 
 </body>
