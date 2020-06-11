@@ -32,5 +32,5 @@ export const PortraitImages: Photograph[] = [
 
 export const PortraitBannerMobile: Photograph = MasterImages[21];
 
-export const PortraitBannerDesktop: Photograph = MasterImages[23];
+export const PortraitBannerDesktop: Photograph = MasterImages[9];
 

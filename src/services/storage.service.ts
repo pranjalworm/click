@@ -13,7 +13,7 @@ export default class StorageService {
 
     let value = StorageService.sessionStorage.getItem(key);
 
-    if (value !== undefined) return value;
+    if (value) return value;
 
     return StorageService.localStorage.getItem(key);
   }
