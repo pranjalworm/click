@@ -4,14 +4,18 @@ import {
   ComponentInterface,
   State,
   Element,
-  getAssetPath
+  getAssetPath,
+  Listen
 } from '@stencil/core';
 import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
 import { StoreService, StoreProps } from '../../services/store.service';
 import { Utils } from '../../global/utils';
 import { ThemeService } from '../../services/theme.service';
 
-const landingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
+const LandingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
+const Label = 'night mode';
+const NightModeButtonId = 'night-mode-button';
+
 
 @Component({
   tag: 'app-header',
@@ -21,16 +25,30 @@ const landingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
 })
 export class AppHeader implements ComponentInterface {
 
+  private siteHeading = 'pranjal dubey';
+  private menuOptions = null;
+  private viewingOnMobile: boolean;
+
   @Element() host: HTMLElement;
 
   @State() displayHeader = true;
 
   @State() openMobileMenu = false;
 
-  private siteHeading = 'pranjal dubey';
-  private menuOptions = null;
-  private viewingOnMobile: boolean;
+  @Listen('toggle-clicked')
+  toggleClickListener(event: CustomEvent) {
 
+    const buttonId = event.detail.buttonId;
+
+    switch (buttonId) {
+      case NightModeButtonId:
+        ThemeService.toggleTheme();
+        break;
+
+      default:
+        console.error(`AppHeader: No handler attached for: ${buttonId}`)
+    }
+  }
 
   componentWillLoad() {
     this.menuOptions = RouteService.getHeaderRoutes();
@@ -68,21 +86,15 @@ export class AppHeader implements ComponentInterface {
   getMenuItems() {
 
     const currentTheme = ThemeService.getCurrentTheme();
-    let toggleButton = <input type="checkbox" id="toggleButton" onChange={() => this.toggleTheme()} />;
-
-    if (currentTheme === ThemeService.ThemeClass.DarkTheme) {
-      toggleButton = <input checked type="checkbox" id="toggleButton" onChange={() => this.toggleTheme()} />
-    }
+    const nightModeApplied = currentTheme === ThemeService.ThemeClass.DarkTheme;
 
     const mobileMenuControls = this.viewingOnMobile ? (
       <div id="controls-wrapper">
-        <div class="control">
-          <span>night mode</span>
-          <label class="switch">
-            {toggleButton}
-            <div class="slider round"></div>
-          </label>
-        </div>
+        <toggle-button
+          buttonId={NightModeButtonId}
+          label={Label}
+          checked={nightModeApplied}>
+        </toggle-button>
       </div>) : '';
 
     return (
@@ -119,7 +131,7 @@ export class AppHeader implements ComponentInterface {
     return (
       <header id='app-header-root' class="desktop"
         style={{ 'display': this.displayHeader ? 'flex' : 'none' }}>
-        <stencil-route-link url={landingPageRoute.url[0]}>
+        <stencil-route-link url={LandingPageRoute.url[0]}>
           <div id='app-heading'>{this.siteHeading}</div>
         </stencil-route-link>
 
@@ -143,7 +155,7 @@ export class AppHeader implements ComponentInterface {
         <div id="menu-header">
 
           {/* SITE HEADING */}
-          <stencil-route-link url={landingPageRoute.url[0]}>
+          <stencil-route-link url={LandingPageRoute.url[0]}>
             <div id='app-heading'>{this.siteHeading}</div>
           </stencil-route-link>
 

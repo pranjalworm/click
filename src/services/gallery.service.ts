@@ -74,7 +74,7 @@ export default class GalleryService {
         return ImageData.SilhouetteImages;
 
       default:
-        throw new Error(`GalleryService > getGalleryImages > galleryType: ${galleryType} not found!`);
+        console.error(`GalleryService > getGalleryImages > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -104,7 +104,7 @@ export default class GalleryService {
         return GalleryText.GalleryTitle.Silhouette;
 
       default:
-        throw new Error(`GalleryService > getGalleryTitle > galleryType: ${galleryType} not found!`);
+        console.error(`GalleryService > getGalleryTitle > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -134,7 +134,7 @@ export default class GalleryService {
         return GalleryText.GalleryDescription.Silhouette;
 
       default:
-        throw new Error(`GalleryService > getGalleryDescription > galleryType: ${galleryType} not found!`);
+        console.error(`GalleryService > getGalleryDescription > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -164,7 +164,7 @@ export default class GalleryService {
         return ImageData.SilhouetteImages.length;
 
       default:
-        throw new Error(`GalleryService > getGalleryImagesCount > galleryType: ${galleryType} not found!`);
+        console.error(`GalleryService > getGalleryImagesCount > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -194,7 +194,7 @@ export default class GalleryService {
         return ImageData.SilhouetteImages[index];
 
       default:
-        throw new Error(`GalleryService > getGalleryImage > galleryType: ${galleryType} not found!`);
+        console.error(`GalleryService > getGalleryImage > galleryType: ${galleryType} not found!`);
     }
   }
 
@@ -238,7 +238,7 @@ export default class GalleryService {
           ImageData.SilhouetteBannerDesktop;
 
       default:
-        throw new Error(`GalleryService > getGalleryBanner > galleryType: ${galleryType} not found!`);
+        console.error(`GalleryService > getGalleryBanner > galleryType: ${galleryType} not found!`);
     }
   }
 

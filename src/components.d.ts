@@ -53,6 +53,11 @@ export namespace Components {
         "history": RouterHistory;
         "match": MatchResults;
     }
+    interface ToggleButton {
+        "buttonId": string;
+        "checked": boolean;
+        "label": string;
+    }
     interface ViewImage {
         "history": RouterHistory;
         "match": MatchResults;
@@ -155,6 +160,12 @@ declare global {
         prototype: HTMLPortfolioPageElement;
         new (): HTMLPortfolioPageElement;
     };
+    interface HTMLToggleButtonElement extends Components.ToggleButton, HTMLStencilElement {
+    }
+    var HTMLToggleButtonElement: {
+        prototype: HTMLToggleButtonElement;
+        new (): HTMLToggleButtonElement;
+    };
     interface HTMLViewImageElement extends Components.ViewImage, HTMLStencilElement {
     }
     var HTMLViewImageElement: {
@@ -178,6 +189,7 @@ declare global {
         "landing-content": HTMLLandingContentElement;
         "page-not-found": HTMLPageNotFoundElement;
         "portfolio-page": HTMLPortfolioPageElement;
+        "toggle-button": HTMLToggleButtonElement;
         "view-image": HTMLViewImageElement;
     }
 }
@@ -228,6 +240,12 @@ declare namespace LocalJSX {
         "history"?: RouterHistory;
         "match"?: MatchResults;
     }
+    interface ToggleButton {
+        "buttonId"?: string;
+        "checked"?: boolean;
+        "label"?: string;
+        "onToggle-clicked"?: (event: CustomEvent<any>) => void;
+    }
     interface ViewImage {
         "history"?: RouterHistory;
         "match"?: MatchResults;
@@ -250,6 +268,7 @@ declare namespace LocalJSX {
         "landing-content": LandingContent;
         "page-not-found": PageNotFound;
         "portfolio-page": PortfolioPage;
+        "toggle-button": ToggleButton;
         "view-image": ViewImage;
     }
 }
@@ -273,6 +292,7 @@ declare module "@stencil/core" {
             "landing-content": LocalJSX.LandingContent & JSXBase.HTMLAttributes<HTMLLandingContentElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "portfolio-page": LocalJSX.PortfolioPage & JSXBase.HTMLAttributes<HTMLPortfolioPageElement>;
+            "toggle-button": LocalJSX.ToggleButton & JSXBase.HTMLAttributes<HTMLToggleButtonElement>;
             "view-image": LocalJSX.ViewImage & JSXBase.HTMLAttributes<HTMLViewImageElement>;
         }
     }
