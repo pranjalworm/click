@@ -28,9 +28,12 @@ export const PortraitImages: Photograph[] = [
   MasterImages[106],
   MasterImages[53],
   MasterImages[103],
+  MasterImages[23],
+  MasterImages[108],
+  MasterImages[109],
 ];
 
-export const PortraitBannerMobile: Photograph = MasterImages[21];
+export const PortraitBannerMobile: Photograph = MasterImages[42];
 
-export const PortraitBannerDesktop: Photograph = MasterImages[9];
+export const PortraitBannerDesktop: Photograph = MasterImages[1];
 

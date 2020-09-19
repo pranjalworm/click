@@ -51,5 +51,5 @@ export const StreetImages: Photograph[] = [
 export const StreetBannerMobile: Photograph = MasterImages[44];
 
 
-export const StreetBannerDesktop: Photograph = MasterImages[57];
+export const StreetBannerDesktop: Photograph = MasterImages[37];
 

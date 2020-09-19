@@ -177,9 +177,8 @@ export class ViewImage {
     if (this.currentImage) {
 
       const imageSrc = getAssetPath(`../../assets/images/${this.currentImage.url}`);
-      const imageDownloadUrl = getAssetPath(`../../assets/images/high-res/${this.currentImage.url}`);
-      const imageShareUrl = this.getImageShareUrl();
-      const filename = `pranjal-dubey-photography-${this.currentImage.id}`;
+      // const imageShareUrl = this.getImageShareUrl();
+      // const filename = `pranjal-dubey-photography-${this.currentImage.id}`;
 
       imageContent = (
         <div>
@@ -189,11 +188,11 @@ export class ViewImage {
 
           <div id="image-controls">
 
-            <div class="control-section">
+            {/* <div class="control-section">
               <a href={imageDownloadUrl} download={filename}>
                 <span class="control">download</span>
               </a>
-            </div>
+            </div> */}
 
             <div class="control-section">
               <span class="control" onClick={() => this.getImage(false)}>
@@ -205,11 +204,11 @@ export class ViewImage {
               </span>
             </div>
 
-            <div class="control-section">
+            {/* <div class="control-section">
               <span class="control" onClick={() => this.copyTextToClipboard(imageShareUrl)}>
                 share image
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
       )
@@ -232,7 +231,7 @@ export class ViewImage {
 
         </div>
 
-        <div id="image-text">
+        {/* <div id="image-text">
           <div id="image-caption">
             {this.currentImage ? this.currentImage.caption : ''}
           </div>
@@ -240,7 +239,7 @@ export class ViewImage {
           <div id="image-description">
             {this.currentImage ? this.currentImage.description : ''}
           </div>
-        </div>
+        </div> */}
 
       </div>
     );

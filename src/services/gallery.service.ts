@@ -12,7 +12,8 @@ export enum EnabledGalleryType {
   PreWedding = 'pre-wedding',
   Portrait = 'portrait',
   Travel = 'travel',
-  Street = 'street'
+  Street = 'street',
+  Silhouette = 'silhouette'
 }
 
 

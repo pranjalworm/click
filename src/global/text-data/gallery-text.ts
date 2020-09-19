@@ -11,12 +11,12 @@ export namespace GalleryText {
   }
 
   export const enum GalleryDescription {
-    PreWedding = 'The quick brown fox jumps right over the lazy dog.',
-    Portrait = 'The quick brown fox jumps right over the lazy dog.',
-    Travel = 'The quick brown fox jumps right over the lazy dog.',
+    PreWedding = 'Trying to capture the enigmatic connection nobody can quite explain.',
+    Portrait = 'Trying to put into pictures the feelings present on both sides of the camera.',
+    Travel = 'Always on the lookout for the next memorable travel story.',
     Kids = 'The quick brown fox jumps right over the lazy dog.',
-    Street = 'The quick brown fox jumps right over the lazy dog.',
-    Wallpapers = 'A collection of my photographs which I use as wallpapers. Download them for free.',
-    Silhouette = 'A collection of my silhouette photographs.',
+    Street = 'The accidental masterpieces fleetingly falling into place around us all the time.',
+    Wallpapers = 'A collection of my photographs which I use as wallpapers.',
+    Silhouette = 'Somehow the anonymous nature of silhouettes make them ever so more human.',
   }
 }
