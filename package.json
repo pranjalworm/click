@@ -5,6 +5,7 @@
   "description": "Pranjal Dubey Photography Website",
   "scripts": {
     "build": "stencil build",
+    "launch": "rimraf www && rimraf assets && stencil build && firebase deploy",
     "start": "stencil build --dev --watch --serve",
     "start:prod": "stencil build --watch --serve"
   },

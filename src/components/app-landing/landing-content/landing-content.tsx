@@ -41,7 +41,7 @@ export class LandingContent implements ComponentInterface {
             const route = ROUTE_NAME.PORTFOLIO;
             this.sectionTitleClickHandler(route)
           }}>
-            Portfolio
+            portfolio
           </div>
           <div class="section-content">
             {

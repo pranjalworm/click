@@ -23,7 +23,7 @@ export const MasterImages: { [key: number]: Photograph } = {
   3: {
     id: 3,
     url: '3.jpg',
-    caption: 'I wonder if life smells like sea. Deep and Free.',
+    caption: 'i wonder if life smells like sea. deep and free.',
     orientation: ImageOrientation.Portrait
   },
   4: {
@@ -185,31 +185,31 @@ export const MasterImages: { [key: number]: Photograph } = {
   30: {
     id: 30,
     url: '30.jpg',
-    caption: 'It\'s never the instrument. It\'s always the artist behind the instrument.',
+    caption: 'it\'s never the instrument. it\'s always the artist behind the instrument.',
     orientation: ImageOrientation.Landscape
   },
   31: {
     id: 31,
     url: '31.jpg',
-    caption: 'I lost my way all the way to you and in you I found all the way back to me.',
+    caption: 'i lost my way all the way to you and in you i found all the way back to me.',
     orientation: ImageOrientation.Landscape
   },
   32: {
     id: 32,
     url: '32.jpg',
-    caption: 'When I felt God created this moment just for me.',
+    caption: 'when i felt god created this moment just for me.',
     orientation: ImageOrientation.Portrait
   },
   33: {
     id: 33,
     url: '33.jpg',
-    caption: 'Soaking it in.',
+    caption: 'soaking it in.',
     orientation: ImageOrientation.Landscape
   },
   34: {
     id: 34,
     url: '34.jpg',
-    caption: 'Beauty in death.',
+    caption: 'beauty in death.',
     orientation: ImageOrientation.Portrait
   },
   35: {
@@ -233,13 +233,13 @@ export const MasterImages: { [key: number]: Photograph } = {
   38: {
     id: 38,
     url: '38.jpg',
-    caption: 'Finding a place, a person or a song; that feels like home and away from home. All at the same time.',
+    caption: 'finding a place, a person or a song; that feels like home and away from home. all at the same time.',
     orientation: ImageOrientation.Portrait
   },
   39: {
     id: 39,
     url: '39.jpg',
-    caption: 'Isn\'t that something what we all aim for? Leaving a trail behind.',
+    caption: 'isn\'t that something what we all aim for? leaving a trail behind.',
     orientation: ImageOrientation.Landscape
   },
   40: {
@@ -263,7 +263,7 @@ export const MasterImages: { [key: number]: Photograph } = {
   43: {
     id: 43,
     url: '43.jpg',
-    caption: 'What if one day you discover it was never random?',
+    caption: 'what if one day you discover it was never random?',
     orientation: ImageOrientation.Landscape
   },
   44: {
@@ -509,7 +509,7 @@ export const MasterImages: { [key: number]: Photograph } = {
   84: {
     id: 84,
     url: '84.jpg',
-    caption: 'We are all made up of pieces from people who have built and broken us.',
+    caption: 'we are all made up of pieces from people who have built and broken us.',
     orientation: ImageOrientation.Portrait
   },
   85: {

@@ -214,16 +214,14 @@ export class ViewImage {
       )
     }
 
-    const closeIcSrc = getAssetPath('../../assets/icon/close.svg');
-
     return (
       <div id="view-image-root">
 
         <div id="image-section">
 
           <div id="exit-view-wrapper">
-            <div id="exit-view-image" onClick={() => { this.exit() }}>
-              <img src={closeIcSrc} alt="close" />
+            <div id="exit-view-icon" onClick={() => { this.exit() }}>
+              &#10006;
             </div>
           </div>
 
