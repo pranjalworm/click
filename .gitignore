@@ -4,7 +4,8 @@ assets
 desktop.ini
 .firebase
 .firebaserc
-firebase.json
+firebase.jso
+.firebase/**
 
 # Logs
 logs
