@@ -662,4 +662,10 @@ export const MasterImages: { [key: number]: Photograph } = {
     caption: 'Keeping up with the pace.',
     orientation: ImageOrientation.Portrait
   },
+  110: {
+    id: 110,
+    url: '110.jpg',
+    caption: 'Keeping up with the pace.',
+    orientation: ImageOrientation.Landscape
+  },
 }

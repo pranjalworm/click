@@ -9,11 +9,11 @@ import { Utils } from "../global/utils";
 
 // only these galleries will be shown throughout the app
 export enum EnabledGalleryType {
+  Silhouette = 'silhouette',
   PreWedding = 'pre-wedding',
   Portrait = 'portrait',
   Travel = 'travel',
-  Street = 'street',
-  Silhouette = 'silhouette'
+  Street = 'street'
 }
 
 

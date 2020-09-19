@@ -35,5 +35,5 @@ export const SilhouetteImages: Photograph[] = [
 
 export const SilhouetteBannerMobile: Photograph = MasterImages[59];
 
-export const SilhouetteBannerDesktop: Photograph = MasterImages[11];
+export const SilhouetteBannerDesktop: Photograph = MasterImages[13];
 

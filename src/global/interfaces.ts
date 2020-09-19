@@ -29,13 +29,13 @@ export type Blog = {
 
 
 export enum GalleryType {
-  PreWedding = 'pre-wedding',
+  Silhouette = 'silhouette',
   Portrait = 'portrait',
+  PreWedding = 'pre-wedding',
   Travel = 'travel',
   Wallpapers = 'wallpapers',
   Kids = 'kids',
-  Street = 'street',
-  Silhouette = 'silhouette'
+  Street = 'street'
 }
 
 
