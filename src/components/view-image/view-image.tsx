@@ -13,7 +13,7 @@ const TOAST_FAILURE_MESSAGE = 'Could not copy image link!'
   tag: 'view-image',
   styleUrl: 'view-image.scss',
   shadow: true,
-  assetsDir: '../../assets'
+  assetsDirs: ['../../assets']
 })
 export class ViewImage {
 
@@ -66,7 +66,7 @@ export class ViewImage {
   }
 
 
-  componentDidUnload() {
+  disconnectedCallback() {
 
     StoreService.store.set(StoreProps.ViewingImage, false);
   }

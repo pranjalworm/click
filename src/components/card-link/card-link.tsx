@@ -14,7 +14,7 @@ export interface CardLinkConfig {
   tag: 'card-link',
   styleUrl: 'card-link.scss',
   shadow: true,
-  assetsDir: '../../assets'
+  assetsDirs: ['../../assets']
 })
 export class CardLink implements ComponentInterface {
 

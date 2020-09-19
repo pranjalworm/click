@@ -21,7 +21,7 @@ const NightModeButtonId = 'night-mode-button';
   tag: 'app-header',
   styleUrl: 'app-header.scss',
   shadow: true,
-  assetsDir: '../../assets'
+  assetsDirs: ['../../assets']
 })
 export class AppHeader implements ComponentInterface {
 

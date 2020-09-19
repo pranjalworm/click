@@ -16,7 +16,7 @@ import StorageService from '../../../services/storage.service';
   tag: 'landing-banner',
   styleUrl: 'landing-banner.scss',
   shadow: true,
-  assetsDir: '../../../assets'
+  assetsDirs: ['../../../assets']
 })
 export class LandingBanner implements ComponentInterface {
 

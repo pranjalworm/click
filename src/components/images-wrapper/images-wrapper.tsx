@@ -9,7 +9,7 @@ export interface ImagesWrapperConfig {
 @Component({
   tag: 'images-wrapper',
   shadow: false,
-  assetsDir: '../../assets'
+  assetsDirs: ['../../assets']
 })
 export class ImagesWrapper implements ComponentInterface {
 

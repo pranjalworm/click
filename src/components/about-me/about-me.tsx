@@ -6,7 +6,7 @@ import PhotographService from '../../services/photograph.service';
   tag: 'about-me',
   styleUrl: 'about-me.scss',
   shadow: true,
-  assetsDir: '../../assets'
+  assetsDirs: ['../../assets']
 })
 export class AboutMe implements ComponentInterface {
 
@@ -26,21 +26,13 @@ export class AboutMe implements ComponentInterface {
         <div id="description">
           <div>
             <p>
-              I am a full-time programmer, part-time photographer, die hard reader.
+              I got my first camera when I was around 15. I have been hooked ever since.
             </p>
             <br />
             <p>
-              I like traveling. I love eating Pizza.
+              I like shooting portraits
             </p>
             <br />
-            <p>
-              The quick brown fox jumps right over the lazy dog.
-              The quick brown fox jumps right over the lazy dog.
-            </p>
-          </div>
-
-          <div>
-            I built this website myself, checkout the source code <a target="_blank" id="source-link" href="https://github.com/pranjalworm/click">here on Github</a>.
           </div>
         </div>
 

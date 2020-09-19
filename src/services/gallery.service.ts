@@ -6,6 +6,16 @@ import { CardLinkConfig } from "../components/card-link/card-link";
 import { GalleryText } from "../global/text-data/gallery-text";
 import { Utils } from "../global/utils";
 
+
+// only these galleries will be shown throughout the app
+export enum EnabledGalleryType {
+  PreWedding = 'pre-wedding',
+  Portrait = 'portrait',
+  Travel = 'travel',
+  Street = 'street'
+}
+
+
 export default class GalleryService {
 
   /**
@@ -18,7 +28,7 @@ export default class GalleryService {
 
     for (let galleryType in GalleryType) {
 
-      if (isNaN(Number(galleryType))) {
+      if (isNaN(Number(galleryType)) && galleryType in EnabledGalleryType) {
 
         if (cardCount && counter === cardCount) {
           break;

@@ -9,7 +9,7 @@ import { ImagesWrapperConfigsMap } from '../../global/image-layout/wrapper-confi
   tag: 'gallery-page',
   styleUrl: 'gallery-page.scss',
   shadow: true,
-  assetsDir: '../../assets'
+  assetsDirs: ['../../assets']
 })
 export class GalleryPage implements ComponentInterface {
 
