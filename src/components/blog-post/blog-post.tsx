@@ -1,39 +1,45 @@
+/**
+ * Page to display a single blog post
+ */
+
 import { h, Component, ComponentInterface, Prop, State, Listen, getAssetPath } from '@stencil/core';
 import { RouterHistory, MatchResults } from '@stencil/router';
-import { Photograph, GalleryType } from '../../global/interfaces';
+import { Photograph, BlogPostId } from '../../global/interfaces';
 import ImageLayout from '../../global/image-layout/image-layout';
 import GalleryService from '../../services/gallery.service';
 import { ImagesWrapperConfigsMap } from '../../global/image-layout/wrapper-configs-map';
+import BlogService from '../../services/blog.service';
+
 
 @Component({
-  tag: 'gallery-page',
-  styleUrl: 'gallery-page.scss',
+  tag: 'blog-post',
+  styleUrl: 'blog-post.scss',
   shadow: true,
   assetsDirs: ['../../assets']
 })
-export class GalleryPage implements ComponentInterface {
+export class BlogPost implements ComponentInterface {
 
-  private galleryType: GalleryType;
+  private blogPostId: BlogPostId;
 
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
 
   @State() content: any;
 
-  @Listen('wrapper-image-clicked')
-  imageClickHandler(event: CustomEvent) {
+  // @Listen('wrapper-image-clicked')
+  // imageClickHandler(event: CustomEvent) {
 
-    const id = event.detail;
-    const index = GalleryService.getIndexById(this.galleryType, id);
+  //   const id = event.detail;
+  //   const index = BlogService.getIndexById(this.blogPostId, id);
 
-    this.history.push(`/view-image/${this.galleryType}/${index}`);
-  }
+  //   this.history.push(`/view-image/${this.blogPostId}/${index}`);
+  // }
 
 
   async componentWillLoad() {
 
     this.content = this.showSpinner();
-    this.content = await this.showGalleryImages();
+    this.content = await this.loadBlogPostContent();
   }
 
 
@@ -45,16 +51,16 @@ export class GalleryPage implements ComponentInterface {
     )
   }
 
-  async fetchImageWrapperConfigs(galleryType: GalleryType, images: Photograph[]) {
+  async fetchImageWrapperConfigs(blogPostId: BlogPostId, images: Photograph[]) {
 
-    // see if configs are already calculated for this galleryType
-    let wrapperConfigs = ImagesWrapperConfigsMap.getConfigs(galleryType);
+    // see if configs are already calculated for this blogpost
+    let wrapperConfigs = ImagesWrapperConfigsMap.getConfigs(blogPostId);
 
     if (!wrapperConfigs) {
 
       const imageLayout = new ImageLayout();
       wrapperConfigs = await imageLayout.getImageWrapperConfigs(images);
-      ImagesWrapperConfigsMap.saveConfigs(galleryType, wrapperConfigs);
+      ImagesWrapperConfigsMap.saveConfigs(blogPostId, wrapperConfigs);
     }
 
     return wrapperConfigs;
@@ -75,27 +81,27 @@ export class GalleryPage implements ComponentInterface {
   }
 
 
-  async showGalleryImages() {
+  async loadBlogPostContent() {
 
-    this.galleryType = this.match.params.galleryType as GalleryType;
+    this.blogPostId = this.match.params.blogPostId as BlogPostId;
 
-    const images = GalleryService.getGalleryImages(this.galleryType);
+    const images = GalleryService.getGalleryImages(this.blogPostId);
     const galleryImages = this.processImageUrls(images);
-    const galleryTitle = GalleryService.getGalleryTitle(this.galleryType);
-    const galleryDescription = GalleryService.getGalleryDescription(this.galleryType);
-    const wrapperConfigs = await this.fetchImageWrapperConfigs(this.galleryType, galleryImages);
+    const blogPostTitle = BlogService.getBlogPostTitle(this.blogPostId);
+    const blogPostDescription = BlogService.getBlogPostDescription(this.blogPostId);
+    const wrapperConfigs = await this.fetchImageWrapperConfigs(this.blogPostId, galleryImages);
 
     return (
-      <div id="gallery-content">
-        <div id="gallery-text">
-          <div id="gallery-title">
-            {galleryTitle}
+      <div id="blog-post-content">
+        <div id="blog-post-text">
+          <div id="blog-post-title">
+            {blogPostTitle}
           </div>
-          <div id="gallery-description">
-            {galleryDescription}
+          <div id="blog-post-description">
+            {blogPostDescription}
           </div>
         </div>
-        <div id="gallery-images-wrapper">
+        <div id="blog-post-images-wrapper">
           {
             wrapperConfigs.map(config => {
               return (
@@ -115,7 +121,7 @@ export class GalleryPage implements ComponentInterface {
   render() {
 
     return (
-      <div id="gallery-page-root">
+      <div id="blog-post-root">
         {this.content}
       </div>
     )

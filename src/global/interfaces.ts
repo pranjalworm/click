@@ -20,14 +20,24 @@ export type Photograph = {
 }
 
 
-export type Blog = {
-  imageUrl: string;
+export type BlogPost = {
+  image: Photograph;
+  id: BlogPostId;
   title: string;
-  description?: string;
-  blogImages: Photograph[]
+  description: string;
 }
 
 
+// list of all blog posts
+export enum BlogPostId {
+  Mysore = 'mysore',
+  Gokarna = 'gokarna',
+  PrideParade = 'pride-parade',
+  Silhouettes = 'silhouettes'
+}
+
+
+// list of all galleries
 export enum GalleryType {
   Silhouette = 'silhouette',
   Portrait = 'portrait',
@@ -39,6 +49,7 @@ export enum GalleryType {
 }
 
 
+// TODO: use this
 export type Gallery = {
   imageUrlMobile: string;
   imageUrlDesktop: string;
@@ -55,7 +66,7 @@ export enum CardListType {
 
 
 export enum CardListMode {
-  Page = 'page', // when card-links occupies the whole page
+  Page = 'page', // when a list of card-links occupy the whole page
   Section = 'section', // when card-links are embedded in some other page
 }
 

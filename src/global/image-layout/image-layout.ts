@@ -46,6 +46,7 @@ export default class ImageLayout {
   }
 
 
+  // TODO: validate this logic
   // filter out fresh images; layout will be calculated only for them
   private filterFreshImages(images: Photograph[]): Photograph[] {
 

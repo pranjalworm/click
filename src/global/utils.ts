@@ -8,9 +8,8 @@ export namespace Utils {
   }
 
 
-  //The min and max are both inclusive
+  // The min and max values are both inclusive
   export const getRandomNumber = (min: number, max: number) => {
-
 
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }

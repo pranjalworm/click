@@ -27,6 +27,14 @@ export namespace Components {
     interface AppToast {
         "toastConfig": ToastConfig;
     }
+    interface BlogPage {
+        "history": RouterHistory;
+        "match": MatchResults;
+    }
+    interface BlogPost {
+        "history": RouterHistory;
+        "match": MatchResults;
+    }
     interface BookShoot {
     }
     interface CardLink {
@@ -106,6 +114,18 @@ declare global {
         prototype: HTMLAppToastElement;
         new (): HTMLAppToastElement;
     };
+    interface HTMLBlogPageElement extends Components.BlogPage, HTMLStencilElement {
+    }
+    var HTMLBlogPageElement: {
+        prototype: HTMLBlogPageElement;
+        new (): HTMLBlogPageElement;
+    };
+    interface HTMLBlogPostElement extends Components.BlogPost, HTMLStencilElement {
+    }
+    var HTMLBlogPostElement: {
+        prototype: HTMLBlogPostElement;
+        new (): HTMLBlogPostElement;
+    };
     interface HTMLBookShootElement extends Components.BookShoot, HTMLStencilElement {
     }
     var HTMLBookShootElement: {
@@ -180,6 +200,8 @@ declare global {
         "app-root": HTMLAppRootElement;
         "app-spinner": HTMLAppSpinnerElement;
         "app-toast": HTMLAppToastElement;
+        "blog-page": HTMLBlogPageElement;
+        "blog-post": HTMLBlogPostElement;
         "book-shoot": HTMLBookShootElement;
         "card-link": HTMLCardLinkElement;
         "card-list": HTMLCardListElement;
@@ -209,6 +231,14 @@ declare namespace LocalJSX {
     }
     interface AppToast {
         "toastConfig"?: ToastConfig;
+    }
+    interface BlogPage {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
+    }
+    interface BlogPost {
+        "history"?: RouterHistory;
+        "match"?: MatchResults;
     }
     interface BookShoot {
     }
@@ -259,6 +289,8 @@ declare namespace LocalJSX {
         "app-root": AppRoot;
         "app-spinner": AppSpinner;
         "app-toast": AppToast;
+        "blog-page": BlogPage;
+        "blog-post": BlogPost;
         "book-shoot": BookShoot;
         "card-link": CardLink;
         "card-list": CardList;
@@ -283,6 +315,8 @@ declare module "@stencil/core" {
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "app-spinner": LocalJSX.AppSpinner & JSXBase.HTMLAttributes<HTMLAppSpinnerElement>;
             "app-toast": LocalJSX.AppToast & JSXBase.HTMLAttributes<HTMLAppToastElement>;
+            "blog-page": LocalJSX.BlogPage & JSXBase.HTMLAttributes<HTMLBlogPageElement>;
+            "blog-post": LocalJSX.BlogPost & JSXBase.HTMLAttributes<HTMLBlogPostElement>;
             "book-shoot": LocalJSX.BookShoot & JSXBase.HTMLAttributes<HTMLBookShootElement>;
             "card-link": LocalJSX.CardLink & JSXBase.HTMLAttributes<HTMLCardLinkElement>;
             "card-list": LocalJSX.CardList & JSXBase.HTMLAttributes<HTMLCardListElement>;

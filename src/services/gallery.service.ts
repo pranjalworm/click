@@ -3,7 +3,7 @@
 import { GalleryType, Photograph, CardListMode } from "../global/interfaces";
 import * as ImageData from '../global/image-data';
 import { CardLinkConfig } from "../components/card-link/card-link";
-import { GalleryText } from "../global/text-data/gallery-text";
+import { GalleryText } from "../global/text-data/other/gallery-text";
 import { Utils } from "../global/utils";
 
 
@@ -22,6 +22,7 @@ export default class GalleryService {
   /**
    * @param cardCount number of cards required
    */
+  // TODO: refactor this to return Gallery not CardLinkConfig
   static getGalleryCards(mode: CardListMode, cardCount?: number): CardLinkConfig[] {
 
     let galleryCards: CardLinkConfig[] = [];

@@ -11,7 +11,8 @@ export const enum ROUTE_NAME {
   HOME = 'home',
   PORTFOLIO = 'portfolio',
   GALLERY = 'gallery',
-  // BLOG = 'blog',
+  BLOG = 'blog',
+  BLOG_POST = 'blog-post',
   // BOOK_A_SHOOT = 'book-a-shoot',
   ABOUT_ME = 'about-me',
   VIEW_IMAGE = 'view-image',
@@ -39,12 +40,18 @@ export const ROUTES: { [key: string]: Route } = {
     exact: true,
     component: 'gallery-page'
   },
-  // [ROUTE_NAME.BLOG]: {
-  //   title: 'blog',
-  //   url: '/blog/',
-  //   urlMatch: '/blog/*',
-  //   component: 'blog-page'
-  // },
+  [ROUTE_NAME.BLOG]: {
+    title: 'blog',
+    url: '/blog',
+    exact: true,
+    component: 'blog-page'
+  },
+  [ROUTE_NAME.BLOG_POST]: {
+    title: 'blog post',
+    url: '/blog-post/:blogPostId',
+    exact: true,
+    component: 'blog-post'
+  },
   // [ROUTE_NAME.BOOK_A_SHOOT]: {
   //   title: 'book a shoot',
   //   url: '/book-a-shoot',
@@ -76,7 +83,7 @@ export class RouteService {
     const headerRoutes: Route[] = [
       ROUTES[ROUTE_NAME.HOME],
       ROUTES[ROUTE_NAME.PORTFOLIO],
-      // ROUTES[ROUTE_NAME.BLOG],
+      ROUTES[ROUTE_NAME.BLOG],
       // ROUTES[ROUTE_NAME.BOOK_A_SHOOT],
       ROUTES[ROUTE_NAME.ABOUT_ME]
     ]

@@ -1,5 +1,6 @@
 import { h, Component, ComponentInterface, Prop } from '@stencil/core';
-import { CardListType, CardListMode } from '../../global/interfaces';
+import { CardListType, CardListMode, BlogPost } from '../../global/interfaces';
+import BlogService from '../../services/blog.service';
 import GalleryService from '../../services/gallery.service';
 import { CardLinkConfig } from '../card-link/card-link';
 
@@ -46,8 +47,23 @@ export class CardList implements ComponentInterface {
   }
 
 
-  // TODO: pending
-  getBlogCards(_cardCount: number) { }
+  getBlogCards(cardCount: number) {
+
+    const blogs = BlogService.getBlogCards(cardCount);
+
+    this.cardLinkConfigs = blogs.map((blog: BlogPost) => {
+
+      const config: CardLinkConfig = {
+        contentId: blog.id,
+        image: blog.image,
+        title: blog.title,
+        description: blog.description,
+        mode: this.config.cardListMode
+      }
+
+      return config;
+    })
+  }
 
 
   render() {

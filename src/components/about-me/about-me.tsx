@@ -1,5 +1,6 @@
 import { h, Component, ComponentInterface, getAssetPath } from '@stencil/core';
 import { Photograph } from '../../global/interfaces';
+import { getAboutMeContent } from '../../global/text-data';
 import PhotographService from '../../services/photograph.service';
 
 @Component({
@@ -24,23 +25,8 @@ export class AboutMe implements ComponentInterface {
       <div id="about-me-root">
 
         <div id="description">
-          <div>
-            <p>
-              i got my first camera when i was around 15. i soon realised that i liked to visualize the things around me inside an imaginary rectangular frame even when i did not have a camera on me. starting out i primarily used to click leaves, trees, flowers and landscapes, but eventually i gravitated towards human subjects. a human presence in the photograph creates a bridge between the viewer and photograph and just makes it that much more relatable.
-            </p>
-            <br />
-            <p>
-              i like shooting portraits, streets, landscapes and just about anything interesting, but i feel truly happy when i am creating silhouettes. the anonymous nature of a human silhouette against an interesting background allows the viewer to immerse into the picture and project her/himself into that scene. the picture is real yet dreamy at the same time.
-            </p>
-            <br />
-
-            <p>
-              for any enquiries regarding booking a photoshoot or buying prints of my photographs or if you just want to say hi, you can send me a mail at <a href="mailto:hi@pranjaldubey.photography">hi@pranjaldubey.photography</a>.
-            </p>
-            <br />
-          </div>
+          {getAboutMeContent()}
         </div>
-
 
         <div id="image-div">
           <img src={imageSrc} alt={this.image.alt} />

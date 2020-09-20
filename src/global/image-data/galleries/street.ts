@@ -1,5 +1,5 @@
-import { Photograph } from "../interfaces";
-import { MasterImages } from "./images-master";
+import { Photograph } from "../../interfaces";
+import { MasterImages } from "../images-master";
 
 export const StreetImages: Photograph[] = [
   MasterImages[2],
