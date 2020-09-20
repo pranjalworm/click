@@ -7,6 +7,7 @@ import GalleryService from '../../services/gallery.service';
 import { ToastConfig } from '../app-toast/app-toast';
 import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import AnalyticsService from '../../services/analytics.service';
+import { ROUTES, ROUTE_NAME } from '../../services/route.service';
 
 const TOAST_SUCCESS_MESSAGE = 'Image link copied!';
 const TOAST_FAILURE_MESSAGE = 'Could not copy image link!'
@@ -226,7 +227,8 @@ export class ViewImage {
       )
     }
 
-    return (
+    return [
+      <stencil-route-title pageTitle={`${ROUTES[ROUTE_NAME.VIEW_IMAGE].title}`}></stencil-route-title>,
       <div id="view-image-root">
 
         <div id="image-section">
@@ -252,6 +254,6 @@ export class ViewImage {
         </div> */}
 
       </div>
-    );
+    ];
   }
 }

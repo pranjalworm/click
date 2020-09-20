@@ -5,6 +5,7 @@
 import { h, Component, ComponentInterface, Prop, Listen } from '@stencil/core';
 import { RouterHistory, MatchResults } from '@stencil/router';
 import { CardListType, GalleryType, CardListMode } from '../../global/interfaces';
+import { ROUTES, ROUTE_NAME } from '../../services/route.service';
 import { CardListConfig } from '../card-list/card-list';
 
 
@@ -40,10 +41,11 @@ export class PortfolioPage implements ComponentInterface {
       cardListMode: CardListMode.Page
     }
 
-    return (
+    return [
+      <stencil-route-title pageTitle={ROUTES[ROUTE_NAME.PORTFOLIO].title}></stencil-route-title>,
       <div id="portfolio-page-root">
         <card-list config={cardListConfig}></card-list>
       </div>
-    )
+    ]
   }
 }

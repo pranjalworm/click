@@ -7,7 +7,7 @@ import {
   Prop
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
-import { ROUTE_NAME } from '../../services/route.service';
+import { ROUTES, ROUTE_NAME } from '../../services/route.service';
 
 
 @Component({
@@ -59,12 +59,13 @@ export class AppLanding implements ComponentInterface {
 
   render() {
 
-    return (
+    return [
+      <stencil-route-title pageTitle={ROUTES[ROUTE_NAME.HOME].title}></stencil-route-title>,
       <div id="landing-root">
         <landing-banner></landing-banner>
 
         {/* landing-content will be loaded here after landing-banner has been loaded */}
       </div>
-    );
+    ];
   }
 }

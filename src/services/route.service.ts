@@ -11,8 +11,8 @@ export const enum ROUTE_NAME {
   HOME = 'home',
   PORTFOLIO = 'portfolio',
   GALLERY = 'gallery',
-  // BLOG = 'blog',
-  // BOOK_A_SHOOT = 'book-a-shoot',
+  BLOG = 'blog',
+  BOOK_A_SHOOT = 'book-a-shoot',
   ABOUT_ME = 'about-me',
   VIEW_IMAGE = 'view-image',
   PAGE_NOT_FOUND = 'page-not-found'
@@ -64,6 +64,7 @@ export const ROUTES: { [key: string]: Route } = {
     component: 'view-image'
   },
   [ROUTE_NAME.PAGE_NOT_FOUND]: {
+    title: 'page not found',
     component: 'page-not-found'
   }
 };

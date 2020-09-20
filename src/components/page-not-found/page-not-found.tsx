@@ -1,5 +1,5 @@
 import { h, Component, ComponentInterface } from '@stencil/core';
-import { RouteService, ROUTE_NAME } from '../../services/route.service';
+import { ROUTES, RouteService, ROUTE_NAME } from '../../services/route.service';
 
 @Component({
   tag: 'page-not-found',
@@ -12,7 +12,8 @@ export class PageNotFound implements ComponentInterface {
 
     const landingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
 
-    return (
+    return [
+      <stencil-route-title pageTitle={ROUTES[ROUTE_NAME.PAGE_NOT_FOUND].title}></stencil-route-title>,
       <div id='page-not-found-root'>
 
         <div id='banner404'>
@@ -29,6 +30,6 @@ export class PageNotFound implements ComponentInterface {
         </div>
 
       </div>
-    )
+    ]
   }
 }

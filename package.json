@@ -2,13 +2,14 @@
   "name": "click",
   "private": true,
   "version": "0.0.1",
-  "description": "Pranjal Dubey Photography Website",
+  "description": "pranjal dubey photography website",
   "scripts": {
-    "build": "stencil build",
-    "launch": "rimraf www && rimraf assets && stencil build && firebase deploy",
-    "test-flight": "rimraf www && rimraf assets && stencil build && firebase serve",
-    "start": "stencil build --dev --watch --serve",
-    "start:prod": "stencil build --watch --serve"
+    "build": "npm run clean && stencil build",
+    "launch": "npm run clean && stencil build && firebase deploy",
+    "test-flight": "npm run clean && stencil build && firebase serve",
+    "clean": "rimraf www && rimraf assets",
+    "start": "npm run clean && stencil build --dev --watch --serve",
+    "start:prod": "npm run clean && stencil build --watch --serve"
   },
   "dependencies": {
     "@stencil/core": "latest",

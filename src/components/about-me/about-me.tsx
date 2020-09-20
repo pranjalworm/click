@@ -3,6 +3,7 @@ import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../g
 import { Photograph } from '../../global/interfaces';
 import AnalyticsService from '../../services/analytics.service';
 import PhotographService from '../../services/photograph.service';
+import { ROUTES, ROUTE_NAME } from '../../services/route.service';
 
 @Component({
   tag: 'about-me',
@@ -31,7 +32,8 @@ export class AboutMe implements ComponentInterface {
 
     const imageSrc = getAssetPath(`../../assets/images/${this.image.url}`);
 
-    return (
+    return [
+      <stencil-route-title pageTitle={`${ROUTES[ROUTE_NAME.ABOUT_ME].title}`}></stencil-route-title>,
       <div id="about-me-root">
 
         <div id="description">
@@ -58,6 +60,6 @@ export class AboutMe implements ComponentInterface {
         </div>
 
       </div>
-    )
+    ]
   }
 }

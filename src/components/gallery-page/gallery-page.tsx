@@ -4,6 +4,7 @@ import { Photograph, GalleryType } from '../../global/interfaces';
 import ImageLayout from '../../global/image-layout/image-layout';
 import GalleryService from '../../services/gallery.service';
 import { ImagesWrapperConfigsMap } from '../../global/image-layout/wrapper-configs-map';
+import { ROUTES, ROUTE_NAME } from '../../services/route.service';
 
 @Component({
   tag: 'gallery-page',
@@ -14,6 +15,7 @@ import { ImagesWrapperConfigsMap } from '../../global/image-layout/wrapper-confi
 export class GalleryPage implements ComponentInterface {
 
   private galleryType: GalleryType;
+  private galleryTitle: string;
 
   @Prop() history: RouterHistory;
   @Prop() match: MatchResults;
@@ -78,19 +80,18 @@ export class GalleryPage implements ComponentInterface {
   async showGalleryImages() {
 
     this.galleryType = this.match.params.galleryType as GalleryType;
+    this.galleryTitle = GalleryService.getGalleryTitle(this.galleryType);
 
     const images = GalleryService.getGalleryImages(this.galleryType);
     const galleryImages = this.processImageUrls(images);
-    const galleryTitle = GalleryService.getGalleryTitle(this.galleryType);
     const galleryDescription = GalleryService.getGalleryDescription(this.galleryType);
-
     const wrapperConfigs = await this.fetchImageWrapperConfigs(this.galleryType, galleryImages);
 
     return (
       <div id="gallery-content">
         <div id="gallery-text">
           <div id="gallery-title">
-            {galleryTitle}
+            {this.galleryTitle}
           </div>
           <div id="gallery-description">
             {galleryDescription}
@@ -115,10 +116,13 @@ export class GalleryPage implements ComponentInterface {
 
   render() {
 
-    return (
+    const pageTitle = `${this.galleryTitle} ${ROUTES[ROUTE_NAME.GALLERY].title}`;
+
+    return [
+      <stencil-route-title pageTitle={pageTitle}></stencil-route-title>,
       <div id="gallery-page-root">
         {this.content}
       </div>
-    )
+    ]
   }
 }
