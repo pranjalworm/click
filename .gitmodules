@@ -1,0 +1,3 @@
+[submodule "src/assets/images"]
+	path = src/assets/images
+	url = https://github.com/pranjalworm/click-images.git
