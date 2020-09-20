@@ -37,10 +37,7 @@ export class LandingContent implements ComponentInterface {
 
       <div id="landing-content-root">
         <div class="section-wrapper">
-          <div class="section-title" onClick={() => {
-            const route = ROUTE_NAME.PORTFOLIO;
-            this.sectionTitleClickHandler(route)
-          }}>
+          <div class="section-title">
             portfolio
           </div>
           <div class="section-content">
