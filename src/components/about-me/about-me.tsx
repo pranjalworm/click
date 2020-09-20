@@ -1,6 +1,7 @@
 import { h, Component, ComponentInterface, getAssetPath } from '@stencil/core';
-import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
+import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import { Photograph } from '../../global/interfaces';
+import AnalyticsService from '../../services/analytics.service';
 import PhotographService from '../../services/photograph.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class AboutMe implements ComponentInterface {
 
   mailLinkClickHandler() {
 
-    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
       content_type: AnalyticsEventProp.IN_APP_LINK,
       content_id: AnalyticsEventValue.EMAIL_ID_CLICK
     });

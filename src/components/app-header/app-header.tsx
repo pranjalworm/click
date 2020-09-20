@@ -11,7 +11,8 @@ import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
 import { StoreService, StoreProps } from '../../services/store.service';
 import { Utils } from '../../global/utils';
 import { ThemeService } from '../../services/theme.service';
-import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
+import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
+import AnalyticsService from '../../services/analytics.service';
 
 const LandingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
 const Label = 'night mode';
@@ -50,7 +51,7 @@ export class AppHeader implements ComponentInterface {
         console.error(`AppHeader: No handler attached for: ${buttonId}`)
     }
 
-    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
       content_type: AnalyticsEventProp.IN_APP_CLICK,
       content_id: AnalyticsEventValue.NIGHT_MODE_CLICK,
       item: ThemeService.getCurrentTheme()
@@ -83,7 +84,7 @@ export class AppHeader implements ComponentInterface {
 
   logClickEvent(title?: string) {
 
-    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
       content_type: title ? AnalyticsEventProp.IN_APP_LINK : AnalyticsEventProp.IN_APP_CLICK,
       content_id: title ? AnalyticsEventValue.MENU_ITEM_CLICK : AnalyticsEventValue.MENU_TOGGLE_CLICK,
       item: title ? title : this.openMobileMenu

@@ -1,6 +1,7 @@
 import { h, Component, ComponentInterface, Prop, Event, EventEmitter } from '@stencil/core';
-import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
+import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import { Photograph } from '../../global/interfaces';
+import AnalyticsService from '../../services/analytics.service';
 
 export interface ImagesWrapperConfig {
   images: Photograph[];
@@ -25,7 +26,7 @@ export class ImagesWrapper implements ComponentInterface {
 
     this.wrapperImageClicked.emit(id);
 
-    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
       content_type: AnalyticsEventProp.IN_APP_CLICK,
       content_id: AnalyticsEventValue.IMAGE_CLICK,
       item: id

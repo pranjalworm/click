@@ -4,7 +4,8 @@ import {
   ComponentInterface,
   State,
 } from '@stencil/core';
-import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
+import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
+import AnalyticsService from '../../services/analytics.service';
 import { StoreService, StoreProps } from '../../services/store.service';
 
 @Component({
@@ -34,7 +35,7 @@ export class AppFooter implements ComponentInterface {
 
   sectionLinkClickHandler() {
 
-    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
       content_type: AnalyticsEventProp.IN_APP_LINK,
       content_id: AnalyticsEventValue.INSTAGRAM_CLICK
     });
