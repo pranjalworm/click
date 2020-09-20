@@ -1,4 +1,5 @@
 import { h, Component, ComponentInterface, getAssetPath } from '@stencil/core';
+import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import { Photograph } from '../../global/interfaces';
 import PhotographService from '../../services/photograph.service';
 
@@ -14,6 +15,15 @@ export class AboutMe implements ComponentInterface {
 
   componentWillLoad() {
     this.image = PhotographService.getAboutMePageImage();
+  }
+
+
+  mailLinkClickHandler() {
+
+    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+      content_type: AnalyticsEventProp.IN_APP_LINK,
+      content_id: AnalyticsEventValue.EMAIL_ID_CLICK
+    });
   }
 
   render() {
@@ -35,7 +45,7 @@ export class AboutMe implements ComponentInterface {
             <br />
 
             <p>
-              for any enquiries regarding booking a photoshoot or buying prints of my photographs or if you just want to say hi, you can send me a mail at <a href="mailto:hi@pranjaldubey.photography">hi@pranjaldubey.photography</a>.
+              for any enquiries regarding booking a photoshoot or buying prints of my photographs or if you just want to say hi, you can send me a mail at <a onClick={() => this.mailLinkClickHandler()} href="mailto:hi@pranjaldubey.photography">hi@pranjaldubey.photography</a>.
             </p>
             <br />
           </div>

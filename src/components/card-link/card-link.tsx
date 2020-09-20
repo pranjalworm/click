@@ -1,6 +1,7 @@
 import { h, Component, ComponentInterface, Prop, EventEmitter, Event, getAssetPath } from '@stencil/core';
 import { Utils } from '../../global/utils';
 import { Photograph, CardListMode } from '../../global/interfaces';
+import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 
 export interface CardLinkConfig {
   contentId: string;
@@ -27,7 +28,14 @@ export class CardLink implements ComponentInterface {
 
 
   cardClickHandler() {
+
     this.cardLinkClicked.emit(this.cardLinkConfig.contentId)
+
+    analytics.logEvent(AnalyticsEvent.SELECT_CONTENT, {
+      content_type: AnalyticsEventProp.IN_APP_LINK,
+      content_id: AnalyticsEventValue.CARD_CLICK,
+      item: this.cardLinkConfig.contentId
+    });
   }
 
 

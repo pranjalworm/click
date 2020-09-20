@@ -6,6 +6,7 @@
   "scripts": {
     "build": "stencil build",
     "launch": "rimraf www && rimraf assets && stencil build && firebase deploy",
+    "test-flight": "rimraf www && rimraf assets && stencil build && firebase serve",
     "start": "stencil build --dev --watch --serve",
     "start:prod": "stencil build --watch --serve"
   },

@@ -4,6 +4,7 @@ import {
   ComponentInterface,
   State,
 } from '@stencil/core';
+import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import { StoreService, StoreProps } from '../../services/store.service';
 
 @Component({
@@ -31,6 +32,15 @@ export class AppFooter implements ComponentInterface {
   }
 
 
+  sectionLinkClickHandler() {
+
+    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+      content_type: AnalyticsEventProp.IN_APP_LINK,
+      content_id: AnalyticsEventValue.INSTAGRAM_CLICK
+    });
+  }
+
+
   render() {
 
     return (
@@ -41,7 +51,8 @@ export class AppFooter implements ComponentInterface {
         <div class='section'>
           <a href='https://www.instagram.com/pranjalworm'
             target='_blank'
-            class="link">
+            class="link"
+            onClick={() => this.sectionLinkClickHandler()}>
             instagram
           </a>
         </div>

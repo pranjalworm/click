@@ -10,6 +10,7 @@ import PhotographService from '../../../services/photograph.service';
 import { Photograph, StorageKeys } from '../../../global/interfaces';
 import { Utils } from '../../../global/utils';
 import StorageService from '../../../services/storage.service';
+import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../../global/analytics';
 
 
 @Component({
@@ -34,10 +35,21 @@ export class LandingBanner implements ComponentInterface {
   }
 
 
-  // tells the app-landing component that it has finished loading
+
   componentDidLoad() {
 
+    // tell the app-landing component that banner has finished loading
     this.bannerLoaded.emit();
+  }
+
+
+  private bannerImageClickHandler() {
+
+    analytics.logEvent(AnalyticsEvent.SELECT_ITEM, {
+      content_type: AnalyticsEventProp.IN_APP_CLICK,
+      content_id: AnalyticsEventValue.LANDING_BANNER_CLICK,
+      item: this.bannerImage.id
+    });
   }
 
 
@@ -73,7 +85,8 @@ export class LandingBanner implements ComponentInterface {
       <div id="landing-section">
 
         <div id="banner-image">
-          <img src={imageSrc} alt={this.bannerImage.alt} />
+          <img src={imageSrc} alt={this.bannerImage.alt}
+            onClick={() => this.bannerImageClickHandler()} />
         </div>
 
         <div id="banner-caption">

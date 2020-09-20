@@ -8,6 +8,7 @@ import {
 import { CardListType, CardListMode } from '../../../global/interfaces';
 import { CardListConfig } from '../../card-list/card-list';
 import { ROUTE_NAME } from '../../../services/route.service';
+import { analytics, AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../../global/analytics';
 
 @Component({
   tag: 'landing-content',
@@ -23,6 +24,11 @@ export class LandingContent implements ComponentInterface {
   sectionTitleClickHandler(route: string) {
 
     this.sectionTitleClicked.emit(route);
+
+    analytics.logEvent(AnalyticsEvent.SELECT_CONTENT, {
+      content_type: AnalyticsEventProp.IN_APP_LINK,
+      content_id: AnalyticsEventValue.VIEW_ALL_GALLERIES
+    });
   }
 
 
