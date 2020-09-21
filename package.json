@@ -5,7 +5,7 @@
   "description": "pranjal dubey photography website",
   "scripts": {
     "build": "npm run clean && stencil build",
-    "launch": "npm run clean && stencil build && firebase deploy",
+    "fire": "npm run clean && stencil build && firebase deploy",
     "test-flight": "npm run clean && stencil build && firebase serve",
     "clean": "rimraf www && rimraf assets",
     "start": "npm run clean && stencil build --dev --watch --serve",
