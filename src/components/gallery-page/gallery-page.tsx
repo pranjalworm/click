@@ -97,17 +97,10 @@ export class GalleryPage implements ComponentInterface {
             {galleryDescription}
           </div>
         </div>
-        <div id="gallery-images-wrapper">
-          {
-            wrapperConfigs.map(config => {
-              return (
-                <images-wrapper
-                  images={config.images}
-                  style-class={config.styleClass}>
-                </images-wrapper>
-              )
-            })
-          }
+        <div id="lazy-loader-wrapper">
+
+          <lazy-loader imagesWrapperConfigs={wrapperConfigs}></lazy-loader>
+
         </div>
       </div>
     )
