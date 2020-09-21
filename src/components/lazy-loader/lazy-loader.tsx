@@ -8,11 +8,13 @@ import { h, Component, ComponentInterface, Prop } from '@stencil/core';
 import { Photograph } from '../../global/interfaces';
 import { ImagesWrapperConfig } from '../images-wrapper/images-wrapper';
 
-const IntersectionOptions = {
+
+const IntersectionOptions: IntersectionObserverInit = {
   root: null, // viewport
   rootMargin: '0px',
   threshold: 0
 };
+
 
 @Component({
   tag: 'lazy-loader',
@@ -31,23 +33,32 @@ export class LazyLoader implements ComponentInterface {
 
   @Prop() imagesWrapperConfigs: ImagesWrapperConfig[];
 
+
   componentWillLoad() {
 
-    this.intersectionObserver = new IntersectionObserver(this.attachImagesWrapper.bind(this), IntersectionOptions);
+    this.intersectionObserver = new IntersectionObserver(this.intersectionHandler.bind(this), IntersectionOptions);
 
     if (!this.imagesWrapperConfigs || !this.imagesWrapperConfigs.length) {
       console.error(`LazyLoader: did not receive imagesWrapperConfigs`)
     }
   }
 
+
   componentDidLoad() {
 
     this.intersectionObserver.observe(this.spinnerContainer);
   }
 
-  attachImagesWrapper() {
 
-    const imagesWrapperConfig = this.getNewImagesWrapperConfig();
+  intersectionHandler(_entries: any, _observer: HTMLElement) {
+
+    this.attachNextImagesWrapper();
+  }
+
+
+  attachNextImagesWrapper() {
+
+    const imagesWrapperConfig = this.imagesWrapperConfigs[this.attachedCount++] || null;
 
     console.log(`wasp > imagesWrapperConfig`)
     console.log(imagesWrapperConfig);
@@ -63,10 +74,6 @@ export class LazyLoader implements ComponentInterface {
     this.imagesWrappersContainer.appendChild(imagesWrapper);
   }
 
-  getNewImagesWrapperConfig() {
-
-    return this.imagesWrapperConfigs[this.attachedCount++] || null;
-  }
 
   createImagesWrapper(images: Photograph[], styleClass: string) {
 
@@ -76,6 +83,7 @@ export class LazyLoader implements ComponentInterface {
 
     return imagesWrapper;
   }
+
 
   render() {
 
