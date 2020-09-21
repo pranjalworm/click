@@ -47,6 +47,7 @@ export class CardLink implements ComponentInterface {
     styleClass += this.cardLinkConfig.mode === CardListMode.Page ? ' page-styling' : ' section-styling';
 
     const imageSrc = getAssetPath(`../../assets/images/${this.cardLinkConfig?.image.url}`);
+    const arrowIconSrc = getAssetPath(`../../assets/icon/right-arrow.svg`);
 
     return (
       <div class={`card-link-root ${styleClass}`} onClick={() => this.cardClickHandler()}>
@@ -62,6 +63,8 @@ export class CardLink implements ComponentInterface {
 
           <div class="description-wrapper">
             {this.cardLinkConfig?.description}
+            &nbsp;
+            <img src={arrowIconSrc} alt="right arrow" class="right-arrow-icon" />
           </div>
 
         </div>

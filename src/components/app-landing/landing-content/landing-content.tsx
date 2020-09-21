@@ -3,7 +3,7 @@ import {
   Component,
   ComponentInterface,
   Event,
-  EventEmitter
+  EventEmitter, getAssetPath
 } from '@stencil/core';
 import { CardListType, CardListMode } from '../../../global/interfaces';
 import { CardListConfig } from '../../card-list/card-list';
@@ -14,7 +14,8 @@ import AnalyticsService from '../../../services/analytics.service';
 @Component({
   tag: 'landing-content',
   styleUrl: 'landing-content.scss',
-  shadow: true
+  shadow: true,
+  assetsDirs: ['../../../assets']
 })
 export class LandingContent implements ComponentInterface {
 
@@ -40,12 +41,14 @@ export class LandingContent implements ComponentInterface {
       cardListType: CardListType.Gallery
     }
 
+    const arrowIconSrc = getAssetPath(`../../../assets/icon/right-arrow.svg`);
+
     return (
 
       <div id="landing-content-root">
         <div class="section-wrapper">
           <div class="section-title">
-            portfolio
+            galleries
           </div>
           <div class="section-content">
             {
@@ -56,7 +59,8 @@ export class LandingContent implements ComponentInterface {
             const route = ROUTE_NAME.PORTFOLIO;
             this.sectionTitleClickHandler(route)
           }}>
-            view all...
+            view all galleries&nbsp;
+            <img src={arrowIconSrc} alt="right arrow" class="right-arrow-icon" />
           </div>
         </div>
 
