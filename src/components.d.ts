@@ -10,7 +10,6 @@ import { ToastConfig } from "./components/app-toast/app-toast";
 import { CardLinkConfig } from "./components/card-link/card-link";
 import { CardListConfig } from "./components/card-list/card-list";
 import { Photograph } from "./global/interfaces";
-import { ImagesWrapperConfig } from "./components/images-wrapper/images-wrapper";
 export namespace Components {
     interface AboutMe {
     }
@@ -47,9 +46,6 @@ export namespace Components {
     interface LandingBanner {
     }
     interface LandingContent {
-    }
-    interface LazyLoader {
-        "imagesWrapperConfigs": ImagesWrapperConfig[];
     }
     interface PageNotFound {
     }
@@ -152,12 +148,6 @@ declare global {
         prototype: HTMLLandingContentElement;
         new (): HTMLLandingContentElement;
     };
-    interface HTMLLazyLoaderElement extends Components.LazyLoader, HTMLStencilElement {
-    }
-    var HTMLLazyLoaderElement: {
-        prototype: HTMLLazyLoaderElement;
-        new (): HTMLLazyLoaderElement;
-    };
     interface HTMLPageNotFoundElement extends Components.PageNotFound, HTMLStencilElement {
     }
     var HTMLPageNotFoundElement: {
@@ -197,7 +187,6 @@ declare global {
         "images-wrapper": HTMLImagesWrapperElement;
         "landing-banner": HTMLLandingBannerElement;
         "landing-content": HTMLLandingContentElement;
-        "lazy-loader": HTMLLazyLoaderElement;
         "page-not-found": HTMLPageNotFoundElement;
         "portfolio-page": HTMLPortfolioPageElement;
         "toggle-button": HTMLToggleButtonElement;
@@ -245,9 +234,6 @@ declare namespace LocalJSX {
     interface LandingContent {
         "onSection-title-clicked"?: (event: CustomEvent<any>) => void;
     }
-    interface LazyLoader {
-        "imagesWrapperConfigs"?: ImagesWrapperConfig[];
-    }
     interface PageNotFound {
     }
     interface PortfolioPage {
@@ -280,7 +266,6 @@ declare namespace LocalJSX {
         "images-wrapper": ImagesWrapper;
         "landing-banner": LandingBanner;
         "landing-content": LandingContent;
-        "lazy-loader": LazyLoader;
         "page-not-found": PageNotFound;
         "portfolio-page": PortfolioPage;
         "toggle-button": ToggleButton;
@@ -305,7 +290,6 @@ declare module "@stencil/core" {
             "images-wrapper": LocalJSX.ImagesWrapper & JSXBase.HTMLAttributes<HTMLImagesWrapperElement>;
             "landing-banner": LocalJSX.LandingBanner & JSXBase.HTMLAttributes<HTMLLandingBannerElement>;
             "landing-content": LocalJSX.LandingContent & JSXBase.HTMLAttributes<HTMLLandingContentElement>;
-            "lazy-loader": LocalJSX.LazyLoader & JSXBase.HTMLAttributes<HTMLLazyLoaderElement>;
             "page-not-found": LocalJSX.PageNotFound & JSXBase.HTMLAttributes<HTMLPageNotFoundElement>;
             "portfolio-page": LocalJSX.PortfolioPage & JSXBase.HTMLAttributes<HTMLPortfolioPageElement>;
             "toggle-button": LocalJSX.ToggleButton & JSXBase.HTMLAttributes<HTMLToggleButtonElement>;

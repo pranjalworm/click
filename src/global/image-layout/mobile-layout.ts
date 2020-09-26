@@ -1,5 +1,4 @@
-import { Photograph } from "../interfaces";
-import { ImagesWrapperConfig } from "../../components/images-wrapper/images-wrapper";
+import { ImagesWrapperConfig, Photograph } from "../interfaces";
 
 export default class MobileLayout {
 

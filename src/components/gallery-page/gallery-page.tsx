@@ -47,6 +47,7 @@ export class GalleryPage implements ComponentInterface {
     )
   }
 
+
   async fetchImageWrapperConfigs(galleryType: GalleryType, images: Photograph[]) {
 
     // see if configs are already calculated for this galleryType
@@ -88,6 +89,7 @@ export class GalleryPage implements ComponentInterface {
     const wrapperConfigs = await this.fetchImageWrapperConfigs(this.galleryType, galleryImages);
 
     return (
+
       <div id="gallery-content">
         <div id="gallery-text">
           <div id="gallery-title">
@@ -97,9 +99,18 @@ export class GalleryPage implements ComponentInterface {
             {galleryDescription}
           </div>
         </div>
-        <div id="lazy-loader-wrapper">
+        <div id="images-wrapper-container">
 
-          <lazy-loader imagesWrapperConfigs={wrapperConfigs}></lazy-loader>
+          {
+            wrapperConfigs.map(config => {
+              return (
+                <images-wrapper
+                  images={config.images}
+                  style-class={config.styleClass}>
+                </images-wrapper>
+              )
+            })
+          }
 
         </div>
       </div>
