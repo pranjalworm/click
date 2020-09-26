@@ -1,26 +1,64 @@
-import { h, Component, ComponentInterface, Prop, Event, EventEmitter } from '@stencil/core';
+import { h, Component, ComponentInterface, Prop, Event, EventEmitter, State } from '@stencil/core';
 import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import { Photograph } from '../../global/interfaces';
 import AnalyticsService from '../../services/analytics.service';
 
-export interface ImagesWrapperConfig {
-  images: Photograph[];
-  styleClass: string;
-}
+
+const IntersectionOptions: IntersectionObserverInit = {
+  root: null,
+  rootMargin: '400px',
+  threshold: 0
+};
+
 
 @Component({
   tag: 'images-wrapper',
   shadow: false,
-  assetsDirs: ['../../assets']
+  assetsDirs: ['../../assets'],
+  styleUrl: 'images-wrapper.scss',
 })
 export class ImagesWrapper implements ComponentInterface {
+
+
+  private intersectionObserver: IntersectionObserver;
+
+  private imagesContainer: HTMLElement;
+
+  @State() content: any = this.getSpinnerTemplate()
+
 
   @Prop() images: Photograph[] = [];
   @Prop() styleClass: string;
 
+
   @Event({
     eventName: 'wrapper-image-clicked',
   }) wrapperImageClicked: EventEmitter;
+
+
+  componentWillLoad() {
+
+    this.intersectionObserver = new IntersectionObserver(this.intersectionHandler.bind(this), IntersectionOptions);
+  }
+
+
+  componentDidLoad() {
+
+    this.intersectionObserver.observe(this.imagesContainer);
+  }
+
+
+  intersectionHandler(entries: any, _observer: HTMLElement) {
+
+    entries.forEach(entry => {
+
+      if (entry.isIntersecting || entry.intersectionRatio > 0) {
+        this.content = this.getImagesTemplate();
+        this.intersectionObserver.disconnect();
+      }
+    });
+  }
+
 
   imageClickHandler(id: number) {
 
@@ -34,18 +72,37 @@ export class ImagesWrapper implements ComponentInterface {
   }
 
 
+  getSpinnerTemplate() {
+
+    return (
+      <div id="spinner-container">
+        <app-spinner></app-spinner>
+      </div>
+    )
+  }
+
+
+  getImagesTemplate() {
+
+    return (
+      this.images.map((image: Photograph) => {
+
+        return <img onClick={() => { this.imageClickHandler(image.id) }}
+          src={image.url}
+          alt={image.alt}
+          class={image.orientation} />
+      })
+    )
+  }
+
+
   render() {
 
     return (
-      <div class={this.styleClass}>
+      <div id="images-wrapper-root" class={this.styleClass}
+        ref={(el) => this.imagesContainer = el as HTMLElement}>
         {
-          this.images.map((image: Photograph) => {
-
-            return <img onClick={() => { this.imageClickHandler(image.id) }}
-              src={image.url}
-              alt={image.alt}
-              class={image.orientation} />
-          })
+          this.content
         }
       </div>
     )

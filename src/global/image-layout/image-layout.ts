@@ -3,11 +3,10 @@
  * responsive photo grid
  */
 
-import { Photograph, ImageOrientation } from '../interfaces';
+import { Photograph, ImageOrientation, ImagesWrapperConfig } from '../interfaces';
 import MobileLayout from './mobile-layout';
 import DesktopLayout from './desktop-layout';
 import { Utils } from '../utils';
-import { ImagesWrapperConfig } from '../../components/images-wrapper/images-wrapper';
 
 export default class ImageLayout {
 

@@ -47,6 +47,7 @@ export class GalleryPage implements ComponentInterface {
     )
   }
 
+
   async fetchImageWrapperConfigs(galleryType: GalleryType, images: Photograph[]) {
 
     // see if configs are already calculated for this galleryType
@@ -88,6 +89,7 @@ export class GalleryPage implements ComponentInterface {
     const wrapperConfigs = await this.fetchImageWrapperConfigs(this.galleryType, galleryImages);
 
     return (
+
       <div id="gallery-content">
         <div id="gallery-text">
           <div id="gallery-title">
@@ -97,7 +99,8 @@ export class GalleryPage implements ComponentInterface {
             {galleryDescription}
           </div>
         </div>
-        <div id="gallery-images-wrapper">
+        <div id="images-wrapper-container">
+
           {
             wrapperConfigs.map(config => {
               return (
@@ -108,6 +111,7 @@ export class GalleryPage implements ComponentInterface {
               )
             })
           }
+
         </div>
       </div>
     )

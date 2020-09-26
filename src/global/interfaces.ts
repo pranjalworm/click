@@ -1,3 +1,9 @@
+export interface ImagesWrapperConfig {
+  images: Photograph[];
+  styleClass: string;
+}
+
+
 export enum ImageOrientation {
   Landscape = 'landscape',
   Portrait = 'portrait'

@@ -1,5 +1,4 @@
-import { ImagesWrapperConfig } from "../../components/images-wrapper/images-wrapper"
-import { GalleryType } from "../interfaces";
+import { GalleryType, ImagesWrapperConfig } from "../interfaces";
 
 export namespace ImagesWrapperConfigsMap {
 
