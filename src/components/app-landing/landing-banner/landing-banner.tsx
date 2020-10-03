@@ -36,7 +36,6 @@ export class LandingBanner implements ComponentInterface {
   }
 
 
-
   componentDidLoad() {
 
     // tell the app-landing component that banner has finished loading

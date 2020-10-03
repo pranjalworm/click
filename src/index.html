@@ -38,8 +38,22 @@
       z-index: 100;
     }
 
+    .fade-in {
+      animation: fadeIn ease 0.8s;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
     .fade-out {
-      animation: fadeOut ease 1s;
+      animation: fadeOut ease 2s;
     }
 
     @keyframes fadeOut {
@@ -65,7 +79,6 @@
   <link href="/build/app.css" rel="stylesheet">
   <script defer type="module" src="/build/app.esm.js"></script>
   <script defer nomodule src="/build/app.js"></script>
-
   <link rel="manifest" href="/manifest.json">
   <base href=".">
 </head>
@@ -75,7 +88,7 @@
   <noscript>Please enable javascript to access this website.</noscript>
 
   <div id="first-load-banner">
-    pranjal dubey
+    <span class="fade-in">pranjal dubey</span>
   </div>
 
   <app-root id="app-root"></app-root>
@@ -89,7 +102,7 @@
 
     setTimeout(() => {
       bodyRef.removeChild(firstLoadBannerRef);
-    }, 950);
+    }, 1998);
 
   </script>
 
