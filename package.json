@@ -15,11 +15,12 @@
     "@stencil/core": "latest",
     "@stencil/router": "latest",
     "@stencil/sass": "latest",
-    "chokidar": "^3.2.1"
+    "chokidar": "^3.5.1"
   },
   "license": "MIT",
   "devDependencies": {
     "@stencil/store": "latest",
+    "rimraf": "^3.0.2",
     "workbox-build": "4.3.1"
   }
 }
