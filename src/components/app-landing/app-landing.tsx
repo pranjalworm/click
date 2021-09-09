@@ -4,7 +4,9 @@ import {
   ComponentInterface,
   Listen,
   Element,
-  Prop
+  Prop,
+  Event,
+  EventEmitter
 } from '@stencil/core';
 import { RouterHistory } from '@stencil/router';
 import { ROUTES, ROUTE_NAME } from '../../services/route.service';
@@ -18,6 +20,13 @@ export class AppLanding implements ComponentInterface {
 
   @Prop() history: RouterHistory;
   @Element() host: HTMLElement;
+
+  @Event({
+    eventName: 'banner-loaded',
+    composed: true,
+    bubbles: true,
+  }) bannerLoaded: EventEmitter<boolean>;
+
   private landingRootRef: HTMLElement = null;
 
   /**

@@ -180,6 +180,8 @@ export class ViewImage {
 
   render() {
 
+    const closeIconSrc = getAssetPath(`../../assets/icon/close.svg`);
+
     let imageContent = (
       <div id="spinner-wrapper">
         <app-spinner></app-spinner>
@@ -235,7 +237,7 @@ export class ViewImage {
 
           <div id="exit-view-wrapper">
             <div id="exit-view-icon" onClick={() => { this.exit() }}>
-              &#10006;
+              <img src={closeIconSrc} alt="Close" />
             </div>
           </div>
 

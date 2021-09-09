@@ -36,13 +36,6 @@ export class LandingBanner implements ComponentInterface {
   }
 
 
-  componentDidLoad() {
-
-    // tell the app-landing component that banner has finished loading
-    this.bannerLoaded.emit();
-  }
-
-
   private bannerImageClickHandler() {
 
     AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
@@ -50,6 +43,13 @@ export class LandingBanner implements ComponentInterface {
       content_id: AnalyticsEventValue.LANDING_BANNER_CLICK,
       item: this.bannerImage.id
     });
+  }
+
+
+  private bannerImageLoaded() {
+
+    // tell the app-landing component that banner has finished loading
+    this.bannerLoaded.emit();
   }
 
 
@@ -86,7 +86,8 @@ export class LandingBanner implements ComponentInterface {
 
         <div id="banner-image">
           <img src={imageSrc} alt={this.bannerImage.alt}
-            onClick={() => this.bannerImageClickHandler()} />
+            onClick={() => this.bannerImageClickHandler()}
+            onLoad={() => this.bannerImageLoaded()} />
         </div>
 
         <div id="banner-caption">

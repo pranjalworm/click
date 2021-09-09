@@ -202,6 +202,7 @@ declare namespace LocalJSX {
     }
     interface AppLanding {
         "history"?: RouterHistory;
+        "onBanner-loaded"?: (event: CustomEvent<boolean>) => void;
     }
     interface AppRoot {
     }

@@ -75,6 +75,25 @@
     }
   </style>
 
+
+  <script>
+
+    // detect if banner has finished loading
+
+    document.addEventListener('banner-loaded', () => {
+
+      const bodyRef = document.getElementById('body');
+      const firstLoadBannerRef = document.getElementById('first-load-banner');
+
+      firstLoadBannerRef.classList.add('fade-out');
+
+      setTimeout(() => {
+        bodyRef.removeChild(firstLoadBannerRef);
+      }, 1998);
+    })
+
+  </script>
+
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="/build/app.css" rel="stylesheet">
   <script defer type="module" src="/build/app.esm.js"></script>
@@ -92,19 +111,6 @@
   </div>
 
   <app-root id="app-root"></app-root>
-
-  <script>
-
-    const bodyRef = document.getElementById('body');
-    const firstLoadBannerRef = document.getElementById('first-load-banner');
-
-    firstLoadBannerRef.classList.add('fade-out');
-
-    setTimeout(() => {
-      bodyRef.removeChild(firstLoadBannerRef);
-    }, 1998);
-
-  </script>
 
   <script defer src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
   <script defer src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
