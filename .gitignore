@@ -6,6 +6,7 @@ desktop.ini
 .firebaserc
 firebase.jso
 .firebase/**
+.DS_Store
 
 # Logs
 logs
