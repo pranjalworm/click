@@ -1,4 +1,5 @@
 # Custom ignore
+.DS_Store
 www
 assets
 desktop.ini
