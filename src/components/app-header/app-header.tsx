@@ -11,8 +11,6 @@ import { RouteService, Route, ROUTE_NAME } from '../../services/route.service';
 import { StoreService, StoreProps } from '../../services/store.service';
 import { Utils } from '../../global/utils';
 import { ThemeService } from '../../services/theme.service';
-import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
-import AnalyticsService from '../../services/analytics.service';
 
 const LandingPageRoute = RouteService.getRoute(ROUTE_NAME.HOME);
 const Label = 'night mode';
@@ -51,11 +49,6 @@ export class AppHeader implements ComponentInterface {
         console.error(`AppHeader: No handler attached for: ${buttonId}`)
     }
 
-    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
-      content_type: AnalyticsEventProp.IN_APP_CLICK,
-      content_id: AnalyticsEventValue.NIGHT_MODE_CLICK,
-      item: ThemeService.getCurrentTheme()
-    });
   }
 
   componentWillLoad() {
@@ -74,22 +67,12 @@ export class AppHeader implements ComponentInterface {
   }
 
 
-  menuButtonClickHandler(title?: string) {
+  menuButtonClickHandler() {
 
     this.openMobileMenu = !this.openMobileMenu;
 
-    this.logClickEvent(title);
   }
 
-
-  logClickEvent(title?: string) {
-
-    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
-      content_type: title ? AnalyticsEventProp.IN_APP_LINK : AnalyticsEventProp.IN_APP_CLICK,
-      content_id: title ? AnalyticsEventValue.MENU_ITEM_CLICK : AnalyticsEventValue.MENU_TOGGLE_CLICK,
-      item: title ? title : this.openMobileMenu
-    });
-  }
 
   toggleTheme() {
 
@@ -124,7 +107,7 @@ export class AppHeader implements ComponentInterface {
                   urlMatch={menuOption.urlMatch}
                   exact={true}>
                   <span class='menu-option'
-                    onClick={() => { this.menuButtonClickHandler(menuOption.title) }}>
+                    onClick={() => { this.menuButtonClickHandler() }}>
                     {menuOption.title}
                   </span>
                 </stencil-route-link>
@@ -146,7 +129,7 @@ export class AppHeader implements ComponentInterface {
       <header id='app-header-root' class="desktop"
         style={{ 'display': this.displayHeader ? 'flex' : 'none' }}>
         <stencil-route-link url={LandingPageRoute.url[0]}>
-          <div id='app-heading' onClick={() => this.logClickEvent(this.siteHeading)}>
+          <div id='app-heading'>
             {this.siteHeading}
           </div>
         </stencil-route-link>

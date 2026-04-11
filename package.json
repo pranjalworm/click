@@ -7,8 +7,6 @@
     "start": "npm run clean && stencil build --dev --watch --serve",
     "start:prod": "npm run clean && stencil build --watch --serve",
     "build": "npm run clean && stencil build",
-    "test-flight": "npm run clean && stencil build && firebase serve",
-    "fire": "npm run clean && stencil build && firebase deploy",
     "clean": "rimraf www && rimraf assets"
   },
   "dependencies": {

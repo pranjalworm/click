@@ -5,8 +5,6 @@ import { RouterHistory, MatchResults } from '@stencil/router';
 import { StoreService, StoreProps } from '../../services/store.service';
 import GalleryService from '../../services/gallery.service';
 import { ToastConfig } from '../app-toast/app-toast';
-import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
-import AnalyticsService from '../../services/analytics.service';
 import { ROUTES, ROUTE_NAME } from '../../services/route.service';
 
 const TOAST_SUCCESS_MESSAGE = 'Image link copied!';
@@ -154,10 +152,6 @@ export class ViewImage {
 
     this.history.replace(url);
 
-    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
-      content_type: AnalyticsEventProp.IN_APP_CLICK,
-      content_id: navigateToNext ? AnalyticsEventValue.NEXT_IMAGE_CLICK : AnalyticsEventValue.PREV_IMAGE_CLICK
-    });
   }
 
 
@@ -165,10 +159,6 @@ export class ViewImage {
 
     this.history.goBack();
 
-    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
-      content_type: AnalyticsEventProp.IN_APP_CLICK,
-      content_id: AnalyticsEventValue.EXIT_IMAGE_CLICK
-    });
   }
 
   getImageShareUrl(): string {

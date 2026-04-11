@@ -1,7 +1,5 @@
 import { h, Component, ComponentInterface, Prop, Event, EventEmitter, State } from '@stencil/core';
-import { AnalyticsEvent, AnalyticsEventProp, AnalyticsEventValue } from '../../global/analytics';
 import { Photograph } from '../../global/interfaces';
-import AnalyticsService from '../../services/analytics.service';
 
 
 const IntersectionOptions: IntersectionObserverInit = {
@@ -64,11 +62,6 @@ export class ImagesWrapper implements ComponentInterface {
 
     this.wrapperImageClicked.emit(id);
 
-    AnalyticsService.logEvent(AnalyticsEvent.SELECT_ITEM, {
-      content_type: AnalyticsEventProp.IN_APP_CLICK,
-      content_id: AnalyticsEventValue.IMAGE_CLICK,
-      item: id
-    });
   }
 
 

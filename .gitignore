@@ -3,10 +3,6 @@
 www
 assets
 desktop.ini
-.firebase
-.firebaserc
-firebase.jso
-.firebase/**
 .DS_Store
 
 # Logs
